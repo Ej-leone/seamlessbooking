@@ -13,7 +13,7 @@ import AppRouteConfigs from './AppRouteConfigs';
 import reducer from '../redux/reducers';
 
 const middleware = createReactNavigationReduxMiddleware(
-    'root',
+    //'root',
     state => state.nav,
 );
 

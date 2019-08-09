@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
 import { SafeAreaView, View, Text } from 'react-native'
+import ActionCreators from '../../redux/actions';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styles from './screen.style'
 
 class Screen1 extends Component {
-    static propTypes = {
-        prop: PropTypes
+
+    componentDidMount() {
+        const { navigation } = this.props;
+        const { navigate } = navigation;
+        setTimeout(
+            () => {
+                navigate('LoggedOut');
+            }, 1000
+        )
     }
 
     render() {
@@ -25,8 +34,6 @@ const mapStateToProps = (state) => ({
 
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Screen1)

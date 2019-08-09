@@ -18,6 +18,8 @@ const AppRouteConfigs = createStackNavigator({
 
     Screen1: { screen: Screen1 },
     LoggedOut: { screen: LoggedOut },
+    Usignup: { screen: Usignup },
+    Login: { screen: Login }
 
 })
 export default AppRouteConfigs;

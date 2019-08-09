@@ -1,6 +1,6 @@
 
 import * as types from './types';
-import user from '../../data/user.json';
+//import user from '../../data/user.json';
 
 const setLoggedInState = loggedInState => (
   {
@@ -11,7 +11,7 @@ const setLoggedInState = loggedInState => (
 
 const logIn = (email, password) => {
   const action = (dispatch) => {
-    if (email === user.email && password === user.password) {
+    if (email === "ej@sa.com" && password === "12345") {
       dispatch(setLoggedInState(true));
       return true;
     }
