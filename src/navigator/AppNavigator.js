@@ -3,6 +3,7 @@ import React from 'react';
 import { compose, createStore, applyMiddleware } from 'redux';
 import {
     reduxifyNavigator,
+    createReduxContainer,
     createReactNavigationReduxMiddleware,
 } from 'react-navigation-redux-helpers';
 import { createLogger } from 'redux-logger';
@@ -16,7 +17,8 @@ const middleware = createReactNavigationReduxMiddleware(
     state => state.nav,
 );
 
-const App = reduxifyNavigator(AppRouteConfigs, 'root');
+//const App = reduxifyNavigator(AppRouteConfigs, 'root');
+const App = createReduxContainer(AppRouteConfigs, 'root');
 const mapStateToProps = state => ({
     state: state.nav,
 });

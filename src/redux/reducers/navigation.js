@@ -1,9 +1,9 @@
 import { StatusBar } from 'react-native';
 import createReducer from '../helpers/createReducer';
 import * as types from '../actions/types';
-import AppRouteConfigs from '../../navigators/AppRouteConfigs';
+import AppRouteConfigs from '../../navigator/AppRouteConfigs';
 
-const firstAction = AppRouteConfigs.router.getActionForPathAndParams('LoggedOut');
+const firstAction = AppRouteConfigs.router.getActionForPathAndParams('Screen1');
 const initialNavState = AppRouteConfigs.router.getStateForAction(firstAction);
 
 const loggedInStatus = createReducer({}, {

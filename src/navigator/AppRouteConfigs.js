@@ -4,16 +4,20 @@ import {
 import Bookings from '../screens/Bookings'
 import Login from '../screens/Login'
 import Main from '../screens/Main'
+import LoggedOut from '../screens/Main';
 import MakeBook from '../screens/MakeBook'
 import Report from '../screens/Room'
 import Setting from '../screens/Setting'
 import Csignup from '../screens/Signup/Csignup'
 import Usignup from '../screens/Signup/Usignup'
-import screen from '../screens/Onboarding/screen'
+import Screen1 from '../screens/Onboarding/screen'
 
 
 
 const AppRouteConfigs = createStackNavigator({
-    screen: { screen: screen }
+
+    Screen1: { screen: Screen1 },
+    LoggedOut: { screen: LoggedOut },
+
 })
 export default AppRouteConfigs;
