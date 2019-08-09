@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
     View,
@@ -10,14 +9,14 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ActionCreators from '../redux/actions';
-import colors from '../styles/colors';
-import transparentHeaderStyle from '../styles/navigation';
-import InputField from '../components/form/InputField';
-import NextArrowButton from '../components/buttons/NextArrowButton';
-import Notification from '../components/Notification';
-import Loader from '../components/Loader';
-import NavBarButton from '../components/buttons/NavBarButton';
+import ActionCreators from '../../redux/actions';
+import colors from '../../styles/colors';
+import transparentHeaderStyle from '../../styles/navigation';
+import InputField from '../../component/form/InputField';
+import NextArrowButton from '../../component/buttons/NextArrowButton';
+import Notification from '../../component/Notification';
+import Loader from '../../component/Loader';
+import NavBarButton from '../../component/buttons/NavBarButton';
 import styles from './Login.style';
 
 class Login extends Component {
