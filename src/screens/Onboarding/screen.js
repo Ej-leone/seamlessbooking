@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { SafeAreaView, View, Text } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import styles from './screen.style'
 
 class Screen1 extends Component {
     static propTypes = {
@@ -11,7 +12,10 @@ class Screen1 extends Component {
     render() {
         return (
             <SafeAreaView>
-                <Text> Screen 1 </Text>
+                <View style={styles.container}>
+                    <Text style={styles.title}> Scheduling space </Text>
+                    <Text style={styles.subtitle}>within your workplace</Text>
+                </View>
             </SafeAreaView>
         )
     }
