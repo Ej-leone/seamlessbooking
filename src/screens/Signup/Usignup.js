@@ -17,7 +17,7 @@ import NextArrowButton from '../../component/buttons/NextArrowButton';
 import Notification from '../../component/Notification';
 import Loader from '../../component/Loader';
 import NavBarButton from '../../component/buttons/NavBarButton';
-import styles from './Login.style';
+import styles from './Signup.style';
 
 class Usignup extends Component {
     static navigationOptions = ({ navigation }) => ({
@@ -118,7 +118,7 @@ class Usignup extends Component {
             formValid, loadingVisible, validEmail, validPassword,
         } = this.state;
         const showNotification = !formValid;
-        const background = formValid ? colors.green01 : colors.darkOrange;
+        const background = formValid ? colors.maincolor : colors.blue;
         const notificationMarginTop = showNotification ? 10 : 0;
         return (
             <KeyboardAvoidingView
@@ -128,7 +128,7 @@ class Usignup extends Component {
                 <View style={styles.scrollViewWrapper}>
                     <ScrollView style={styles.scrollView}>
                         <Text style={styles.loginHeader}>
-                            Log In
+                            Sign Up
                 </Text>
                         <InputField
                             labelText="EMAIL ADDRESS"

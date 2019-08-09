@@ -118,7 +118,7 @@ class Login extends Component {
             formValid, loadingVisible, validEmail, validPassword,
         } = this.state;
         const showNotification = !formValid;
-        const background = formValid ? colors.green01 : colors.darkOrange;
+        const background = formValid ? colors.maincolor : colors.blue;
         const notificationMarginTop = showNotification ? 10 : 0;
         return (
             <KeyboardAvoidingView
