@@ -1,17 +1,25 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 class Settings extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
+
+
 
     render() {
         return (
             <View>
-                <Text> prop </Text>
+
+
+                <Text>Settings</Text>
+
+                <TouchableOpacity>
+                    <View>
+                        <Text>Sign Out </Text>
+                    </View>
+                </TouchableOpacity>
+                <Text>Seasmless Booking All Rights Reserved version 1</Text>
             </View>
         )
     }

@@ -3,15 +3,17 @@ import { View, Text } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import NoResults from '../../component/saved/NoResults';
+import styles from './Bookings.style'
+
+
 class Bookings extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
+
 
     render() {
         return (
-            <View>
-                <Text> prop </Text>
+            <View style={styles.wrapper}>
+                <NoResults />
             </View>
         )
     }

@@ -1,9 +1,3 @@
-/**
- * Airbnb Clone App
- * @author: Andy
- * @Url: https://www.cubui.com
- */
-
 export default {
   maincolor: '#DE4A5B',
   black: '#000000',
