@@ -16,6 +16,7 @@ class Settings extends Component {
 
                 <TouchableOpacity>
                     <View>
+                        {/*ios-power */}
                         <Text>Sign Out </Text>
                     </View>
                 </TouchableOpacity>

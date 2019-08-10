@@ -38,21 +38,21 @@ const TabNavigator = createBottomTabNavigator({
         screen: Room,
         navigationOptions: {
             tabBarLabel: 'Home',
-            tabBarIcon: CustomTabBarIcon('ios-search', 22),
+            tabBarIcon: CustomTabBarIcon('ios-home', 22),
         }
     },
     Bookings: {
         screen: Bookings,
         navigationOptions: {
             tabBarLabel: 'Bookings',
-            tabBarIcon: CustomTabBarIcon('ios-heart-outline', 22),
+            tabBarIcon: CustomTabBarIcon('ios-bookmark', 22),
         }
     },
     Settings: {
         screen: Settings,
         navigationOptions: {
             tabBarLabel: 'Settings',
-            tabBarIcon: CustomTabBarIcon('ios-heart-outline', 22),
+            tabBarIcon: CustomTabBarIcon('ios-settings', 22),
         }
     },
 }, {

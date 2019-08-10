@@ -1,15 +1,15 @@
 const categoriesList = [
     {
         name: 'Date',
-        photo: 'ios-heart-outline',
+        photo: 'ios-calenda',
     },
     {
         name: 'Time',
-        photo: 'ios-heart-outline',
+        photo: 'ios-time',
     },
     {
         name: 'Buildings',
-        photo: 'ios-heart-outline',
+        photo: 'ios-business',
     },
 ];
 
