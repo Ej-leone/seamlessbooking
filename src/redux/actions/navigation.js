@@ -11,7 +11,7 @@ const setLoggedInState = loggedInState => (
 
 const logIn = (email, password) => {
   const action = (dispatch) => {
-    if (email === "ej@sa.com" && password === "12345") {
+    if (email === "Ej@sa.com" && password === "123456") {
       dispatch(setLoggedInState(true));
       return true;
     }

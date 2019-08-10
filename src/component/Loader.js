@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   loaderContainer: {
     width: 90,
     height: 90,
-    backgroundColor: colors.white,
+    backgroundColor: colors.maincolor,
     borderRadius: 15,
     position: 'absolute',
     left: '50%',
