@@ -4,11 +4,13 @@ import {
     createBottomTabNavigator,
     createStackNavigator,
 } from 'react-navigation';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 import MakeBook from '../screens/MakeBook'
 import Bookings from '../screens/Bookings'
 import Report from '../screens/Report'
 import Settings from '../screens/Setting'
+import Room from '../screens/Room'
+
 
 
 import colors from '../styles/colors';
@@ -32,11 +34,27 @@ const CustomTabBarIcon = (name, size) => {
 
 
 const TabNavigator = createBottomTabNavigator({
-    Home: {},
-
-    Settings: {},
-
-
+    Home: {
+        screen: Room,
+        navigationOptions: {
+            tabBarLabel: 'Home',
+            tabBarIcon: CustomTabBarIcon('ios-search', 22),
+        }
+    },
+    Bookings: {
+        screen: Bookings,
+        navigationOptions: {
+            tabBarLabel: 'Bookings',
+            tabBarIcon: CustomTabBarIcon('ios-heart-outline', 22),
+        }
+    },
+    Settings: {
+        screen: Settings,
+        navigationOptions: {
+            tabBarLabel: 'Settings',
+            tabBarIcon: CustomTabBarIcon('ios-heart-outline', 22),
+        }
+    },
 }, {
         tabBarOptions: {
             labelStyle: {

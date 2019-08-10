@@ -9,6 +9,7 @@ import {
   Text,
 } from 'react-native';
 import colors from '../../styles/colors';
+import Icon from 'react-native-vector-icons/Ionicons';
 import iPhoneSize from '../../helpers/utils';
 
 const size = iPhoneSize();
@@ -30,10 +31,14 @@ export default class Categories extends Component {
         style={styles.card}
         key={`category-item-${index}`}
       >
-        <Image
-          source={category.photo}
-          style={styles.image}
-        />
+        <View>
+          <Icon
+            name={category.photo}
+            size={22}
+            color={colors.maincolor}
+          />
+          <Text>{category.name}</Text>
+        </View>
       </TouchableHighlight>
     ));
   }

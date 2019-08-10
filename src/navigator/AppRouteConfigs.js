@@ -11,12 +11,14 @@ import Setting from '../screens/Setting'
 import Csignup from '../screens/Signup/Csignup'
 import Usignup from '../screens/Signup/Usignup'
 import Screen1 from '../screens/Onboarding/screen'
+import TabNavigator from './TabNavigator'
 
 
 
 const AppRouteConfigs = createStackNavigator({
 
     Screen1: { screen: Screen1 },
+    Tab: { screen: TabNavigator },
     LoggedOut: { screen: LoggedOut },
     Usignup: { screen: Usignup },
     Login: { screen: Login }

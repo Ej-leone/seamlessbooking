@@ -64,7 +64,7 @@ class Login extends Component {
             const { emailAddress, password } = this.state;
             if (logIn(emailAddress, password)) {
                 this.setState({ formValid: true, loadingVisible: false });
-                navigate('TurnOnNotifications');
+                navigate('Tab');
             } else {
                 this.setState({ formValid: false, loadingVisible: false });
             }
