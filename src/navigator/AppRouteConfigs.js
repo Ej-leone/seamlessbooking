@@ -6,6 +6,7 @@ import Login from '../screens/Login'
 import LoggedOut from '../screens/Main';
 import Usignup from '../screens/Signup/Usignup'
 import Screen1 from '../screens/Onboarding/screen'
+import MakeBook from '../screens/MakeBook'
 import TabNavigator from './TabNavigator'
 
 
@@ -19,6 +20,7 @@ const AppRoute = createStackNavigator({
 })
 const AppRouteConfigs = createSwitchNavigator({
     Screen1: AppRoute,
+    Book: MakeBook,
     Tab: { screen: TabNavigator },
 })
 export default AppRouteConfigs;
