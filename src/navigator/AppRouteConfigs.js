@@ -1,27 +1,24 @@
 import {
     createStackNavigator,
+    createSwitchNavigator
 } from 'react-navigation';
-import Bookings from '../screens/Bookings'
 import Login from '../screens/Login'
-import Main from '../screens/Main'
 import LoggedOut from '../screens/Main';
-import MakeBook from '../screens/MakeBook'
-import Report from '../screens/Room'
-import Setting from '../screens/Setting'
-import Csignup from '../screens/Signup/Csignup'
 import Usignup from '../screens/Signup/Usignup'
 import Screen1 from '../screens/Onboarding/screen'
 import TabNavigator from './TabNavigator'
 
 
 
-const AppRouteConfigs = createStackNavigator({
-
+const AppRoute = createStackNavigator({
     Screen1: { screen: Screen1 },
-    Tab: { screen: TabNavigator },
     LoggedOut: { screen: LoggedOut },
     Usignup: { screen: Usignup },
     Login: { screen: Login }
 
+})
+const AppRouteConfigs = createSwitchNavigator({
+    Screen1: AppRoute,
+    Tab: { screen: TabNavigator },
 })
 export default AppRouteConfigs;

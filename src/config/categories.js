@@ -1,7 +1,7 @@
 const categoriesList = [
     {
         name: 'Date',
-        photo: 'ios-calenda',
+        photo: 'ios-calendar',
     },
     {
         name: 'Time',

@@ -8,8 +8,12 @@ export default StyleSheet.create({
         flex: 1,
     },
     btncontainer: {
+        position: "absolute",
         flexDirection: "row",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        width: '100%',
+        bottom: 0,
+        marginBottom: 70
     },
     txt: {
         color: color.white

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -12,9 +12,9 @@ class Bookings extends Component {
 
     render() {
         return (
-            <View style={styles.wrapper}>
+            <SafeAreaView style={styles.wrapper}>
                 <NoResults />
-            </View>
+            </SafeAreaView>
         )
     }
 }

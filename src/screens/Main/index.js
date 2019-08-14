@@ -7,9 +7,10 @@ import { connect } from 'react-redux'
 import styles from './main.style'
 
 class LoggedOut extends Component {
-    static propTypes = {
-        prop: PropTypes
+    static navigationOptions = {
+        header: null
     }
+
 
     Tologin() {
         this.props.navigation.navigate("Login")

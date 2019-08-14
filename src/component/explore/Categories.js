@@ -4,7 +4,6 @@ import {
   ScrollView,
   StyleSheet,
   TouchableHighlight,
-  Image,
   View,
   Text,
 } from 'react-native';
@@ -28,16 +27,16 @@ export default class Categories extends Component {
     const { categories } = this.props;
     return categories.map((category, index) => (
       <TouchableHighlight
-        style={styles.card}
+
         key={`category-item-${index}`}
       >
-        <View>
+        <View style={styles.card}>
           <Icon
             name={category.photo}
-            size={22}
+            size={32}
             color={colors.maincolor}
           />
-          <Text>{category.name}</Text>
+          <Text style={styles.text}>{category.name}</Text>
         </View>
       </TouchableHighlight>
     ));
@@ -66,10 +65,24 @@ const styles = StyleSheet.create({
   card: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: "center",
+    backgroundColor: colors.white,
+    alignItems: "center",
+    borderRadius: 10,
+    shadowOffset: { width: 2, height: 2 },
+    shadowColor: 'black',
+    shadowOpacity: 3,
+    elevation: 3,
+    zIndex: 999,
     width: cardSize,
     height: cardSize,
+    marginTop: cardMargin,
+    marginBottom: cardMargin,
     marginRight: cardMargin,
     marginLeft: cardMargin,
+  },
+  text: {
+    color: colors.maincolor
   },
   image: {
     flex: 1,

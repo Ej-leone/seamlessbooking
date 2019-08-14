@@ -57,12 +57,17 @@ export default class Listings extends Component {
             {listing.title}
           </Text>
           <Text style={styles.listingPrice}>
-            $
+
             {listing.price}
             {' '}
             {listing.priceType}
           </Text>
-          {listing.stars > 0
+          <Text style={styles.greenText}> Open Till  6:00 am</Text>
+        </View>
+      </TouchableHighlight>
+    ));
+  }
+  /*   {listing.stars > 0
             ? (
               <Stars
                 votes={listing.stars}
@@ -70,12 +75,7 @@ export default class Listings extends Component {
                 color={colors.green02}
               />
             )
-            : null}
-        </View>
-      </TouchableHighlight>
-    ));
-  }
-
+            : null}*/
   render() {
     const { title, boldTitle } = this.props;
     const titleStyle = boldTitle ? { fontSize: 22, fontWeight: '600' } : { fontSize: 18 };
@@ -185,4 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '300',
   },
+  greenText: {
+    color: 'green'
+  }
 });

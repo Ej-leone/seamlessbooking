@@ -7,6 +7,9 @@ import { connect } from 'react-redux'
 import styles from './screen.style'
 
 class Screen1 extends Component {
+    static navigationOptions = {
+        header: null
+    }
 
     componentDidMount() {
         const { navigation } = this.props;

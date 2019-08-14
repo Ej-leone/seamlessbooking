@@ -3,7 +3,7 @@ import {
     View,
     Text,
     ScrollView,
-    StyleSheet,
+    SafeAreaView
 } from 'react-native';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -30,10 +30,6 @@ class RoomScreen extends Component {
         this.handleAddToFav = this.handleAddToFav.bind(this);
         this.renderListings = this.renderListings.bind(this);
         this.onCreateListClose = this.onCreateListClose.bind(this);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
     }
 
     handleAddToFav(listing) {
@@ -81,7 +77,7 @@ class RoomScreen extends Component {
         //const { data } = this.props;
         console.log(categoriesList)
         return (
-            <View style={styles.wrapper}>
+            <SafeAreaView style={styles.wrapper}>
                 <SearchBar />
                 <ScrollView
                     style={styles.scrollview}
@@ -95,7 +91,7 @@ class RoomScreen extends Component {
                     </View>
                     {this.renderListings()}
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         );
     }
 }

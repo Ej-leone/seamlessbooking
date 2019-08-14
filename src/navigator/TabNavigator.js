@@ -56,6 +56,7 @@ const TabNavigator = createBottomTabNavigator({
         }
     },
 }, {
+        headerMode: 'none',
         tabBarOptions: {
             labelStyle: {
                 fontWeight: '600',
