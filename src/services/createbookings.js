@@ -8,5 +8,4 @@ export const makeBooking = async (meeting) => {
 export const cancelBooking = async (id, data) => {
     return firestore.collection('Meeting').doc(id)
         .set(data)
-
 }
