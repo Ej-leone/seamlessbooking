@@ -1,1 +1,1 @@
-export const NETWORK_INTERFACE = 'http://localhost:8080/graphql';
+export const NETWORK_INTERFACE = 'https://us-central1-seamles-c4928.cloudfunctions.net/graphql';
