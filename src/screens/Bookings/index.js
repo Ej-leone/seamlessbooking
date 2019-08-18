@@ -1,42 +1,41 @@
 import React, { Component } from 'react'
 import { View, Text, SafeAreaView } from 'react-native'
-import gql from 'graphql-tag';
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-
+import { Query } from 'react-apollo';
 import NoResults from '../../component/saved/NoResults';
 import styles from './Bookings.style'
+import { FlatList } from 'react-native-gesture-handler';
+import { roomQuery } from '@services/getrooms'
+export default class Bookings extends Component {
 
-
-const Bookings = graphql(dogQuery)(props => {
-    const { error, bookings } = props.data;
-    if (error) {
+    _renderItem({ item }) {
         return (
-            <SafeAreaView style={styles.wrapper}>
-                <Text>{error}</Text>
-            </SafeAreaView>
+            <Text>item</Text>
         )
     }
 
-    if (bookings.length == 0) {
-        return (
-            <SafeAreaView style={styles.wrapper}>
-                <NoResults />
-            </SafeAreaView>
-        )
-    }
-})
-/*
-{
+
     render() {
         return (
             <SafeAreaView style={styles.wrapper}>
-                <NoResults />
+                <Query query={roomQuery}>
+                    {
+                        (error, response) => {
+                            debugger
+                            if (error) {
+                                return (<Text>Error</Text>)
+                            }
+                            if (response) {
+                                return (<FlatList
+                                    data={response.data}
+                                    renderItem={(item) => this._renderItem(item)}
+                                    ListEmptyComponent={() => <NoResults />}
+                                />)
+                            }
+                        }
+                    }
+                </Query>
+
             </SafeAreaView>
         )
     }
-}*/
-
-
-
-export default Bookings
+}

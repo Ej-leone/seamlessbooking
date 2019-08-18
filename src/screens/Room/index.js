@@ -12,7 +12,7 @@ import gql from 'graphql-tag';
 import SearchBar from '../../component/SearchBar';
 import Categories from '../../component/explore/Categories';
 import Listings from '../../component/explore/Listings';
-
+import DateTimePicker from "react-native-modal-datetime-picker";
 import categoriesList from '../../config/categories';
 import listings from '../../config/listings';
 
@@ -26,10 +26,29 @@ class RoomScreen extends Component {
         super(props);
         this.state = {
             favouriteListings: [],
+            showDatetime: false,
+            mode: 'time',
+            setDate: '',
+            setTime: '',
+            setBuilding: ""
         };
         this.handleAddToFav = this.handleAddToFav.bind(this);
         this.renderListings = this.renderListings.bind(this);
         this.onCreateListClose = this.onCreateListClose.bind(this);
+    }
+
+    async ShowTimeModal() {
+        this.setState({
+            mode: 'time',
+            showDatetime: true
+        })
+    }
+
+    async ShowDateModal() {
+        this.setState({
+            mode: 'date',
+            showDatetime: true
+        })
     }
 
     handleAddToFav(listing) {
@@ -73,12 +92,36 @@ class RoomScreen extends Component {
         ));
     }
 
+    hideDateTimePicker = () => {
+        this.setState({ showDatetime: false });
+    };
+
+    handleDatePicked = date => {
+        if (this.state.mode == 'date') {
+            this.setState({ setDate: date.toString() });
+            this.hideDateTimePicker();
+        }
+
+        if (this.state.mode == 'time') {
+            this.setState({ setTime: date.toString() });
+            this.hideDateTimePicker();
+        }
+
+    };
+
+
     render() {
-        //const { data } = this.props;
+        const { showDatetime, mode } = this.state;
         console.log(categoriesList)
         return (
             <SafeAreaView style={styles.wrapper}>
                 <SearchBar />
+                <DateTimePicker
+                    isVisible={showDatetime}
+                    mode={mode}
+                    onConfirm={this.handleDatePicked}
+                    onCancel={this.hideDateTimePicker}
+                />
                 <ScrollView
                     style={styles.scrollview}
                     contentContainerStyle={styles.scrollViewContent}
@@ -87,7 +130,11 @@ class RoomScreen extends Component {
                         Book a Room
               </Text>
                     <View style={styles.categories}>
-                        <Categories categories={categoriesList} />
+                        <Categories categories={categoriesList}
+                            firstclick={() => this.ShowDateModal()}
+                            secondclick={() => this.ShowTimeModal()}
+
+                        />
                     </View>
                     {this.renderListings()}
                 </ScrollView>
@@ -95,26 +142,18 @@ class RoomScreen extends Component {
         );
     }
 }
-/*
- 
-const mapStateToProps = (state) => ({
 
-})
-
-const mapDispatchToProps = {
-
-}*/
 
 const ListingsQuery = gql`
   query {
-    multipleListings{
-      title,
-      description
+    getrooms{
+      Name
+      
     }
   }
 `
 
-//export default connect(mapStateToProps, mapDispatchToProps)(Room)
+
 
 const Room = graphql(ListingsQuery)(RoomScreen);
 export default Room

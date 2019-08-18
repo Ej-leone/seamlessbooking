@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import {
   ScrollView,
   StyleSheet,
-  TouchableHighlight,
+  TouchableOpacity,
   View,
   Text,
 } from 'react-native';
 import colors from '../../styles/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import iPhoneSize from '../../helpers/utils';
+
 
 const size = iPhoneSize();
 let cardSize = 100;
@@ -23,11 +24,26 @@ if (size === 'small') {
 }
 
 export default class Categories extends Component {
-  get Categories() {
-    const { categories } = this.props;
-    return categories.map((category, index) => (
-      <TouchableHighlight
 
+  showModal(name, f, s) {
+
+    if (name == 'Date') {
+      f()
+    }
+    if (name == 'Time') {
+      s()
+    }
+    if (name == 'Buildings') { }
+  }
+
+
+
+
+  get Categories() {
+    const { categories, firstclick, secondclick } = this.props;
+    return categories.map((category, index) => (
+      <TouchableOpacity
+        onPress={() => this.showModal(category.name, firstclick, secondclick)}
         key={`category-item-${index}`}
       >
         <View style={styles.card}>
@@ -38,7 +54,7 @@ export default class Categories extends Component {
           />
           <Text style={styles.text}>{category.name}</Text>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     ));
   }
 

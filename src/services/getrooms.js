@@ -1,9 +1,10 @@
 import gql from 'graphql-tag';
 
-const roomQuery = gql`
-
-    query {
-        
-    }
-
+export const roomQuery = gql`
+query {
+    getrooms {
+       Name
+   }
+}
 `;
+
