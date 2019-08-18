@@ -19,14 +19,13 @@ export default class Bookings extends Component {
             <SafeAreaView style={styles.wrapper}>
                 <Query query={roomQuery}>
                     {
-                        (error, response) => {
-                            debugger
+                        ({ error, data }) => {
                             if (error) {
                                 return (<Text>Error</Text>)
                             }
-                            if (response) {
+                            if (data) {
                                 return (<FlatList
-                                    data={response.data}
+                                    data={data.getrooms}
                                     renderItem={(item) => this._renderItem(item)}
                                     ListEmptyComponent={() => <NoResults />}
                                 />)
@@ -34,7 +33,6 @@ export default class Bookings extends Component {
                         }
                     }
                 </Query>
-
             </SafeAreaView>
         )
     }

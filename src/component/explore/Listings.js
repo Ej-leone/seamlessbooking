@@ -10,6 +10,7 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
+import { Query } from 'react-apollo';
 import HeartButton from '../buttons/HeartButton';
 import Stars from '../Stars';
 import colors from '../../styles/colors';
