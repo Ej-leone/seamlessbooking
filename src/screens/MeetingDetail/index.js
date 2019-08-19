@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
@@ -36,3 +36,14 @@ export default class MeetingDetail extends Component {
         )
     }
 }
+
+
+export default styles = StyleSheet.create({
+    redbtn: {
+        backgroundColor: 
+ },
+    txt: {
+        color:
+ }
+
+})
