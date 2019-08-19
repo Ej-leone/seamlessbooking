@@ -12,7 +12,13 @@ import ARooms from '../screens/ARooms'
 import RoomDetail from '../screens/RoomDetail'
 import TabNavigator from './TabNavigator'
 
-
+const Internal = createStackNavigator({
+    Tab: { screen: TabNavigator },
+    Book: MakeBook,
+    Report: Report,
+    EditRooms: ARooms,
+    RoomDetail: RoomDetail,
+})
 
 const AppRoute = createStackNavigator({
     Screen1: { screen: Screen1 },
@@ -22,11 +28,8 @@ const AppRoute = createStackNavigator({
 
 })
 const AppRouteConfigs = createSwitchNavigator({
-    Screen1: AppRoute,
-    Book: MakeBook,
-    Report: Report,
-    EditRooms: ARooms,
-    RoomDetail: RoomDetail,
-    Tab: { screen: TabNavigator },
+    Screen1: RoomDetail,
+    //Screen1: AppRoute,
+    Tab: Internal,
 })
 export default AppRouteConfigs;

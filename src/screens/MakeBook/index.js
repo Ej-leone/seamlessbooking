@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import { View, SafeAreaView, Text, TextInput, Switch, TouchableOpacity } from 'react-native'
+import NavBarButton from '../../component/buttons/NavBarButton';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from '../../styles/colors';
+import transparentHeaderStyle from '../../styles/navigation';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styles from './makebook.style'
@@ -18,7 +22,22 @@ const Pickerr = (props) => {
 
 
 class MakeBook extends Component {
-
+    static navigationOptions = ({ navigation }) => ({
+        headerRight: <NavBarButton
+            handleButtonPress={() => navigation.navigate('ForgotPassword')}
+            location="right"
+            color={colors.maincolor}
+            text="Book Room"
+        />,
+        headerLeft: <NavBarButton
+            handleButtonPress={() => navigation.goBack()}
+            location="left"
+            icon={<Icon name="angle-left" color={colors.maincolor} size={30} />}
+        />,
+        headerStyle: transparentHeaderStyle,
+        headerTransparent: true,
+        headerTintColor: colors.white,
+    });
 
     render() {
         return (

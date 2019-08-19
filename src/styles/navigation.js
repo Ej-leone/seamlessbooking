@@ -1,8 +1,3 @@
-/**
- * Airbnb Clone App
- * @author: Andy
- * @Url: https://www.cubui.com
- */
 
 const transparentHeaderStyle = {
   borderBottomWidth: 0,

@@ -21,6 +21,17 @@ export default class Listings extends Component {
     this.renderListings = this.renderListings.bind(this);
   }
 
+
+  _movetoBook() {
+    console.log('movinfg to Book');
+    this.props.navigation.navigate("Book")
+
+  }
+  _movetoRoomDetail() {
+    console.log('movinfg to Room Detail');
+    this.props.navigation.navigate("RoomDetail")
+  }
+
   renderListings() {
     const {
       listings, showAddToFav, handleAddToFav, favouriteListings,
@@ -43,11 +54,16 @@ export default class Listings extends Component {
               </View>
             )
             : null}
-          <Image
-            style={styles.image}
-            resizeMode="contain"
-            source={listing.photo}
-          />
+          <TouchableOpacity
+            onPress={() => this._movetoRoomDetail()}
+          >
+            <Image
+              style={styles.image}
+              resizeMode="contain"
+              source={listing.photo}
+            />
+          </TouchableOpacity
+          >
           <Text style={[{ color: listing.color }, styles.listingType]}>
             {listing.type}
           </Text>
@@ -64,6 +80,12 @@ export default class Listings extends Component {
             {listing.priceType}
           </Text>
           <Text style={styles.greenText}> Open Till  6:00 am</Text>
+          <TouchableOpacity
+            onPress={() => this._movetoBook()}>
+            <View style={styles.redbtn}>
+              <Text style={styles.redbtntxt}>Book room</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </TouchableHighlight>
     ));
@@ -130,6 +152,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingLeft: 21,
     paddingRight: 21,
+  },
+  redbtntxt: {
+    color: colors.white,
+    justifyContent: "center",
+    alignContent: "center",
+  },
+  redbtn: {
+    backgroundColor: colors.maincolor
   },
   title: {
     color: colors.gray04,

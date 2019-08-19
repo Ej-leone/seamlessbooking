@@ -81,6 +81,7 @@ class RoomScreen extends Component {
             >
                 <Listings
                     key={`listing-item-${index}`}
+                    navigation={this.props.navigation}
                     title={listing.title}
                     boldTitle={listing.boldTitle}
                     listings={listing.listings}
