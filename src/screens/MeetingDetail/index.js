@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import colors from '../../styles/colors'
+
 
 
 const Sview = (props) => {
@@ -27,8 +28,8 @@ export default class MeetingDetail extends Component {
                 <Text>10 Guest</Text>
 
                 <TouchableOpacity>
-                    <View>
-                        <Text>Cancel Room</Text>
+                    <View style={styles.redbtn}>
+                        <Text style={styles.txt}>Cancel Room</Text>
                     </View>
                 </TouchableOpacity>
 
@@ -40,10 +41,10 @@ export default class MeetingDetail extends Component {
 
 export default styles = StyleSheet.create({
     redbtn: {
-        backgroundColor: 
- },
+        backgroundColor: colors.maincolor
+    },
     txt: {
-        color:
- }
+        color: colors.white
+    }
 
 })
