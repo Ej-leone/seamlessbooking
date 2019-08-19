@@ -10,6 +10,7 @@ import MakeBook from '../screens/MakeBook'
 import Report from '../screens/Report'
 import ARooms from '../screens/ARooms'
 import RoomDetail from '../screens/RoomDetail'
+import MeetingDetail from '../screens/MeetingDetail'
 import TabNavigator from './TabNavigator'
 
 const Internal = createStackNavigator({
@@ -18,6 +19,7 @@ const Internal = createStackNavigator({
     Report: Report,
     EditRooms: ARooms,
     RoomDetail: RoomDetail,
+    MeetingDetail: MeetingDetail
 })
 
 const AppRoute = createStackNavigator({
