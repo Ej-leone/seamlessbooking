@@ -5,6 +5,19 @@ query {
     getrooms {
        Name
    }
+
 }
 `;
+
+export const exploreQuery = gql`
+query {
+    getopenrooms {
+       Name
+   }
+
+  
+   
+}
+`;
+
 

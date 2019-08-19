@@ -11,7 +11,7 @@ class Report extends Component {
     render() {
         return (
             <View>
-                <Text> prop </Text>
+                <Text> Reports </Text>
             </View>
         )
     }
