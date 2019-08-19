@@ -9,6 +9,7 @@ import Screen1 from '../screens/Onboarding/screen'
 import MakeBook from '../screens/MakeBook'
 import Report from '../screens/Report'
 import ARooms from '../screens/ARooms'
+import RoomDetail from '../screens/RoomDetail'
 import TabNavigator from './TabNavigator'
 
 
@@ -25,6 +26,7 @@ const AppRouteConfigs = createSwitchNavigator({
     Book: MakeBook,
     Report: Report,
     EditRooms: ARooms,
+    RoomDetail: RoomDetail,
     Tab: { screen: TabNavigator },
 })
 export default AppRouteConfigs;
