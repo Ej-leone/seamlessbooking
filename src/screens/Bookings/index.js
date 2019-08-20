@@ -21,7 +21,7 @@ export default class Bookings extends Component {
                     {
                         ({ error, data }) => {
                             if (error) {
-                                return (<View><Text> Oops! Something went wrong. </Text></View>)
+                                return (<View style={styles.errorview}><Text style={styles.errortext}> Oops! Something went wrong. </Text></View>)
                             }
                             if (data) {
                                 return (<FlatList
