@@ -20,6 +20,7 @@
 		7C2426DDECC747A908CA1049 /* libPods-Seamless-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B43E2819359D3D673AF669 /* libPods-Seamless-tvOS.a */; };
 		9A3F8491682ACB8C1E8B8A35 /* libPods-Seamless-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC8732982910CAAF0017DDA3 /* libPods-Seamless-tvOSTests.a */; };
 		CE6FCD9D7C832D1F4649D23C /* libPods-Seamless.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9969C89C951E325B81DE5E76 /* libPods-Seamless.a */; };
+		F0A84ABC230C42A600291120 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0A84ABB230C42A600291120 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		CC8732982910CAAF0017DDA3 /* libPods-Seamless-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seamless-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F0A84ABB230C42A600291120 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Seamless/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F670E5D6F4194CF0BD32AABE /* Pods-SeamlessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeamlessTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeamlessTests/Pods-SeamlessTests.release.xcconfig"; sourceTree = "<group>"; };
 		F7B43E2819359D3D673AF669 /* libPods-Seamless-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Seamless-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 		13B07FAE1A68108700A75B9A /* Seamless */ = {
 			isa = PBXGroup;
 			children = (
+				F0A84ABB230C42A600291120 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -341,6 +344,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				F0A84ABC230C42A600291120 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

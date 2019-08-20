@@ -13,7 +13,6 @@ export default StyleSheet.create({
 
     },
     errorview: {
-
         justifyContent: "center",
         alignContent: "center"
     }

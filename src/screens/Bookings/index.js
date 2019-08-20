@@ -1,15 +1,41 @@
 import React, { Component } from 'react'
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, ImageBackground } from 'react-native'
 import { Query } from 'react-apollo';
 import NoResults from '../../component/saved/NoResults';
 import styles from './Bookings.style'
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { roomQuery } from '@services/getrooms'
+
+const imageR = require('../../img/listing11.png')
+
+const ImageView = () => {
+    <ImageBackground
+        source={imageR}>
+        <Text> 00:00</Text>
+    </ImageBackground>
+}
 export default class Bookings extends Component {
+
+
+    _cancelmeeting() {
+
+    }
 
     _renderItem({ item }) {
         return (
-            <Text>item</Text>
+            <View>
+                <Text> Meeting Agenda</Text>
+                <Text>Location</Text>
+                <ImageView />
+                <View>
+                    <TouchableOpacity>
+                        <View>
+                            Cancel
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
         )
     }
 
