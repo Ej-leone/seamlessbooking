@@ -6,4 +6,6 @@ export default StyleSheet.create({
         display: 'flex',
         backgroundColor: colors.white,
     },
+    errortext: {},
+    errorview: {}
 });

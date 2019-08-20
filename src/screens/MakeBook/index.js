@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, SafeAreaView, Text, TextInput, Switch, TouchableOpacity } from 'react-native'
+import { View, SafeAreaView, Text, TextInput, Switch, TouchableOpacity, KeyboardAvoidingView, ScrollView } from 'react-native'
 import NavBarButton from '../../component/buttons/NavBarButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../styles/colors';
@@ -23,12 +23,6 @@ const Pickerr = (props) => {
 
 class MakeBook extends Component {
     static navigationOptions = ({ navigation }) => ({
-        headerRight: <NavBarButton
-            handleButtonPress={() => navigation.navigate('ForgotPassword')}
-            location="right"
-            color={colors.maincolor}
-            text="Book Room"
-        />,
         headerLeft: <NavBarButton
             handleButtonPress={() => navigation.goBack()}
             location="left"
@@ -41,41 +35,50 @@ class MakeBook extends Component {
 
     render() {
         return (
-            <SafeAreaView style={styles.container}>
-                <Text style={styles.title}>Book a Room </Text>
+            <KeyboardAvoidingView
+                style={styles.wrapper}
+                behavior="padding"
+            >
+                <View style={styles.scrollViewWrapper}>
+                    <ScrollView style={styles.scrollView}>
+                        <View style={styles.container}>
+                            <Text style={styles.title}>Book a Room </Text>
 
-                <Text style={styles.subtitle}>Choose </Text>
+                            <Text style={styles.subtitle}>Choose </Text>
 
-                <Text style={styles.title}>Meeting Agenda  </Text>
-                <TextInput />
+                            <Text style={styles.title}>Meeting Agenda  </Text>
+                            <TextInput />
 
-                <Text style={styles.subtitle}> Requirements</Text>
-                <View style={styles.mincontainer}>
-                    <Pickerr name={"Air conndition"} />
-                    <Pickerr name={"Wifi"} />
+                            <Text style={styles.subtitle}> Requirements</Text>
+                            <View style={styles.mincontainer}>
+                                <Pickerr name={"Air conndition"} />
+                                <Pickerr name={"Wifi"} />
+                            </View>
+
+                            <View style={styles.mincontainer}>
+                                <Pickerr name={"Projector"} />
+                                <Pickerr name={"Whiteboard"} />
+                            </View>
+
+                            <View style={styles.mincontainer}>
+                                <Pickerr name={"Catering"} />
+                                <Pickerr name={"Parking"} />
+                            </View>
+
+                            <View style={styles.mincontainer}>
+                                <Pickerr name={"Charging Ports"} />
+                                <Pickerr name={"Video Conferencing"} />
+                            </View>
+
+                            <TouchableOpacity>
+                                <View>
+                                    <Text>Book Room</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </ScrollView>
                 </View>
-
-                <View style={styles.mincontainer}>
-                    <Pickerr name={"Projector"} />
-                    <Pickerr name={"Whiteboard"} />
-                </View>
-
-                <View style={styles.mincontainer}>
-                    <Pickerr name={"Catering"} />
-                    <Pickerr name={"Parking"} />
-                </View>
-
-                <View style={styles.mincontainer}>
-                    <Pickerr name={"Charging Ports"} />
-                    <Pickerr name={"Video Conferencing"} />
-                </View>
-
-                <TouchableOpacity>
-                    <View>
-                        <Text>Book Room</Text>
-                    </View>
-                </TouchableOpacity>
-            </SafeAreaView>
+            </KeyboardAvoidingView >
         )
     }
 }

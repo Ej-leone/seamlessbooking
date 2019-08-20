@@ -30,7 +30,7 @@ const AppRoute = createStackNavigator({
 
 })
 const AppRouteConfigs = createSwitchNavigator({
-    Screen1: RoomDetail,
+    Screen1: AppRoute,
     //Screen1: AppRoute,
     Tab: Internal,
 })

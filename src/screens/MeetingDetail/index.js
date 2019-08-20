@@ -39,7 +39,7 @@ export default class MeetingDetail extends Component {
 }
 
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
     redbtn: {
         backgroundColor: colors.maincolor
     },
