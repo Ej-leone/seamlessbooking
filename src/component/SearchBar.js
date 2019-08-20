@@ -8,25 +8,26 @@ import {
 } from 'react-native';
 import colors from '../styles/colors';
 
-export default class SearchBar extends Component {
-  render() {
-    return (
-      <View style={styles.wrapper}>
-        <View style={styles.searchContainer}>
-          <Icon
-            name="ios-search"
-            size={20}
-            color={colors.gray02}
-            style={styles.searchIcon}
-          />
-          <Text style={styles.textInput}>
-            Search by  "Building name , Location"
+const SearchBar = (props) => {
+
+  return (
+    <View style={styles.wrapper}>
+      <View style={styles.searchContainer}>
+        <Icon
+          name="ios-search"
+          size={20}
+          color={colors.gray02}
+          style={styles.searchIcon}
+        />
+        <Text style={styles.textInput}>
+          Search by  "Building name , Location"
         </Text>
-        </View>
       </View>
-    );
-  }
+    </View>
+  );
+
 }
+export default SearchBar
 
 const styles = StyleSheet.create({
   wrapper: {

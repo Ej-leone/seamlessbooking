@@ -6,13 +6,16 @@ import styles from './Bookings.style'
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { roomQuery } from '@services/getrooms'
 
+
 const imageR = require('../../img/listing11.png')
 
 const ImageView = () => {
-    <ImageBackground
-        source={imageR}>
-        <Text> 00:00</Text>
-    </ImageBackground>
+    return (
+        <ImageBackground
+            style={styles.imback}
+            source={imageR}>
+            <Text> 00:00</Text>
+        </ImageBackground>)
 }
 export default class Bookings extends Component {
 
@@ -23,14 +26,14 @@ export default class Bookings extends Component {
 
     _renderItem({ item }) {
         return (
-            <View>
-                <Text> Meeting Agenda</Text>
-                <Text>Location</Text>
+            <View style={styles.itemview}>
                 <ImageView />
+                <Text style={styles.date}> Monday 22 August</Text>
+                <Text style={styles.time}>11:00 Am -12:00</Text>
                 <View>
                     <TouchableOpacity>
                         <View>
-                            Cancel
+                            <Text>Cancel</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

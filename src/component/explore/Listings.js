@@ -23,12 +23,12 @@ export default class Listings extends Component {
 
 
   _movetoBook() {
-    console.log('movinfg to Book');
+
     this.props.navigation.navigate("Book")
 
   }
   _movetoRoomDetail() {
-    console.log('movinfg to Room Detail');
+
     this.props.navigation.navigate("RoomDetail")
   }
 

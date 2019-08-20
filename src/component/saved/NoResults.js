@@ -23,13 +23,13 @@ export default class NoResults extends Component {
             Tap the heart on any meeting room  to start saving your favorites here.
         </Text>
         </ScrollView>
-        <View style={styles.footer}>
+        {/*<View style={styles.footer}>
           <TouchableHighlight style={styles.findHomesButton}>
             <Text style={styles.findHomesButtonText}>
               Make a booking
           </Text>
           </TouchableHighlight>
-        </View>
+    </View>*/}
       </View>
     );
   }
