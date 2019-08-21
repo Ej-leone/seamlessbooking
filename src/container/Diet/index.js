@@ -3,10 +3,12 @@ import { Text, View, Modal, TouchableOpacity } from 'react-native'
 import styles from './diet.style'
 
 
+
 const Roundbutton = (props) => {
     return (
-        <TouchableOpacity>
-            <View>
+        <TouchableOpacity
+            onPress={() => console.log('aa')}>
+            <View style={styles.rbtn}>
                 <Text>
                     {props.name}
                 </Text>
@@ -18,9 +20,13 @@ const Roundbutton = (props) => {
 
 const Cview = (props) => {
     return (
-        <View>
-            <Roundbutton name={"+"} />
-            <Roundbutton name={"-"} />
+        <View style={styles.cview}>
+            <Text>{props.food}</Text>
+            <View style={{ flexDirection: "row" }}>
+                <Roundbutton name={"+"} />
+                <Text style={styles.num}> 0</Text>
+                <Roundbutton name={"-"} />
+            </View>
 
         </View>
     )
@@ -32,14 +38,14 @@ export default class Diet extends Component {
     render() {
         return (
             <View>
-                <Text>Dietary Requirements</Text>
+                <Text style={styles.text}>Dietary Requirements</Text>
 
-                <Cview />
-                <Cview />
-                <Cview />
-                <Cview />
+                <Cview food={'Halaal'} />
+                <Cview food={'Kosher'} />
+                <Cview food={'Vegan'} />
+                <Cview food={'Non Diary'} />
 
-                <Text>Catering Time Slot</Text>
+                <Text style={styles.text}>Catering Time Slot</Text>
 
                 <TouchableOpacity>
                     <Text>Choose Time</Text>

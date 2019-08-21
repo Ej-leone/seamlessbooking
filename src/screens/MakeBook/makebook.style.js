@@ -1,5 +1,17 @@
 import { StyleSheet } from 'react-native';
 import color from '../../styles/colors'
+import iPhoneSize from '../../helpers/utils';
+const size = iPhoneSize();
+let cardSize = 100;
+let cardMargin = 8;
+
+if (size === 'small') {
+    cardSize = 70;
+    cardMargin = 4;
+} else if (size === 'large') {
+    cardSize = 95;
+}
+
 export default StyleSheet.create({
     wrapper: {
         display: 'flex',
@@ -15,6 +27,9 @@ export default StyleSheet.create({
         top: 0,
         bottom: 0,
     },
+    container: {
+        flex: 1
+    },
     scrollView: {
         paddingLeft: 30,
         paddingRight: 30,
@@ -26,6 +41,25 @@ export default StyleSheet.create({
         fontSize: 30,
         fontWeight: "700"
     },
+    card: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: "center",
+        backgroundColor: color.white,
+        alignItems: "center",
+        borderRadius: 10,
+        shadowOffset: { width: 2, height: 2 },
+        shadowColor: 'black',
+        shadowOpacity: 3,
+        elevation: 3,
+        zIndex: 999,
+        width: cardSize,
+        height: cardSize,
+        marginTop: cardMargin,
+        marginBottom: cardMargin,
+        marginRight: cardMargin,
+        marginLeft: cardMargin,
+    },
     subtitle: {
         color: color.gray03,
         fontSize: 20,
@@ -34,5 +68,15 @@ export default StyleSheet.create({
     mincontainer: {
         flexDirection: "row",
         justifyContent: "space-between"
+    },
+    btn: {
+        position: "absolute",
+        marginBottom: 1,
+        bottom: 0,
+        backgroundColor: color.maincolor,
+
+    },
+    btntxt: {
+        color: color.white
     }
 })

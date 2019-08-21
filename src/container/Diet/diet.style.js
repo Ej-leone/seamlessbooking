@@ -5,13 +5,19 @@ export default StyleSheet.create({
         color: color.black,
         textAlign: "center"
     },
+    num: {
+        color: color.black,
+        fontWeight: "500",
+        fontSize: 30
+    },
     text: {
         color: color.maincolor,
         fontWeight: "600",
         fontSize: 20
     },
     cview: {
-        flexDirection: "row"
+        flexDirection: "row",
+        justifyContent: "space-between"
     },
     rbtn: {
         justifyContent: "center",

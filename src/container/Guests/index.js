@@ -20,6 +20,7 @@ const Cview = (props) => {
     return (
         <View style={styles.cview}>
             <Roundbutton name={"+"} />
+            <Text style={styles.num}>0</Text>
             <Roundbutton name={"-"} />
 
         </View>

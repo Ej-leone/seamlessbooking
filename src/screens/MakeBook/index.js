@@ -12,6 +12,7 @@ import Guest from '../../container/Guests'
 import Diet from '../../container/Diet'
 
 
+
 const Pickerr = (props) => {
     return (
         <View style={{ flex: 1, alignSelf: "stretch", flexDirection: "row", justifyContent: "space-between" }}>
@@ -26,11 +27,16 @@ const Pickerr = (props) => {
 
 const Card = (props) => {
     return (
-        <View>
-            <Icon />
-            <Text>title</Text>
-            <Text>Value</Text>
-        </View>)
+        <TouchableOpacity>
+            <View style={styles.card}>
+                <Icon
+                    name={props.iconnname}
+                    size={22}
+                    color={colors.maincolor} />
+                <Text>{props.name}</Text>
+                <Text>{props.value}</Text>
+            </View>
+        </TouchableOpacity>)
 }
 
 
@@ -56,14 +62,14 @@ class MakeBook extends Component {
             Guest: "",
             Guestemails: "",
             Food: [],
-            modalOpen: true,
+            modalOpen: false,
             mode: " "
 
         }
     }
 
 
-    componentWillMount() {
+    componentDidMount() {
         const RoomId = this.props.navigation.getParam('RoomId', 'NO-ID');
 
         this.setState({
@@ -108,7 +114,7 @@ class MakeBook extends Component {
     }
 
     render() {
-        const { mode } = this.state
+        const { mode, modalOpen } = this.state
         return (
             <KeyboardAvoidingView
                 style={styles.wrapper}
@@ -118,23 +124,25 @@ class MakeBook extends Component {
                     <ScrollView style={styles.scrollView}>
                         <View style={styles.container}>
                             <Modal
+                                visible={modalOpen}
                                 transparent={true}
                                 animationType="fade"
                                 onRequestClose={() => this._toggleModal(false)}
                             >
                                 {}
                             </Modal>
-                            <Guest setguest={this._setGuest} />
-                            <Diet setdiet={this._setFood} />
+
                             <Text style={styles.title}>Book a Room </Text>
 
-                            <View>
+
+                            <Text style={styles.subtitle}>Choose </Text>
+                            <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
                                 <Card name={'Date'} value={'8/8/19'} iconnname={"ios-calendar"} click={() => this._startdatemodal()} />
                                 <Card name={'Time'} value={'12:00'} iconnname={"ios-time"} click={() => this._starttimemodal()} />
                                 <Card name={'Guest'} value={'10'} iconnname={"users"} click={() => this._startguestmodal()} />
                             </View>
 
-                            <Text style={styles.subtitle}>Choose </Text>
+
 
                             <Text style={styles.title}>Meeting Agenda  </Text>
                             <TextInput />
@@ -161,8 +169,8 @@ class MakeBook extends Component {
                             </View>
 
                             <TouchableOpacity>
-                                <View>
-                                    <Text>Book Room</Text>
+                                <View style={styles.btn}>
+                                    <Text style={styles.btntxt}>Book Room</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>

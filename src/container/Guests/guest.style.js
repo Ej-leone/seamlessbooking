@@ -8,6 +8,11 @@ export default StyleSheet.create({
     subtitle: {
         color: color.gray03
     },
+    num: {
+        color: color.black,
+        fontWeight: "500",
+        fontSize: 30
+    },
     text: {
         color: color.maincolor,
         fontWeight: "600",
