@@ -23,53 +23,55 @@ if (size === 'small') {
   cardSize = 115;
 }
 
-export default class Categories extends Component {
 
-  showModal(name, f, s) {
+const showModal = (name, f, s) => {
 
-    if (name == 'Date') {
-      f()
-    }
-    if (name == 'Time') {
-      s()
-    }
-    if (name == 'Buildings') { }
+  if (name == 'Date') {
+    f()
   }
-
-
-
-
-  get Categories() {
-    const { categories, firstclick, secondclick } = this.props;
-    return categories.map((category, index) => (
-      <TouchableOpacity
-        onPress={() => this.showModal(category.name, firstclick, secondclick)}
-        key={`category-item-${index}`}
-      >
-        <View style={styles.card}>
-          <Icon
-            name={category.photo}
-            size={32}
-            color={colors.maincolor}
-          />
-          <Text style={styles.text}>{category.name}</Text>
-        </View>
-      </TouchableOpacity>
-    ));
+  if (name == 'Time') {
+    s()
   }
-
-  render() {
-    return (
-      <ScrollView
-        contentContainerStyle={styles.wrapper}
-        horizontal
-        showHorizontalScrollIndicator={false}
-      >
-        {this.Categories}
-      </ScrollView>
-    );
-  }
+  if (name == 'Buildings') { }
 }
+
+
+const get_Categories = (props) => {
+  const { categories, firstclick, secondclick } = props;
+  return categories.map((category, index) => (
+    <TouchableOpacity
+      onPress={() => showModal(category.name, firstclick, secondclick)}
+      key={`category-item-${index}`}
+    >
+      <View style={styles.card}>
+        <Icon
+          name={category.photo}
+          size={32}
+          color={colors.maincolor}
+        />
+        <Text style={styles.text}>{category.name}</Text>
+      </View>
+    </TouchableOpacity>
+  ));
+}
+
+//export default class Categories extends Component {
+const Categories = (props) => {
+
+  //render() {
+  return (
+    <ScrollView
+      contentContainerStyle={styles.wrapper}
+      horizontal
+      showHorizontalScrollIndicator={false}
+    >
+      {get_Categories(props)}
+    </ScrollView>
+  );
+  // }
+}
+
+export default Categories
 
 const styles = StyleSheet.create({
   wrapper: {

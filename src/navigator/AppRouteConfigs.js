@@ -12,7 +12,7 @@ import ARooms from '../screens/ARooms'
 import RoomDetail from '../screens/RoomDetail'
 import MeetingDetail from '../screens/MeetingDetail'
 import TabNavigator from './TabNavigator'
-import Bookings from '../screens/Bookings'
+import Room from '../screens/Room'
 
 const Internal = createStackNavigator({
     Tab: { screen: TabNavigator },
@@ -31,7 +31,7 @@ const AppRoute = createStackNavigator({
 
 })
 const AppRouteConfigs = createSwitchNavigator({
-    Screen1: Bookings,
+    Screen1: Room,
     //Screen1: AppRoute,
     Tab: Internal,
 })

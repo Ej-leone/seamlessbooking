@@ -15,81 +15,87 @@ import HeartButton from '../buttons/HeartButton';
 import Stars from '../Stars';
 import colors from '../../styles/colors';
 
-export default class Listings extends Component {
-  constructor(props) {
-    super(props);
-    this.renderListings = this.renderListings.bind(this);
-  }
 
 
-  _movetoBook() {
+const _movetoBook = (props) => {
 
-    this.props.navigation.navigate("Book")
+  props.navigation.navigate("Book", { RoomId: "xxx" })
 
-  }
-  _movetoRoomDetail() {
+}
+const _movetoRoomDetail = (props) => {
 
-    this.props.navigation.navigate("RoomDetail")
-  }
+  props.navigation.navigate("RoomDetail", { RoomId: "xxx" })
+}
 
-  renderListings() {
-    const {
-      listings, showAddToFav, handleAddToFav, favouriteListings,
-    } = this.props;
-    return listings.map((listing, index) => (
-      <TouchableHighlight
-        style={styles.card}
-        key={`listing-${index}`}
-      >
-        <View>
-          {showAddToFav
-            ? (
-              <View style={styles.addToFavoriteBtn}>
-                <HeartButton
-                  color={colors.white}
-                  selectedColor={colors.pink}
-                  selected={favouriteListings.indexOf(listing.id) > -1}
-                  onPress={() => handleAddToFav(listing)}
-                />
-              </View>
-            )
-            : null}
-          <TouchableOpacity
-            onPress={() => this._movetoRoomDetail()}
-          >
-            <Image
-              style={styles.image}
-              resizeMode="contain"
-              source={listing.photo}
-            />
-          </TouchableOpacity
-          >
-          <Text style={[{ color: listing.color }, styles.listingType]}>
-            {listing.type}
-          </Text>
-          <Text
-            style={styles.listingTitle}
-            numberOfLines={2}
-          >
-            {listing.title}
-          </Text>
-          <Text style={styles.listingPrice}>
-
-            {listing.price}
-            {' '}
-            {listing.priceType}
-          </Text>
-          <Text style={styles.greenText}> Open Till  6:00 am</Text>
-          <TouchableOpacity
-            onPress={() => this._movetoBook()}>
-            <View style={styles.redbtn}>
-              <Text style={styles.redbtntxt}>Book room</Text>
+const renderListings = (props) => {
+  const {
+    listings, showAddToFav, handleAddToFav, favouriteListings,
+  } = props;
+  return listings.map((listing, index) => (
+    <TouchableHighlight
+      style={styles.card}
+      key={`listing-${index}`}
+    >
+      <View>
+        {showAddToFav
+          ? (
+            <View style={styles.addToFavoriteBtn}>
+              <HeartButton
+                color={colors.white}
+                selectedColor={colors.pink}
+                selected={favouriteListings.indexOf(listing.id) > -1}
+                onPress={() => handleAddToFav(listing)}
+              />
             </View>
-          </TouchableOpacity>
-        </View>
-      </TouchableHighlight>
-    ));
-  }
+          )
+          : null}
+        <TouchableOpacity
+          onPress={() => _movetoRoomDetail(props)}
+        >
+          <Image
+            style={styles.image}
+            resizeMode="contain"
+            source={listing.photo}
+          />
+        </TouchableOpacity
+        >
+        <Text style={[{ color: listing.color }, styles.listingType]}>
+          {listing.type}
+        </Text>
+        <Text
+          style={styles.listingTitle}
+          numberOfLines={2}
+        >
+          {listing.title}
+        </Text>
+        <Text style={styles.listingPrice}>
+
+          {listing.price}
+          {' '}
+          {listing.priceType}
+        </Text>
+        <Text style={styles.greenText}> Open Till  6:00 am</Text>
+        <TouchableOpacity
+          onPress={() => _movetoBook(props)}>
+          <View style={styles.redbtn}>
+            <Text style={styles.redbtntxt}>Book room</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </TouchableHighlight>
+  ));
+}
+
+
+const Listings = (props) => {
+  //constructor(props) {
+  //  super(props);
+  //   this.renderListings = this.renderListings.bind(this);
+  // }
+
+
+
+
   /*   {listing.stars > 0
             ? (
               <Stars
@@ -99,38 +105,42 @@ export default class Listings extends Component {
               />
             )
             : null}*/
-  render() {
-    const { title, boldTitle } = this.props;
-    const titleStyle = boldTitle ? { fontSize: 22, fontWeight: '600' } : { fontSize: 18 };
-    return (
-      <View style={styles.wrapper}>
-        <View style={styles.titleWrapper}>
-          <Text style={[titleStyle, styles.title]}>
-            {title}
+  //render() {
+
+  const { title, boldTitle } = props;
+  const titleStyle = boldTitle ? { fontSize: 22, fontWeight: '600' } : { fontSize: 18 };
+
+  return (
+    <View style={styles.wrapper}>
+      <View style={styles.titleWrapper}>
+        <Text style={[titleStyle, styles.title]}>
+          {title}
+        </Text>
+        <TouchableOpacity style={styles.seeAllBtn}>
+          <Text style={styles.seeAllBtnText}>
+            See all
           </Text>
-          <TouchableOpacity style={styles.seeAllBtn}>
-            <Text style={styles.seeAllBtnText}>
-              See all
-          </Text>
-            <Icon
-              name="angle-right"
-              size={18}
-              color={colors.gray04}
-            />
-          </TouchableOpacity>
-        </View>
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={{ paddingRight: 30 }}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        >
-          {this.renderListings()}
-        </ScrollView>
+          <Icon
+            name="angle-right"
+            size={18}
+            color={colors.gray04}
+          />
+        </TouchableOpacity>
       </View>
-    );
-  }
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={{ paddingRight: 30 }}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      >
+        {renderListings(props)}
+      </ScrollView>
+    </View>
+  );
+  // }
 }
+
+export default Listings
 
 Listings.propTypes = {
   title: PropTypes.string.isRequired,

@@ -75,22 +75,26 @@ class RoomScreen extends Component {
     }
 
     renderListings() {
-        return listings.map((listing, index) => (
-            <View
-                key={`listing-${index}`}
-            >
-                <Listings
-                    key={`listing-item-${index}`}
-                    navigation={this.props.navigation}
-                    title={listing.title}
-                    boldTitle={listing.boldTitle}
-                    listings={listing.listings}
-                    showAddToFav={listing.showAddToFav}
-                    handleAddToFav={this.handleAddToFav}
-                    favouriteListings={this.state.favouriteListings}
-                />
-            </View>
-        ));
+        return listings.map((listing, index) =>
+            (
+
+                <View
+                    key={`listing-${index}`}
+                >
+                    <Listings
+                        key={`listing-item-${index}`}
+                        navigation={this.props.navigation}
+                        title={listing.title}
+                        boldTitle={listing.boldTitle}
+                        listings={listing.listings}
+                        showAddToFav={listing.showAddToFav}
+                        handleAddToFav={this.handleAddToFav}
+                        favouriteListings={this.state.favouriteListings}
+                    />
+                </View>
+            )
+        );
+
     }
 
     hideDateTimePicker = () => {
