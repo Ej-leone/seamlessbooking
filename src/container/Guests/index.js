@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, Modal, TouchableOpacity, TextInput } from 'react-native'
+import styles from './guest.style'
 
 const Roundbutton = (props) => {
     return (
@@ -12,6 +13,7 @@ const Roundbutton = (props) => {
         </TouchableOpacity>
     )
 }
+
 
 
 const Cview = (props) => {
@@ -27,22 +29,22 @@ const Cview = (props) => {
 export default class Guest extends Component {
     render() {
         return (
-            <Modal>
-                <View>
-                    <View>
-                        <Text>Guest</Text>
-                        <Text>clear</Text>
-                    </View>
 
-                    <Text>
-                        How many guest ?
+            <View>
+                <View>
+                    <Text>Guest</Text>
+                    <Text>clear</Text>
+                </View>
+
+                <Text>
+                    How many guest ?
                     </Text>
 
-                    <Cview />
-                    <Text>Main guest email</Text>
-                    <TextInput />
-                </View>
-            </Modal>
+                <Cview />
+                <Text>Main guest email</Text>
+                <TextInput />
+            </View>
+
         )
     }
 }

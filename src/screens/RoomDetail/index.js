@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Query } from 'react-apollo';
 import colors from '../../styles/colors';
 import NavBarButton from '../../component/buttons/NavBarButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import transparentHeaderStyle from '../../styles/navigation';
 import color from '../../styles/colors'
 import { Text, View, SafeAreaView, Image, StyleSheet, Dimensions, KeyboardAvoidingView, ScrollView } from 'react-native'
-
+import { roomDescriptionQuery } from '@services/getrooms'
 
 const dummyimage = require('../../img/listing11.png')
 const width = Dimensions.get('window').width
@@ -14,7 +15,7 @@ const height = Dimensions.get('window').height
 export default class RoomDetail extends Component {
     static navigationOptions = ({ navigation }) => ({
         headerRight: <NavBarButton
-            handleButtonPress={() => navigation.navigate('Book')}
+            handleButtonPress={() => navigation.navigate('Book', { RoomId: this.state.RoomId })}
             location="right"
             color={colors.maincolor}
             text="Book Room"
@@ -28,6 +29,19 @@ export default class RoomDetail extends Component {
         headerTransparent: true,
         headerTintColor: colors.white,
     });
+
+    constructor() {
+        this.state = {
+            RoomId: ""
+        }
+    }
+    componentWillMount() {
+        const RoomId = this.props.navigation.getParam('RoomId', 'NO-ID');
+        this.setState({
+            RoomId
+        })
+    }
+
     render() {
         return (
             <KeyboardAvoidingView
@@ -36,35 +50,56 @@ export default class RoomDetail extends Component {
             >
                 <View style={styles.scrollViewWrapper}>
                     <ScrollView style={styles.scrollView}>
-                        <View style={styles.container}>
-                            <Text style={styles.title}> RiversideMeeting Room </Text>
-                            <View style={styles.imgview}>
-                                <Image
-                                    style={styles.img}
-                                    source={dummyimage} />
-                                <Image
-                                    style={styles.img}
-                                    source={dummyimage} />
-                            </View>
-                            <View style={styles.imgview}>
-                                <Image
-                                    style={styles.img}
-                                    source={dummyimage} />
-                                <Image
-                                    style={styles.img}
-                                    source={dummyimage} />
-                            </View>
-                            <Text style={styles.title}> Amenities </Text>
-                            <View>
-                                <Text> 10 Seats</Text>
-                                <Text> White Board</Text>
-                                <Text> Wifi</Text>
-                                <Text> Projector</Text>
-                            </View>
 
-                            <Text style={styles.title}> Direction </Text>
-                            <Text>First floor to the left...</Text>
-                        </View>
+                        <Query query={roomDescriptionQuery}>
+                            {
+                                ({ error, data }) => {
+                                    if (error) {
+                                        return (
+                                            <Text>
+                                                Error loading this room
+                                            </Text>
+                                        )
+                                    }
+
+                                    if (data) {
+                                        return (
+                                            <View style={styles.container}>
+                                                <Text style={styles.title}> RiversideMeeting Room </Text>
+                                                <View style={styles.imgview}>
+                                                    <Image
+                                                        style={styles.img}
+                                                        source={dummyimage} />
+                                                    <Image
+                                                        style={styles.img}
+                                                        source={dummyimage} />
+                                                </View>
+                                                <View style={styles.imgview}>
+                                                    <Image
+                                                        style={styles.img}
+                                                        source={dummyimage} />
+                                                    <Image
+                                                        style={styles.img}
+                                                        source={dummyimage} />
+                                                </View>
+                                                <Text style={styles.title}> Amenities </Text>
+                                                <View>
+                                                    <Text> 10 Seats</Text>
+                                                    <Text> White Board</Text>
+                                                    <Text> Wifi</Text>
+                                                    <Text> Projector</Text>
+                                                </View>
+
+                                                <Text style={styles.title}> Direction </Text>
+                                                <Text>First floor to the left...</Text>
+                                            </View>
+                                        )
+                                    }
+                                }
+                            }
+                        </Query>
+
+
                     </ScrollView>
                 </View>
             </KeyboardAvoidingView>

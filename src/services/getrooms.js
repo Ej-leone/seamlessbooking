@@ -9,7 +9,7 @@ query {
 }
 `;
 
-export const exploreQuery = gql`
+export const roomDescriptionQuery = gql`
 query {
     getopenrooms {
        Name

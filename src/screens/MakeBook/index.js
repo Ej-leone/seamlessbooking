@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, SafeAreaView, Text, TextInput, Switch, TouchableOpacity, KeyboardAvoidingView, ScrollView } from 'react-native'
+import { View, SafeAreaView, Text, TextInput, Switch, TouchableOpacity, KeyboardAvoidingView, ScrollView, Modal } from 'react-native'
 import NavBarButton from '../../component/buttons/NavBarButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../styles/colors';
@@ -7,6 +7,10 @@ import transparentHeaderStyle from '../../styles/navigation';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styles from './makebook.style'
+import RadioInput from '../../component/form/RadioInput'
+import Guest from '../../container/Guests'
+import Diet from '../../container/Diet'
+
 
 const Pickerr = (props) => {
     return (
@@ -18,6 +22,15 @@ const Pickerr = (props) => {
             <Switch style={{ alignSelf: "stretch" }} />
         </View>
     )
+}
+
+const Card = (props) => {
+    return (
+        <View>
+            <Icon />
+            <Text>title</Text>
+            <Text>Value</Text>
+        </View>)
 }
 
 
@@ -33,7 +46,47 @@ class MakeBook extends Component {
         headerTintColor: colors.white,
     });
 
+    constructor() {
+        super();
+        this.state = {
+            RoomId: "",
+            Date: "",
+            StartTime: "",
+            EndTime: "",
+            Guest: "",
+            Guestemails: "",
+            Food: [],
+            modalOpen: true,
+            mode: " "
+
+        }
+    }
+
+
+    componentWillMount() {
+        const RoomId = this.props.navigation.getParam('RoomId', 'NO-ID');
+
+        this.setState({
+            RoomId
+        })
+    }
+
+    _setGuest(num) { this.setState({ Guest: num }) }
+    _setStartTime(time) { this.setState({ StartTime: time }) }
+    _setEndTime(time) { this.setState({ EndTime: time }) }
+    _setGuestEmail(arr) { this.setState({ Guestemails: arr }) }
+    _setFood(foo) { this.setState({ Food: foo }) }
+
+    _launchModal() {
+        this.setState({
+            modalOpen
+        })
+    }
+
+
+
     render() {
+        const { mode } = this.state
         return (
             <KeyboardAvoidingView
                 style={styles.wrapper}
@@ -42,7 +95,18 @@ class MakeBook extends Component {
                 <View style={styles.scrollViewWrapper}>
                     <ScrollView style={styles.scrollView}>
                         <View style={styles.container}>
+                            <Modal>
+                                {}
+                            </Modal>
+                            <Guest setguest={this._setGuest} />
+                            <Diet setdiet={this._setFood} />
                             <Text style={styles.title}>Book a Room </Text>
+
+                            <View>
+                                <Card name={'Date'} value={'8/8/19'} iconnname={"ios-calendar"} />
+                                <Card name={'Time'} value={'12:00'} iconnname={"ios-time"} />
+                                <Card name={'Guest'} value={'10'} iconnname={"users"} />
+                            </View>
 
                             <Text style={styles.subtitle}>Choose </Text>
 

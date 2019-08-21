@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, Modal, TouchableOpacity } from 'react-native'
+import styles from './diet.style'
 
 
 const Roundbutton = (props) => {
@@ -27,25 +28,24 @@ const Cview = (props) => {
 
 
 
-export default class DietModal extends Component {
+export default class Diet extends Component {
     render() {
         return (
-            <Modal>
-                <View>
-                    <Text>Dietary Requirements</Text>
+            <View>
+                <Text>Dietary Requirements</Text>
 
-                    <Cview />
-                    <Cview />
-                    <Cview />
-                    <Cview />
+                <Cview />
+                <Cview />
+                <Cview />
+                <Cview />
 
-                    <Text>Catering Time Slot</Text>
+                <Text>Catering Time Slot</Text>
 
-                    <TouchableOpacity>
-                        <Text>Choose Time</Text>
-                    </TouchableOpacity>
-                </View>
-            </Modal>
+                <TouchableOpacity>
+                    <Text>Choose Time</Text>
+                </TouchableOpacity>
+            </View>
+
         )
     }
 }

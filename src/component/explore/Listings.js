@@ -19,12 +19,12 @@ import colors from '../../styles/colors';
 
 const _movetoBook = (props) => {
 
-  props.navigation.navigate("Book", { RoomId: "xxx" })
+  props.navigation.navigate("Book", { RoomId: "LJqUQPuIQ4cYXw8me8Zo" })
 
 }
 const _movetoRoomDetail = (props) => {
 
-  props.navigation.navigate("RoomDetail", { RoomId: "xxx" })
+  props.navigation.navigate("RoomDetail", { RoomId: "LJqUQPuIQ4cYXw8me8Zo" })
 }
 
 const renderListings = (props) => {
