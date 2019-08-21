@@ -21,11 +21,10 @@ export default StyleSheet.create({
         alignContent: "center"
     },
     imback: {
-
         justifyContent: "center",
         alignItems: "center",
-        width: screenWidth / 1.2,
-        height: screenWidth / 2
+        width: screenWidth / 1.05,
+        height: screenWidth / 3
     },
     itemview: {
         marginHorizontal: 10,
@@ -40,12 +39,25 @@ export default StyleSheet.create({
         marginVertical: 10
     },
     date: {
-        fontSize: 15,
+        fontSize: 25,
         color: colors.gray02
     },
     time: {
-        fontSize: 10,
+        fontSize: 15,
         color: colors.gray03
+    },
+    redbtn: {
+        backgroundColor: colors.maincolor
+    },
+    iview: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginHorizontal: 10
+
+    },
+    txt: {
+        color: colors.maincolor
     }
+
 
 });

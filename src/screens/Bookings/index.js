@@ -30,10 +30,15 @@ export default class Bookings extends Component {
                 <ImageView />
                 <Text style={styles.date}> Monday 22 August</Text>
                 <Text style={styles.time}>11:00 Am -12:00</Text>
-                <View>
-                    <TouchableOpacity>
-                        <View>
-                            <Text>Cancel</Text>
+                <View style={styles.iview}>
+                    <View>
+                        <Text>Organiser</Text>
+                        <Text>David Mpho</Text>
+                    </View>
+                    <TouchableOpacity
+                        onPress={() => this._cancelmeeting()}>
+                        <View style={styles.redbtn}>
+                            <Text style={styles.txt}>Cancel</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
