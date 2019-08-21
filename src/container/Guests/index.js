@@ -5,7 +5,7 @@ import styles from './guest.style'
 const Roundbutton = (props) => {
     return (
         <TouchableOpacity>
-            <View>
+            <View style={styles.rbtn}>
                 <Text>
                     {props.name}
                 </Text>
@@ -18,7 +18,7 @@ const Roundbutton = (props) => {
 
 const Cview = (props) => {
     return (
-        <View>
+        <View style={styles.cview}>
             <Roundbutton name={"+"} />
             <Roundbutton name={"-"} />
 
@@ -32,16 +32,16 @@ export default class Guest extends Component {
 
             <View>
                 <View>
-                    <Text>Guest</Text>
-                    <Text>clear</Text>
+                    <Text style={styles.title}>Guest</Text>
+                    <Text style={styles.subtitle}>clear</Text>
                 </View>
 
-                <Text>
+                <Text style={styles.text}>
                     How many guest ?
                     </Text>
 
                 <Cview />
-                <Text>Main guest email</Text>
+                <Text style={styles.text}>Main guest email</Text>
                 <TextInput />
             </View>
 

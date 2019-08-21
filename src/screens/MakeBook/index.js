@@ -77,13 +77,35 @@ class MakeBook extends Component {
     _setGuestEmail(arr) { this.setState({ Guestemails: arr }) }
     _setFood(foo) { this.setState({ Food: foo }) }
 
-    _launchModal() {
+    _toggleModal(tr) {
         this.setState({
-            modalOpen
+            modalOpen: tr
         })
     }
 
+    async _startdatemodal() {
+        await this.setState({
+            mode: "date"
+        })
+    }
+    async  _starttimemodal() {
+        await this.setState({
+            mode: "time"
+        })
+    }
+    async _startguestmodal() {
+        await this.setState({
+            mode: "guest"
+        })
+        this._toggleModal(true)
+    }
+    async _startfoodemodal() {
+        await this.setState({
+            mode: "food"
 
+        })
+        this._toggleModal(true)
+    }
 
     render() {
         const { mode } = this.state
@@ -95,7 +117,11 @@ class MakeBook extends Component {
                 <View style={styles.scrollViewWrapper}>
                     <ScrollView style={styles.scrollView}>
                         <View style={styles.container}>
-                            <Modal>
+                            <Modal
+                                transparent={true}
+                                animationType="fade"
+                                onRequestClose={() => this._toggleModal(false)}
+                            >
                                 {}
                             </Modal>
                             <Guest setguest={this._setGuest} />
@@ -103,9 +129,9 @@ class MakeBook extends Component {
                             <Text style={styles.title}>Book a Room </Text>
 
                             <View>
-                                <Card name={'Date'} value={'8/8/19'} iconnname={"ios-calendar"} />
-                                <Card name={'Time'} value={'12:00'} iconnname={"ios-time"} />
-                                <Card name={'Guest'} value={'10'} iconnname={"users"} />
+                                <Card name={'Date'} value={'8/8/19'} iconnname={"ios-calendar"} click={() => this._startdatemodal()} />
+                                <Card name={'Time'} value={'12:00'} iconnname={"ios-time"} click={() => this._starttimemodal()} />
+                                <Card name={'Guest'} value={'10'} iconnname={"users"} click={() => this._startguestmodal()} />
                             </View>
 
                             <Text style={styles.subtitle}>Choose </Text>
