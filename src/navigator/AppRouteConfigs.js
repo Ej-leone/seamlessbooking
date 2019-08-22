@@ -31,8 +31,8 @@ const AppRoute = createStackNavigator({
 
 })
 const AppRouteConfigs = createSwitchNavigator({
-    Screen1: MakeBook,
-    //Screen1: AppRoute,
+    //Screen1: MakeBook,
+    Screen1: AppRoute,
     Tab: Internal,
 })
 export default AppRouteConfigs;
