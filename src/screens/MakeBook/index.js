@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { View, SafeAreaView, Text, TextInput, Switch, TouchableOpacity, KeyboardAvoidingView, ScrollView, Modal } from 'react-native'
+import { Mutation } from 'react-apollo'
 import NavBarButton from '../../component/buttons/NavBarButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../styles/colors';
 import transparentHeaderStyle from '../../styles/navigation';
+import { createBooking } from '../../services/createbookings'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styles from './makebook.style'
@@ -60,7 +62,7 @@ class MakeBook extends Component {
             StartTime: "",
             EndTime: "",
             Guest: "",
-            Guestemails: "",
+            Guestemails: [],
             Food: [],
             modalOpen: false,
             mode: " "
@@ -168,11 +170,16 @@ class MakeBook extends Component {
                                 <Pickerr name={"Video Conferencing"} />
                             </View>
 
-                            <TouchableOpacity>
-                                <View style={styles.btn}>
-                                    <Text style={styles.btntxt}>Book Room</Text>
-                                </View>
-                            </TouchableOpacity>
+                            <Mutation mutation={createBooking} variables={this.state}>
+                                {createBooking =>
+                                    <TouchableOpacity
+                                        onPress={createBooking}>
+                                        <View style={styles.btn}>
+                                            <Text style={styles.btntxt}>Book Room</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                }
+                            </Mutation>
                         </View>
                     </ScrollView>
                 </View>
@@ -181,12 +188,5 @@ class MakeBook extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
 
-})
-
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MakeBook)
+export default MakeBook
