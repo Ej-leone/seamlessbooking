@@ -53,10 +53,14 @@ export default class Bookings extends Component {
             <SafeAreaView style={styles.wrapper}>
                 <Query query={roomQuery}>
                     {
-                        ({ error, data }) => {
+                        ({ loading, error, data }) => {
                             if (error) {
                                 return (<View style={styles.errorview}><Text style={styles.errortext}> Oops! Something went wrong. </Text></View>)
                             }
+                            if (loading) {
+                                return (<View style={styles.errorview}><Text style={styles.errortext}> ... Loading </Text></View>)
+                            }
+
                             if (data) {
                                 return (<FlatList
                                     data={data.getrooms}

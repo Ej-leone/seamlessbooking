@@ -36,7 +36,7 @@ export default class RoomDetail extends Component {
             RoomId: ""
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         const RoomId = this.props.navigation.getParam('RoomId', 'NO-ID');
         this.setState({
             RoomId
@@ -52,9 +52,9 @@ export default class RoomDetail extends Component {
                 <View style={styles.scrollViewWrapper}>
                     <ScrollView style={styles.scrollView}>
 
-                        <Query query={roomDescriptionQuery}>
+                        <Query query={roomDescriptionQuery} variables={{ RoomId: this.state.RoomId }}>
                             {
-                                (error) => {
+                                ({ error, loading, data }) => {
 
                                     if (error) {
                                         return (
@@ -63,11 +63,18 @@ export default class RoomDetail extends Component {
                                             </Text>
                                         )
                                     }
+                                    if (loading) {
+                                        return (
+                                            <Text>
+                                                ... loading this room
+                                            </Text>
+                                        )
+                                    }
 
                                     if (data) {
                                         return (
                                             <View style={styles.container}>
-                                                <Text style={styles.title}> RiversideMeeting Room </Text>
+                                                <Text style={styles.title}> {data.Building}</Text>
                                                 <View style={styles.imgview}>
                                                     <Image
                                                         style={styles.img}
@@ -86,14 +93,14 @@ export default class RoomDetail extends Component {
                                                 </View>
                                                 <Text style={styles.title}> Amenities </Text>
                                                 <View>
-                                                    <Text> 10 Seats</Text>
+                                                    <Text> {data.Capacity} Seats</Text>
                                                     <Text> White Board</Text>
                                                     <Text> Wifi</Text>
                                                     <Text> Projector</Text>
                                                 </View>
 
                                                 <Text style={styles.title}> Direction </Text>
-                                                <Text>First floor to the left...</Text>
+                                                <Text>{data.Description}</Text>
                                             </View>
                                         )
                                     }
@@ -104,7 +111,7 @@ export default class RoomDetail extends Component {
 
                     </ScrollView>
                 </View>
-            </KeyboardAvoidingView>
+            </KeyboardAvoidingView >
         )
     }
 }

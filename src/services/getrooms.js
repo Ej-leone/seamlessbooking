@@ -13,6 +13,10 @@ export const roomDescriptionQuery = gql`
 query ($roomId: String!){
     getRoomDetail (RoomId: $roomId){
        Name
+       Capacity
+       Description
+       Building
+
    }
 
   
