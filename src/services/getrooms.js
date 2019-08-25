@@ -10,8 +10,8 @@ query {
 `;
 
 export const roomDescriptionQuery = gql`
-query {
-    getopenrooms {
+query ($roomId: String!){
+    getRoomDetail (RoomId: $roomId){
        Name
    }
 

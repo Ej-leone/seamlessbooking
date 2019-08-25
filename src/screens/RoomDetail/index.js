@@ -31,6 +31,7 @@ export default class RoomDetail extends Component {
     });
 
     constructor() {
+        super();
         this.state = {
             RoomId: ""
         }
@@ -53,7 +54,8 @@ export default class RoomDetail extends Component {
 
                         <Query query={roomDescriptionQuery}>
                             {
-                                ({ error, data }) => {
+                                (error) => {
+
                                     if (error) {
                                         return (
                                             <Text>
