@@ -36,6 +36,13 @@ export default class Bookings extends Component {
                         <Text>David Mpho</Text>
                     </View>
                     <TouchableOpacity
+                        onPress={() => this._AddToCalendar({ title: "", startDate: "", endDate: "", location: "" })}>
+                        <View>
+                            <Text>Add to calendar </Text>
+                        </View>
+
+                    </TouchableOpacity>
+                    <TouchableOpacity
                         onPress={() => this._cancelmeeting()}>
                         <View style={styles.redbtn}>
                             <Text style={styles.txt}>Cancel</Text>
