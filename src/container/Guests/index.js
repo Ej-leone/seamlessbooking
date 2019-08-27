@@ -33,8 +33,11 @@ export default class Guest extends Component {
 
             <View>
                 <View>
-                    <Text style={styles.title}>Guest</Text>
-                    <Text style={styles.subtitle}>clear</Text>
+
+                    <TouchableOpacity
+                        onPress={() => this.props.close(false)}>
+                        <Text style={styles.subtitle}>clear</Text>
+                    </TouchableOpacity>
                 </View>
 
                 <Text style={styles.text}>

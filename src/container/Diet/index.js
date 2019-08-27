@@ -38,6 +38,11 @@ export default class Diet extends Component {
     render() {
         return (
             <View>
+                <View>
+                    <TouchableOpacity onPress={() => this.props.close(false)}>
+                        <Text style={styles.subtitle}>clear</Text>
+                    </TouchableOpacity>
+                </View>
                 <Text style={styles.text}>Dietary Requirements</Text>
 
                 <Cview food={'Halaal'} />

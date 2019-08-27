@@ -118,7 +118,6 @@ class RoomScreen extends Component {
 
     render() {
         const { showDatetime, mode } = this.state;
-        console.log(categoriesList)
         return (
             <SafeAreaView style={styles.wrapper}>
                 <SearchBar />

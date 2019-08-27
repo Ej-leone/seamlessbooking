@@ -96,14 +96,16 @@ class MakeBook extends Component {
     async _startdatemodal() {
         console.log('date')
         await this.setState({
-            mode: "date",
+            mode: 'date',
+            showDatetime: true
 
         })
     }
     async  _starttimemodal() {
         console.log('time')
         await this.setState({
-            mode: "time",
+            mode: 'time',
+            showDatetime: true
 
         })
     }
@@ -129,14 +131,15 @@ class MakeBook extends Component {
         if (text == "food") {
             return (
                 <View style={{ alignSelf: "center", alignItems: "center", backgroundColor: colors.white }}>
-                    <Guest />
+
+                    <Diet />
                 </View>)
         }
 
         if (text == "guest") {
             return (
                 <View>
-                    <Diet />
+                    <Guest />
                 </View>)
         }
 
@@ -181,7 +184,7 @@ class MakeBook extends Component {
                             </Modal>
 
                             <DateTimePicker
-                                isVisible={showDatetime}
+                                isVisible={this.state.showDatetime}
                                 mode={mode}
                                 onConfirm={this.handleDatePicked}
                                 onCancel={this.hideDateTimePicker}
@@ -191,9 +194,9 @@ class MakeBook extends Component {
 
                             <Text style={styles.subtitle}>Choose </Text>
                             <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-                                <Card name={'Date'} value={'8/8/19'} iconnname={"calendar-o"} click={() => this._startdatemodal()} />
-                                <Card name={'Time'} value={'12:00'} iconnname={"clock-o"} click={() => this._starttimemodal()} />
-                                <Card name={'Guest'} value={'10'} iconnname={"users"} click={() => this._startguestmodal()} />
+                                <Card name={'Date'} value={'8/8/19'} iconnname={"calendar-o"} click={() => this._startdatemodal()} close={() => this._toggleModal()} />
+                                <Card name={'Time'} value={'12:00'} iconnname={"clock-o"} click={() => this._starttimemodal()} close={() => this._toggleModal()} />
+                                <Card name={'Guest'} value={'10'} iconnname={"users"} click={() => this._startguestmodal()} close={() => this._toggleModal()} />
                             </View>
 
 
