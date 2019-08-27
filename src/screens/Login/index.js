@@ -179,6 +179,7 @@ class Login extends Component {
 
 const mapStateToProps = (state) => ({
     loggedInStatus: state.loggedInStatus,
+    loginError: state.loginError,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
