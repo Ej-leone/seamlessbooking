@@ -1,5 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
-
+import gql from 'graphql-tag';
 /*
 export const makeBooking = async (meeting) => {
     return firestore.collection('Meeting').doc()
@@ -13,7 +13,7 @@ export const cancelBooking = async (id, data) => {
 export const createBooking = gql`
 
 mutation {
-    book () {
+    book  {
         success
     }
 }

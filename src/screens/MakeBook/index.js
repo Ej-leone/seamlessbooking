@@ -139,8 +139,8 @@ class MakeBook extends Component {
 
                             <Text style={styles.subtitle}>Choose </Text>
                             <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-                                <Card name={'Date'} value={'8/8/19'} iconnname={"ios-calendar"} click={() => this._startdatemodal()} />
-                                <Card name={'Time'} value={'12:00'} iconnname={"ios-time"} click={() => this._starttimemodal()} />
+                                <Card name={'Date'} value={'8/8/19'} iconnname={"calendar-o"} click={() => this._startdatemodal()} />
+                                <Card name={'Time'} value={'12:00'} iconnname={"clock-o"} click={() => this._starttimemodal()} />
                                 <Card name={'Guest'} value={'10'} iconnname={"users"} click={() => this._startguestmodal()} />
                             </View>
 
