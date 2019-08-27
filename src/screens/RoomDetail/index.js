@@ -15,7 +15,7 @@ const height = Dimensions.get('window').height
 export default class RoomDetail extends Component {
     static navigationOptions = ({ navigation }) => ({
         headerRight: <NavBarButton
-            handleButtonPress={() => navigation.navigate('Book', { RoomId: this.state.RoomId })}
+            handleButtonPress={() => navigation.navigate('Book', { 'RoomId': navigation.getParam('RoomId', 'NO-ID') })}
             location="right"
             color={colors.maincolor}
             text="Book Room"

@@ -30,7 +30,8 @@ class RoomScreen extends Component {
             mode: 'time',
             setDate: '',
             setTime: '',
-            setBuilding: ""
+            setBuilding: "",
+
         };
         this.handleAddToFav = this.handleAddToFav.bind(this);
         this.renderListings = this.renderListings.bind(this);

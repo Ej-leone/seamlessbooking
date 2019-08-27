@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, SafeAreaView, Text, TextInput, Switch, TouchableOpacity, KeyboardAvoidingView, ScrollView, Modal } from 'react-native'
+import DateTimePicker from "react-native-modal-datetime-picker";
 import { Mutation } from 'react-apollo'
 import NavBarButton from '../../component/buttons/NavBarButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -12,6 +13,7 @@ import styles from './makebook.style'
 import RadioInput from '../../component/form/RadioInput'
 import Guest from '../../container/Guests'
 import Diet from '../../container/Diet'
+
 
 
 
@@ -29,7 +31,8 @@ const Pickerr = (props) => {
 
 const Card = (props) => {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity
+            onPress={() => props.click()}>
             <View style={styles.card}>
                 <Icon
                     name={props.iconnname}
@@ -65,15 +68,14 @@ class MakeBook extends Component {
             Guestemails: [],
             Food: [],
             modalOpen: false,
+            showDatetime: false,
             mode: " "
-
         }
     }
 
 
     componentDidMount() {
         const RoomId = this.props.navigation.getParam('RoomId', 'NO-ID');
-
         this.setState({
             RoomId
         })
@@ -92,28 +94,70 @@ class MakeBook extends Component {
     }
 
     async _startdatemodal() {
+        console.log('date')
         await this.setState({
-            mode: "date"
+            mode: "date",
+
         })
     }
     async  _starttimemodal() {
+        console.log('time')
         await this.setState({
-            mode: "time"
+            mode: "time",
+
         })
     }
     async _startguestmodal() {
+        console.log('guest')
         await this.setState({
-            mode: "guest"
+            mode: "guest",
+            modalOpen: true
         })
         this._toggleModal(true)
     }
     async _startfoodemodal() {
+        console.log('food')
         await this.setState({
-            mode: "food"
+            mode: "food",
+            modalOpen: true
 
         })
         this._toggleModal(true)
     }
+
+    choosemodal(text) {
+        if (text == "food") {
+            return (
+                <View style={{ alignSelf: "center", alignItems: "center", backgroundColor: colors.white }}>
+                    <Guest />
+                </View>)
+        }
+
+        if (text == "guest") {
+            return (
+                <View>
+                    <Diet />
+                </View>)
+        }
+
+    }
+
+    hideDateTimePicker = () => {
+        this.setState({ showDatetime: false });
+    };
+
+    handleDatePicked = date => {
+        if (this.state.mode == 'date') {
+            this.setState({ setDate: date.toString() });
+            this.hideDateTimePicker();
+        }
+
+        if (this.state.mode == 'time') {
+            this.setState({ setTime: date.toString() });
+            this.hideDateTimePicker();
+        }
+
+    };
 
     render() {
         const { mode, modalOpen } = this.state
@@ -131,9 +175,17 @@ class MakeBook extends Component {
                                 animationType="fade"
                                 onRequestClose={() => this._toggleModal(false)}
                             >
-                                {}
+                                {
+                                    this.choosemodal(this.state.mode)
+                                }
                             </Modal>
 
+                            <DateTimePicker
+                                isVisible={showDatetime}
+                                mode={mode}
+                                onConfirm={this.handleDatePicked}
+                                onCancel={this.hideDateTimePicker}
+                            />
                             <Text style={styles.title}>Book a Room </Text>
 
 

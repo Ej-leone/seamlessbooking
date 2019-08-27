@@ -1,4 +1,4 @@
-import firestore from '@react-native-firebase/firestore';
+//import firestore from '@react-native-firebase/firestore';
 import gql from 'graphql-tag';
 /*
 export const makeBooking = async (meeting) => {
