@@ -5,11 +5,15 @@
   "scripts": {
     "start": "react-native start",
     "postinstall": "npx jetify",
+    "format": "npm run prettier",
+    "prettier": "prettier --write \"./**/*.{js,md,yml}\"",
+    "lint": "eslint .",
     "test": "jest"
   },
   "dependencies": {
     "@react-native-firebase/app": "^0.2.3",
     "@react-native-firebase/auth": "^0.2.3",
+    "@react-native-firebase/firestore": "^0.2.3",
     "@react-native-firebase/messaging": "^0.2.3",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-client": "^2.6.3",
@@ -39,9 +43,12 @@
     "@babel/runtime": "^7.5.0",
     "@react-native-community/eslint-config": "^0.0.3",
     "babel-jest": "^24.1.0",
+    "eslint": "5.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.1.0",
     "jetifier": "^1.6.4",
     "metro-react-native-babel-preset": "^0.54.1",
+    "prettier": "1.17.0",
     "react-test-renderer": "16.8.6"
   },
   "jest": {

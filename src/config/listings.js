@@ -1,10 +1,13 @@
 import colors from '../styles/colors'
 const listing11Photo = require('../img/listing11.png');
+import { getmyFavouriteQuery } from '../services/getmybookings'
+import { getOpenRooms, getClosedRooms, } from '../services/getrooms'
 
 const listings = [
     {
         title: 'Favourites',
         boldTitle: false,
+        query: getmyFavouriteQuery,
         showAddToFav: true,
         listings: [
             {
@@ -34,6 +37,7 @@ const listings = [
         title: 'Open Rooms',
         boldTitle: false,
         showAddToFav: true,
+        query: getOpenRooms,
         listings: [
             {
                 id: 1,
@@ -62,6 +66,7 @@ const listings = [
         title: 'Booked Rooms',
         boldTitle: false,
         showAddToFav: true,
+        query: getClosedRooms,
         listings: [
             {
                 id: 1,

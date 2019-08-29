@@ -24,4 +24,24 @@ query ($roomId: String!){
 }
 `;
 
+export const getOpenRooms = gql`
+query {
+    getrooms {
+        
+       Name
+   }
 
+}
+`;
+
+
+
+export const getClosedRooms = gql`
+query {
+    getrooms {
+        
+       Name
+   }
+
+}
+`;

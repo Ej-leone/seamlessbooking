@@ -11,10 +11,13 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import SearchBar from '../../component/SearchBar';
 import Categories from '../../component/explore/Categories';
+import OpenRooms from '../../component/explore/openrooms'
+import ClosedRooms from '../../component/explore/closedrooms'
 import Listings from '../../component/explore/Listings';
 import DateTimePicker from "react-native-modal-datetime-picker";
 import categoriesList from '../../config/categories';
 import listings from '../../config/listings';
+
 
 import styles from './Room.style'
 
@@ -76,24 +79,30 @@ class RoomScreen extends Component {
     }
 
     renderListings() {
-        return listings.map((listing, index) =>
-            (
 
-                <View
-                    key={`listing-${index}`}
-                >
-                    <Listings
-                        key={`listing-item-${index}`}
-                        navigation={this.props.navigation}
-                        title={listing.title}
-                        boldTitle={listing.boldTitle}
-                        listings={listing.listings}
-                        showAddToFav={listing.showAddToFav}
-                        handleAddToFav={this.handleAddToFav}
-                        favouriteListings={this.state.favouriteListings}
-                    />
-                </View>
-            )
+        return listings.map((listing, index) => {
+            console.log(listing)
+                (
+
+
+                    <View
+                        key={`listing-${index}`}
+                    >
+
+                        <Listings
+                            key={`listing-item-${index}`}
+                            navigation={this.props.navigation}
+                            title={listing.title}
+                            boldTitle={listing.boldTitle}
+                            listings={listing.listings}
+                            query={listing.query}
+                            showAddToFav={listing.showAddToFav}
+                            handleAddToFav={this.handleAddToFav}
+                            favouriteListings={this.state.favouriteListings}
+                        />
+                    </View>
+                )
+        }
         );
 
     }
@@ -141,13 +150,26 @@ class RoomScreen extends Component {
 
                         />
                     </View>
-                    {this.renderListings()}
+                    <OpenRooms
+                        key={0}
+                        navigation={this.props.navigation}
+                        title={'Open Rooms'}
+                        boldTitle={true}
+                        handleAddToFav={this.handleAddToFav}
+                    />
+
+                    <ClosedRooms
+                        key={1}
+                        navigation={this.props.navigation}
+                        title={'Closed Rooms'}
+                        handleAddToFav={this.handleAddToFav}
+                        boldTitle={true} />
                 </ScrollView>
             </SafeAreaView>
         );
     }
 }
-
+//  {this.renderListings()}
 
 const ListingsQuery = gql`
   query {

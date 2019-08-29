@@ -130,7 +130,7 @@ class MakeBook extends Component {
     choosemodal(text) {
         if (text == "food") {
             return (
-                <View style={{ alignSelf: "center", alignItems: "center", backgroundColor: colors.white }}>
+                <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
 
                     <Diet />
                 </View>)
@@ -138,7 +138,7 @@ class MakeBook extends Component {
 
         if (text == "guest") {
             return (
-                <View>
+                <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
                     <Guest />
                 </View>)
         }
@@ -169,19 +169,20 @@ class MakeBook extends Component {
                 style={styles.wrapper}
                 behavior="padding"
             >
+                <Modal
+                    visible={modalOpen}
+                    transparent={true}
+                    animationType="fade"
+                    onRequestClose={() => this._toggleModal(false)}
+                >
+                    {
+                        this.choosemodal(this.state.mode)
+                    }
+                </Modal>
                 <View style={styles.scrollViewWrapper}>
                     <ScrollView style={styles.scrollView}>
                         <View style={styles.container}>
-                            <Modal
-                                visible={modalOpen}
-                                transparent={true}
-                                animationType="fade"
-                                onRequestClose={() => this._toggleModal(false)}
-                            >
-                                {
-                                    this.choosemodal(this.state.mode)
-                                }
-                            </Modal>
+
 
                             <DateTimePicker
                                 isVisible={this.state.showDatetime}

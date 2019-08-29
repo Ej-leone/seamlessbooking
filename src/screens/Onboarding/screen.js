@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SafeAreaView, View, Text } from 'react-native'
+import { SafeAreaView, View, Text, Image } from 'react-native'
 import ActionCreators from '../../redux/actions';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types'
@@ -27,6 +27,8 @@ class Screen1 extends Component {
                 <View style={styles.container}>
                     <Text style={styles.title}> Scheduling space </Text>
                     <Text style={styles.subtitle}>within your workplace</Text>
+                    <Image
+                        source={require('../../img/was.png')} />
                 </View>
             </SafeAreaView>
         )

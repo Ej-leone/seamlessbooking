@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, SafeAreaView, Text, TouchableOpacity } from 'react-native'
+import { View, SafeAreaView, Text, TouchableOpacity, Image } from 'react-native'
 import ActionCreators from '../../redux/actions';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types'
@@ -24,6 +24,11 @@ class LoggedOut extends Component {
             <SafeAreaView style={styles.container}>
                 <Text style={styles.title}> Seamless </Text>
                 <Text style={styles.title}>Booking</Text>
+
+                <Image
+                    style={{ alignSelf: "center" }}
+                    source={require("../../img/as.png")}
+                />
                 <View style={styles.btncontainer}>
                     <TouchableOpacity
                         onPress={() => this.ToSignup()}>

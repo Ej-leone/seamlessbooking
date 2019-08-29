@@ -31,6 +31,7 @@ const renderListings = (props) => {
   const {
     listings, showAddToFav, handleAddToFav, favouriteListings,
   } = props;
+  console.log(listings)
   return listings.map((listing, index) => (
     <TouchableHighlight
       style={styles.card}
@@ -107,10 +108,11 @@ const Listings = (props) => {
             : null}*/
   //render() {
 
-  const { title, boldTitle } = props;
+  const { title, boldTitle, query } = props;
   const titleStyle = boldTitle ? { fontSize: 22, fontWeight: '600' } : { fontSize: 18 };
 
   return (
+
     <View style={styles.wrapper}>
       <View style={styles.titleWrapper}>
         <Text style={[titleStyle, styles.title]}>
@@ -133,6 +135,7 @@ const Listings = (props) => {
         horizontal
         showsHorizontalScrollIndicator={false}
       >
+
         {renderListings(props)}
       </ScrollView>
     </View>
