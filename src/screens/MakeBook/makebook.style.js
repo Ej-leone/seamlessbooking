@@ -15,11 +15,13 @@ if (size === 'small') {
 export default StyleSheet.create({
     wrapper: {
         display: 'flex',
+        height: "100%",
         flex: 1,
     },
     scrollViewWrapper: {
         marginTop: 70,
         flex: 1,
+
         padding: 0,
         position: 'absolute',
         left: 0,
@@ -28,7 +30,8 @@ export default StyleSheet.create({
         bottom: 0,
     },
     container: {
-        flex: 1
+        flex: 1,
+        height: "100%",
     },
     scrollView: {
         paddingLeft: 30,
@@ -70,13 +73,15 @@ export default StyleSheet.create({
         justifyContent: "space-between"
     },
     btn: {
-        position: "absolute",
-        marginBottom: 1,
-        bottom: 0,
+        marginTop: 10,
+        justifyContent: "center",
+        height: 40,
         backgroundColor: color.maincolor,
 
     },
     btntxt: {
-        color: color.white
+        color: color.white,
+        textAlign: "center"
+
     }
 })

@@ -65,7 +65,7 @@ class MakeBook extends Component {
             StartTime: "",
             EndTime: "",
             Guest: "",
-            Guestemails: [],
+            Guestemails: '',
             Food: [],
             modalOpen: false,
             showDatetime: false,
@@ -81,10 +81,10 @@ class MakeBook extends Component {
         })
     }
 
-    _setGuest(num) { this.setState({ Guest: num }) }
+    _setGuest(num, mail) { this.setState({ Guest: num, Guestemails: mail, modalOpen: false }) }
     _setStartTime(time) { this.setState({ StartTime: time }) }
     _setEndTime(time) { this.setState({ EndTime: time }) }
-    _setGuestEmail(arr) { this.setState({ Guestemails: arr }) }
+
     _setFood(foo) { this.setState({ Food: foo }) }
 
     _toggleModal(tr) {
@@ -139,7 +139,7 @@ class MakeBook extends Component {
         if (text == "guest") {
             return (
                 <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
-                    <Guest close={(tr) => this._toggleModal(tr)} />
+                    <Guest close={(tr) => this._toggleModal(tr)} save={(x, y) => this._setGuest(x, y)} />
                 </View>)
         }
 
@@ -203,7 +203,8 @@ class MakeBook extends Component {
 
 
                             <Text style={styles.title}>Meeting Agenda  </Text>
-                            <TextInput />
+                            <TextInput
+                                placeholder={"Enter the meeting Agenda"} />
 
                             <Text style={styles.subtitle}> Requirements</Text>
                             <View style={styles.mincontainer}>
@@ -227,11 +228,13 @@ class MakeBook extends Component {
                             </View>
 
                             <Mutation mutation={createBooking} variables={this.state}>
-                                {createBooking =>
+                                {(createBooking, { loading, error, data }) =>
                                     <TouchableOpacity
                                         onPress={createBooking}>
                                         <View style={styles.btn}>
+
                                             <Text style={styles.btntxt}>Book Room</Text>
+
                                         </View>
                                     </TouchableOpacity>
                                 }
