@@ -132,14 +132,14 @@ class MakeBook extends Component {
             return (
                 <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
 
-                    <Diet />
+                    <Diet close={(tr) => this._toggleModal(tr)} />
                 </View>)
         }
 
         if (text == "guest") {
             return (
                 <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
-                    <Guest />
+                    <Guest close={(tr) => this._toggleModal(tr)} />
                 </View>)
         }
 

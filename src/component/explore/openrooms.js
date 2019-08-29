@@ -19,12 +19,12 @@ import { getOpenRooms, getClosedRooms, } from '../../services/getrooms'
 
 const _movetoBook = (props) => {
 
-    props.navigation.navigate("Book", { RoomId: "LJqUQPuIQ4cYXw8me8Zo" })
+    props.navigation.navigate("Book", { RoomId: props.RoomId })
 
 }
 const _movetoRoomDetail = (props) => {
 
-    props.navigation.navigate("RoomDetail", { RoomId: "LJqUQPuIQ4cYXw8me8Zo" })
+    props.navigation.navigate("RoomDetail", { RoomId: props.RoomId })
 }
 
 
@@ -53,7 +53,7 @@ const renderListings = (props) => {
                         )
                         : null}
                     <TouchableOpacity
-                        onPress={() => _movetoRoomDetail(props)}
+                        onPress={() => _movetoRoomDetail({ ...props, RoomId: listing.id })}
                     >
                         <Image
                             style={styles.image}
@@ -79,7 +79,7 @@ const renderListings = (props) => {
                     </Text>
                     <Text style={styles.greenText}> Open Till  6:00 am</Text>
                     <TouchableOpacity
-                        onPress={() => _movetoBook(props)}>
+                        onPress={() => _movetoBook({ ...props, RoomId: listing.id })}>
                         <View style={styles.redbtn}>
                             <Text style={styles.redbtntxt}>Book room</Text>
                         </View>

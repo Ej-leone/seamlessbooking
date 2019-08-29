@@ -16,7 +16,6 @@ query ($roomId: String!){
        Capacity
        Description
        Building
-
    }
 
   
@@ -27,7 +26,7 @@ query ($roomId: String!){
 export const getOpenRooms = gql`
 query {
     getrooms {
-        
+        id
        Name
    }
 
@@ -39,7 +38,7 @@ query {
 export const getClosedRooms = gql`
 query {
     getrooms {
-        
+        id
        Name
    }
 

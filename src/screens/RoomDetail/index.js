@@ -38,6 +38,7 @@ export default class RoomDetail extends Component {
     }
     componentDidMount() {
         const RoomId = this.props.navigation.getParam('RoomId', 'NO-ID');
+
         this.setState({
             RoomId
         })
@@ -59,7 +60,7 @@ export default class RoomDetail extends Component {
                                     if (error) {
                                         return (
                                             <Text>
-                                                Error loading this room
+                                                ` Error loading this room ${error.message}`
                                             </Text>
                                         )
                                     }
@@ -72,6 +73,7 @@ export default class RoomDetail extends Component {
                                     }
 
                                     if (data) {
+
                                         return (
                                             <View style={styles.container}>
                                                 <Text style={styles.title}> {data.Building}</Text>
