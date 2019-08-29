@@ -6,7 +6,8 @@ import styles from './Setting.style'
 
 const Card = (props) => {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity
+            onPress={() => props.navigate.navigate(props.to)}>
             <View style={styles.card}>
                 <Icon
                     name={props.iconname}

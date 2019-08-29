@@ -24,7 +24,14 @@ export default class ARooms extends Component {
         return (
             <View>
                 <Text> All meetings </Text>
-                <Query query={roomQuery}>
+
+            </View>
+        )
+    }
+}
+
+/*
+   <Query query={roomQuery}>
                     {({ loading, error, data }) => {
                         if (loading) {
                             return <Text>Loading</Text>
@@ -52,8 +59,4 @@ export default class ARooms extends Component {
 
                         }
                     }}
-                </Query>
-            </View>
-        )
-    }
-}
+                </Query> */

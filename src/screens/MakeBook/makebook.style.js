@@ -64,6 +64,7 @@ export default StyleSheet.create({
         marginLeft: cardMargin,
     },
     subtitle: {
+        marginTop: 10,
         color: color.gray03,
         fontSize: 20,
         fontWeight: "500"

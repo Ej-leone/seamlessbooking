@@ -14,19 +14,20 @@ class Settings extends Component {
 
 
     render() {
+        const { navigation } = this.props
         return (
             <SafeAreaView style={styles.container}>
                 <Text style={styles.Title}>Settings</Text>
                 <View style={styles.cardview}>
-                    <Card name={"Edit Rooms"} iconname={"ios-list"} />
-                    <Card name={"Edit Users"} iconname={"ios-people"} />
-                    <Card name={"Checklist"} iconname={"ios-checkbox-outline"} />
+                    <Card name={"Edit Rooms"} iconname={"ios-list"} navigate={navigation} to={"EditRooms"} />
+                    <Card name={"Edit Users"} iconname={"ios-people"} navigate={navigation} to={"EditUsers"} />
+                    <Card name={"Edit Meetings"} iconname={"ios-checkbox-outline"} navigate={navigation} to={"EditMeeting"} />
 
                 </View>
                 <View style={styles.cardview}>
-                    <Card name={"Edit Locations"} iconname={"ios-pin"} />
-                    <Card name={"Reports"} iconname={"ios-podium"} />
-                    <Card name={"Support"} iconname={"ios-podium"} />
+                    <Card name={"Edit Locations"} iconname={"ios-pin"} navigate={navigation} to={"EditLocation"} />
+                    <Card name={"Reports"} iconname={"ios-podium"} navigate={navigation} to={"Report"} />
+                    <Card name={"Support"} iconname={"ios-podium"} navigate={navigation} to={"Support"} />
                 </View>
 
 

@@ -14,11 +14,18 @@ import MeetingDetail from '../screens/MeetingDetail'
 import TabNavigator from './TabNavigator'
 import Room from '../screens/Room'
 
+import EditMeeting from '../screens/EditMeeting'
+import EditUsers from '../screens/EditUsers'
+import Support from "../screens/Support";
+
 const Internal = createStackNavigator({
     Tab: { screen: TabNavigator },
     Book: MakeBook,
     Report: Report,
     EditRooms: ARooms,
+    EditMeeting: EditMeeting,
+    EditUsers: EditUsers,
+    Support: Support,
     RoomDetail: RoomDetail,
     MeetingDetail: MeetingDetail
 })
