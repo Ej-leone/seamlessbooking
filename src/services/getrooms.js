@@ -10,8 +10,8 @@ query {
 `;
 
 export const roomDescriptionQuery = gql`
-query ($roomId: String!){
-    getRoomDetail (RoomId: $roomId){
+query ($RoomId: String!){
+    getRoomDetail (RoomId: $RoomId){
        Name
        Capacity
        Description

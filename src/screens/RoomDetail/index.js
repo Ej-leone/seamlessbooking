@@ -76,7 +76,7 @@ export default class RoomDetail extends Component {
 
                                         return (
                                             <View style={styles.container}>
-                                                <Text style={styles.title}> {data.Building}</Text>
+                                                <Text style={styles.title}> {data.getRoomDetail.Name}</Text>
                                                 <View style={styles.imgview}>
                                                     <Image
                                                         style={styles.img}
@@ -102,7 +102,7 @@ export default class RoomDetail extends Component {
                                                 </View>
 
                                                 <Text style={styles.title}> Direction </Text>
-                                                <Text>{data.Description}</Text>
+                                                <Text>{data.getRoomDetail.Description}</Text>
                                             </View>
                                         )
                                     }

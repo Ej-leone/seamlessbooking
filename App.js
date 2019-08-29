@@ -14,6 +14,11 @@ StatusBar.setBarStyle('light-content', true);
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: NETWORK_INTERFACE }),
+  onError: ({ networkError, graphQLErrors }) => {
+    console.log('graphQLErrors', graphQLErrors)
+    console.log('networkError', networkError)
+  }
+  ,
   cache: new InMemoryCache()
 })
 

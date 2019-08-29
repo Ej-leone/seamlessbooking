@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Picker } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 class Report extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            language: ""
+        }
+    }
 
     onMailreport(data) {
         //Todo:contact request funnction
