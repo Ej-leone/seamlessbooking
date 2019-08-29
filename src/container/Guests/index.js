@@ -43,14 +43,24 @@ export default class Guest extends Component {
     }
 
     increment() {
-        let guestnumber = this.state.guestnumber + 1
+        let guestnumber = this.state.guestnumber
+
+        if (this.state.guestnumber > 0) {
+            guestnumber = guestnumber + 1
+        }
+
+
         this.setState({
             guestnumber
         })
     }
 
     decrement() {
-        let guestnumber = this.state.guestnumber - 1
+
+        let guestnumber = this.state.guestnumber
+        if (this.state.guestnumber > 0) {
+            guestnumber = guestnumber - 1
+        }
         this.setState({
             guestnumber
         })
