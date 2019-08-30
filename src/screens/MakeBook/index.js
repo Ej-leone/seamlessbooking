@@ -13,7 +13,7 @@ import styles from './makebook.style'
 import RadioInput from '../../component/form/RadioInput'
 import Guest from '../../container/Guests'
 import Diet from '../../container/Diet'
-
+import Error from '../../container/Error'
 
 
 
@@ -61,15 +61,15 @@ class MakeBook extends Component {
         super();
         this.state = {
             RoomId: "",
-            Date: "",
-            StartTime: "",
-            EndTime: "",
-            Guest: "",
-            Guestemails: '',
-            Food: [],
+            CheckIn: "testdate",
+            CheckOut: "testdate2",
+            numGuests: 8,
+            food: ["String"],
+            FoodTime: "String",
             modalOpen: false,
             showDatetime: false,
-            mode: " "
+            mode: " ",
+            errormessage: ""
         }
     }
 
@@ -110,7 +110,7 @@ class MakeBook extends Component {
         })
     }
     async _startguestmodal() {
-        console.log('guest')
+
         await this.setState({
             mode: "guest",
             modalOpen: true
@@ -118,7 +118,7 @@ class MakeBook extends Component {
         this._toggleModal(true)
     }
     async _startfoodemodal() {
-        console.log('food')
+
         await this.setState({
             mode: "food",
             modalOpen: true
@@ -143,6 +143,10 @@ class MakeBook extends Component {
                 </View>)
         }
 
+        if (text == "error") {
+            return <Error close={(tr) => this._toggleModal(tr)} />
+
+        }
     }
 
     hideDateTimePicker = () => {
@@ -161,6 +165,28 @@ class MakeBook extends Component {
         }
 
     };
+
+    renderResponeModel(success) {
+
+
+        if (success == "false") {
+            this.setState({
+                mode: "error",
+                modalOpen: true,
+
+
+            })
+        }
+        if (success == "true") {
+
+            this.setState({
+                mode: "error",
+                modalOpen: true,
+
+            })
+        }
+
+    }
 
     render() {
         const { mode, modalOpen } = this.state
@@ -206,6 +232,11 @@ class MakeBook extends Component {
                             <TextInput
                                 placeholder={"Enter the meeting Agenda"} />
 
+                            <TouchableOpacity
+                                onPress={() => this._startfoodemodal()}>
+                                <Text>Dietary Requirements</Text>
+                            </TouchableOpacity>
+
                             <Text style={styles.subtitle}> Requirements</Text>
                             <View style={styles.mincontainer}>
                                 <Pickerr name={"Air conndition"} />
@@ -227,16 +258,35 @@ class MakeBook extends Component {
                                 <Pickerr name={"Video Conferencing"} />
                             </View>
 
-                            <Mutation mutation={createBooking} variables={this.state}>
-                                {(createBooking, { loading, error, data }) =>
-                                    <TouchableOpacity
-                                        onPress={createBooking}>
-                                        <View style={styles.btn}>
+                            <Mutation mutation={createBooking}
+                                onCompleted={(data => this.renderResponeModel(data.book.success))}
+                                onError={(error) => this.setState({
+                                    mode: "error",
+                                    modalOpen: true
+                                })}
+                                variables={{
+                                    input: {
+                                        RoomId: "test1",
+                                        CheckIn: "testdate",
+                                        CheckOut: "testdate2",
+                                        numGuests: 8,
+                                        food: ["String"],
+                                        FoodTime: "String"
+                                    }
+                                }}>
+                                {(createBooking, { loading, error, data }) => {
 
-                                            <Text style={styles.btntxt}>Book Room</Text>
+                                    return (
+                                        <TouchableOpacity
+                                            onPress={createBooking}>
 
-                                        </View>
-                                    </TouchableOpacity>
+                                            <View style={styles.btn}>
+
+                                                {loading ? <Text style={styles.btntxt}> Booking ...</Text> : <Text style={styles.btntxt}> Book Room</Text>}
+
+                                            </View>
+                                        </TouchableOpacity>)
+                                }
                                 }
                             </Mutation>
                         </View>

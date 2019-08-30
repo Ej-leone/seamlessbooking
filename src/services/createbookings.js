@@ -12,8 +12,8 @@ export const cancelBooking = async (id, data) => {
 }*/
 export const createBooking = gql`
 
-mutation {
-    book  {
+mutation ($input : BookingInput) {
+    book (Input : $input) {
         success
     }
 }
