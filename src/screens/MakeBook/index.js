@@ -63,6 +63,7 @@ class MakeBook extends Component {
             RoomId: "",
             CheckIn: "testdate",
             CheckOut: "testdate2",
+            Date: "",
             numGuests: 8,
             food: ["String"],
             FoodTime: "String",
@@ -129,18 +130,13 @@ class MakeBook extends Component {
 
     choosemodal(text) {
         if (text == "food") {
-            return (
-                <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
+            return <Diet close={(tr) => this._toggleModal(tr)} />
 
-                    <Diet close={(tr) => this._toggleModal(tr)} />
-                </View>)
         }
 
         if (text == "guest") {
-            return (
-                <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
-                    <Guest close={(tr) => this._toggleModal(tr)} save={(x, y) => this._setGuest(x, y)} />
-                </View>)
+            return <Guest close={(tr) => this._toggleModal(tr)} save={(x, y) => this._setGuest(x, y)} />
+
         }
 
         if (text == "error") {

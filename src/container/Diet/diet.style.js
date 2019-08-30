@@ -1,6 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import color from '../../styles/colors'
+const { width, height } = Dimensions.get('window')
 export default StyleSheet.create({
+    cont: {
+        width: width / 1.3,
+        backgroundColor: color.white,
+        alignSelf: "center",
+        borderRadius: 10,
+        padding: 10
+    },
     title: {
         color: color.black,
         textAlign: "center"

@@ -45,7 +45,7 @@ export default class Guest extends Component {
     increment() {
         let guestnumber = this.state.guestnumber
 
-        if (this.state.guestnumber > 0) {
+        if (this.state.guestnumber >= 0) {
             guestnumber = guestnumber + 1
         }
 
@@ -67,30 +67,30 @@ export default class Guest extends Component {
     }
     render() {
         return (
+            <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
+                <View style={styles.cont}>
+                    <View>
+                        <TouchableOpacity
+                            onPress={() => this.props.close(false)}>
+                            <Text style={styles.subtitle}>clear</Text>
+                        </TouchableOpacity>
+                    </View>
 
-            <View style={{ backgroundColor: colors.white }}>
-                <View>
-                    <TouchableOpacity
-                        onPress={() => this.props.close(false)}>
-                        <Text style={styles.subtitle}>clear</Text>
-                    </TouchableOpacity>
-                </View>
-
-                <Text style={styles.text}>
-                    How many guest ?
+                    <Text style={styles.text}>
+                        How many guest ?
                     </Text>
 
-                <Cview guestnum={this.state.guestnumber} inc={() => this.increment()} dec={() => this.decrement()} />
-                <Text style={styles.text}>Main guest email</Text>
-                <TextInput
-                    onChange={guestmail => this.setState({ guestmail })}
-                    placeholder="Enter email address of main Guest" />
+                    <Cview guestnum={this.state.guestnumber} inc={() => this.increment()} dec={() => this.decrement()} />
+                    <Text style={styles.text}>Main guest email</Text>
+                    <TextInput
+                        onChange={guestmail => this.setState({ guestmail })}
+                        placeholder="Enter email address of main Guest" />
 
-                <TouchableOpacity onPress={() => this.props.save(this.state.guestnumber, this.state.guestmail)}>
-                    <Text>Okay</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.save(this.state.guestnumber, this.state.guestmail)}>
+                        <Text>Okay</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-
         )
     }
 }

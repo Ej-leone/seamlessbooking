@@ -37,26 +37,27 @@ const Cview = (props) => {
 export default class Diet extends Component {
     render() {
         return (
-            <View>
-                <View>
-                    <TouchableOpacity onPress={() => this.props.close(false)}>
-                        <Text style={styles.subtitle}>clear</Text>
+            <View style={{ flex: 1, justifyContent: "center", backgroundColor: 'rgba(0,0,0,0.7)' }}>
+                <View style={styles.cont}>
+                    <View>
+                        <TouchableOpacity onPress={() => this.props.close(false)}>
+                            <Text style={styles.subtitle}>clear</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <Text style={styles.text}>Dietary Requirements</Text>
+
+                    <Cview food={'Halaal'} />
+                    <Cview food={'Kosher'} />
+                    <Cview food={'Vegan'} />
+                    <Cview food={'Non Diary'} />
+
+                    <Text style={styles.text}>Catering Time Slot</Text>
+
+                    <TouchableOpacity>
+                        <Text>Choose Time</Text>
                     </TouchableOpacity>
                 </View>
-                <Text style={styles.text}>Dietary Requirements</Text>
-
-                <Cview food={'Halaal'} />
-                <Cview food={'Kosher'} />
-                <Cview food={'Vegan'} />
-                <Cview food={'Non Diary'} />
-
-                <Text style={styles.text}>Catering Time Slot</Text>
-
-                <TouchableOpacity>
-                    <Text>Choose Time</Text>
-                </TouchableOpacity>
             </View>
-
         )
     }
 }
