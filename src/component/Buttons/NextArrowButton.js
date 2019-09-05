@@ -11,9 +11,9 @@ import {
 import colors from '../../styles/colors';
 import iPhoneSize from '../../helpers/utils';
 
-const size = iPhoneSize();
-const buttonSize = 60;
-const buttonWrapperPadding = 0;
+let size = iPhoneSize();
+let buttonSize = 60;
+let buttonWrapperPadding = 0;
 
 if (size === 'small') {
   buttonSize = 50;
