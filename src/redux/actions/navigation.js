@@ -1,6 +1,6 @@
 
 import * as types from './types';
-import { login } from '../../services/authentication'
+import { login, logout } from '../../services/authentication'
 //import user from '../../data/user.json';
 
 const setLoggedInState = loggedInState => (
@@ -32,10 +32,10 @@ const logIn = (email, password) => {
 };
 
 
-export const signOutUser = () => (dispatch) => {
+const signOutUser = () => (dispatch) => {
   dispatch({ type: types.SET_INITIAL_STATE });
+  logout()
 
-  firebase.auth().signOut();
 };
 
 
@@ -67,5 +67,6 @@ const authFailMessage = (errorCode) => {
 
 export {
   logIn,
+  signOutUser,
   setLoggedInState,
 };

@@ -16,5 +16,5 @@ export const signup = async user => {
 
 export const getclaims = async () => {
     await auth().currentUser.getIdToken(true)
-    return await auth().currentUser.getIdToken()
+    return await auth().currentUser.getIdTokenResult()
 }

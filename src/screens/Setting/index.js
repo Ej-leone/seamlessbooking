@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import ActionCreators from '../../redux/actions';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { getclaims } from '@services/authentication'
 import Card from './card'
@@ -37,14 +39,22 @@ class Settings extends Component {
         }
     }
 
+    SignOut() {
+        const { navigation, signOutUser } = this.props;
+        const { navigate } = navigation;
+        signOutUser()
+        navigate("Screen1")
+    }
+
     async componentDidMount() {
         const customclaims = await getclaims()
-        if (getclaims()) {
+        console.log(customclaims)
+        if (customclaims.claims.admin) {
             this.setState({
                 admin: true
             })
         }
-        debugger
+
     }
 
 
@@ -59,7 +69,8 @@ class Settings extends Component {
 
 
                 <View style={styles.bottomView}>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => this.SignOut()}>
                         <View style={styles.btnnview} >
                             <Icon
                                 name={'ios-power'}
@@ -72,7 +83,7 @@ class Settings extends Component {
                     <Text>Seasmless Booking All Rights Reserved version 1</Text>
                 </View>
 
-            </SafeAreaView>
+            </SafeAreaView >
         )
     }
 }
@@ -81,8 +92,5 @@ const mapStateToProps = (state) => ({
     state: state
 })
 
-const mapDispatchToProps = {
-
-}
-
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Settings)
