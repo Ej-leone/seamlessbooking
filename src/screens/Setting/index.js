@@ -3,32 +3,59 @@ import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import { getclaims } from '@services/authentication'
 import Card from './card'
 import colors from '../../styles/colors';
 import styles from './Setting.style'
 
 
-class Settings extends Component {
+const AdminView = (props) => {
+    return (
+        <View>
+            <View style={styles.cardview}>
+                <Card name={"Edit Rooms"} iconname={"ios-list"} navigate={props.navigation} to={"EditRooms"} />
+                <Card name={"Edit Users"} iconname={"ios-people"} navigate={props.navigation} to={"EditUsers"} />
+                <Card name={"Edit Meetings"} iconname={"ios-checkbox-outline"} navigate={props.navigation} to={"EditMeeting"} />
 
+            </View>
+            <View style={styles.cardview}>
+                <Card name={"Edit Locations"} iconname={"ios-pin"} navigate={props.navigation} to={"EditLocation"} />
+                <Card name={"Reports"} iconname={"ios-podium"} navigate={props.navigation} to={"Report"} />
+                <Card name={"Support"} iconname={"ios-podium"} navigate={props.navigation} to={"Support"} />
+            </View>
+        </View>
+    )
+}
+
+
+
+class Settings extends Component {
+    constructor(props) {
+        super()
+        this.state = {
+            admin: false
+        }
+    }
+
+    async componentDidMount() {
+        const customclaims = await getclaims()
+        if (getclaims()) {
+            this.setState({
+                admin: true
+            })
+        }
+        debugger
+    }
 
 
     render() {
         const { navigation } = this.props
+        const { admin } = this.state
         return (
             <SafeAreaView style={styles.container}>
                 <Text style={styles.Title}>Settings</Text>
-                <View style={styles.cardview}>
-                    <Card name={"Edit Rooms"} iconname={"ios-list"} navigate={navigation} to={"EditRooms"} />
-                    <Card name={"Edit Users"} iconname={"ios-people"} navigate={navigation} to={"EditUsers"} />
-                    <Card name={"Edit Meetings"} iconname={"ios-checkbox-outline"} navigate={navigation} to={"EditMeeting"} />
+                {admin ? <AdminView navigation /> : null}
 
-                </View>
-                <View style={styles.cardview}>
-                    <Card name={"Edit Locations"} iconname={"ios-pin"} navigate={navigation} to={"EditLocation"} />
-                    <Card name={"Reports"} iconname={"ios-podium"} navigate={navigation} to={"Report"} />
-                    <Card name={"Support"} iconname={"ios-podium"} navigate={navigation} to={"Support"} />
-                </View>
 
 
                 <View style={styles.bottomView}>
@@ -51,7 +78,7 @@ class Settings extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    state: state
 })
 
 const mapDispatchToProps = {
