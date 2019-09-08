@@ -44,6 +44,8 @@ class Login extends Component {
             validEmail: false,
             emailAddress: '',
             password: '',
+            user: '',
+            error: '',
             validPassword: false,
             loadingVisible: false,
         };
@@ -62,14 +64,48 @@ class Login extends Component {
         //debugger;
         //setTimeout(() => {
         const { emailAddress, password } = this.state;
-        // if (logIn(emailAddress, password)) {
-        this.setState({ formValid: true, loadingVisible: false });
-        navigate('Tab');
+        logIn(emailAddress, password)
+        //this.setState({ formValid: true, loadingVisible: false });
+        //navigate('Tab');
         // } else {
-        this.setState({ formValid: false, loadingVisible: false });
+        //this.setState({ formValid: false, loadingVisible: false });
         //  }
         // }, 2000);
     }
+
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.user) {
+            const { navigation } = this.props;
+            const { navigate } = navigation;
+            console.log(`UserState here`)
+            this.setState({ formValid: true });
+            navigate('Tab');
+        }
+        else {
+            console.log(` Error State here`)
+            this.setState({ formValid: false });
+        }
+    }
+    /*
+static getDerivedStateFromProps(nextProps, prevState) {
+
+    if (nextProps.user !== prevState.user) {
+        console.log(`UserState here`)
+    }
+    if (nextProps.error !== prevState.error) {
+        console.log(` Error State here`)
+        debugger
+        this.setState({ formValid: false });
+        return {
+
+            prevId: nextProps.id
+        }
+    }
+
+
+    return null
+}*/
 
     handleCloseNotification() {
         this.setState({ formValid: true });
@@ -117,7 +153,7 @@ class Login extends Component {
         const {
             formValid, validEmail, validPassword,
         } = this.state;
-        const { loadingVisible, SignError } = this.props
+        const { SignError, loadingVisible } = this.props
         const showNotification = !formValid;
         const background = formValid ? colors.maincolor : colors.blue;
         const notificationMarginTop = showNotification ? 10 : 0;
@@ -180,10 +216,9 @@ class Login extends Component {
 
 const mapStateToProps = (state) => (
     {
-        //state: state,
-        loadingVisible: state.loading,
-        SignError: state.error,
-
+        loadingVisible: state.default.loading,
+        SignError: state.default.error,
+        user: state.default.user,
         loggedInStatus: state.loggedInStatus,
         loginError: state.loginError,
     })

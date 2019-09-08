@@ -1,4 +1,4 @@
-import * as types from './types';
+import * as types from '../actions/types';
 
 const INITIAL_STATE = {
     error: '',
@@ -8,19 +8,19 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case SIGN_UP_REQUEST:
+        case types.SIGN_UP_REQUEST:
             return { ...state, ...INITIAL_STATE, loading: true };
-        case SIGN_UP_SUCCESS:
+        case types.SIGN_UP_SUCCESS:
             return { ...state, ...INITIAL_STATE, user: action.payload };
-        case SIGN_UP_FAILURE:
+        case types.SIGN_UP_FAILURE:
             return { ...state, ...INITIAL_STATE, error: action.payload };
-        case SIGN_IN_REQUEST:
+        case types.SIGN_IN_REQUEST:
             return { ...state, ...INITIAL_STATE, loading: true };
-        case SIGN_IN_SUCCESS:
+        case types.SIGN_IN_SUCCESS:
             return { ...state, ...INITIAL_STATE, user: action.payload };
-        case SIGN_IN_FAILURE:
+        case types.SIGN_IN_FAILURE:
             return { ...state, ...INITIAL_STATE, error: action.payload };
-        case SET_INITIAL_STATE:
+        case types.SET_INITIAL_STATE:
             return { ...state, ...INITIAL_STATE };
         default:
             return state;
