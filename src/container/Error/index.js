@@ -15,6 +15,7 @@ const ErrorModal = (props) => {
                         <Text>Clear</Text>
                     </TouchableOpacity>
                     <Text>Booking has failed Try again</Text>
+                    <Text>{props.message}</Text>
                 </View>
             </View>
         )

@@ -61,10 +61,12 @@ class MakeBook extends Component {
         super();
         this.state = {
             RoomId: "",
+            MeetingAgenda: "",
             CheckIn: "testdate",
             CheckOut: "testdate2",
             Date: "",
-            numGuests: 8,
+            Time: "",
+            numGuests: 0,
             food: ["String"],
             FoodTime: "String",
             modalOpen: false,
@@ -82,9 +84,12 @@ class MakeBook extends Component {
         })
     }
 
-    _setGuest(num, mail) { this.setState({ Guest: num, Guestemails: mail, modalOpen: false }) }
-    _setStartTime(time) { this.setState({ StartTime: time }) }
-    _setEndTime(time) { this.setState({ EndTime: time }) }
+    _setGuest(num, mail) {
+
+        this.setState({ numGuests: num, Guestemails: mail, modalOpen: false })
+    }
+    _setStartTime(time) { this.setState({ CheckIn: time }) }
+    _setEndTime(time) { this.setState({ CheckOut: time }) }
 
     _setFood(foo) { this.setState({ Food: foo }) }
 
@@ -97,15 +102,17 @@ class MakeBook extends Component {
     async _startdatemodal() {
         console.log('date')
         await this.setState({
-            mode: 'date',
+            cmode: 'in',
+            mode: 'datetime',
             showDatetime: true
 
         })
     }
     async  _starttimemodal() {
-        console.log('time')
+
         await this.setState({
-            mode: 'time',
+            cmode: 'out',
+            mode: 'datetime',
             showDatetime: true
 
         })
@@ -140,7 +147,7 @@ class MakeBook extends Component {
         }
 
         if (text == "error") {
-            return <Error close={(tr) => this._toggleModal(tr)} />
+            return <Error message={this.state.errormessage} close={(tr) => this._toggleModal(tr)} />
 
         }
     }
@@ -150,13 +157,14 @@ class MakeBook extends Component {
     };
 
     handleDatePicked = date => {
-        if (this.state.mode == 'date') {
-            this.setState({ setDate: date.toString() });
+        console.log(`date ${this.state.cmode}`)
+        if (this.state.cmode == 'in') {
+            this.setState({ CheckIn: date.toString() });
             this.hideDateTimePicker();
         }
 
-        if (this.state.mode == 'time') {
-            this.setState({ setTime: date.toString() });
+        if (this.state.cmode == 'out') {
+            this.setState({ CheckOut: date.toString() });
             this.hideDateTimePicker();
         }
 
@@ -217,15 +225,16 @@ class MakeBook extends Component {
 
                             <Text style={styles.subtitle}>Choose </Text>
                             <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-                                <Card name={'Date'} value={'8/8/19'} iconnname={"calendar-o"} click={() => this._startdatemodal()} close={() => this._toggleModal()} />
-                                <Card name={'Time'} value={'12:00'} iconnname={"clock-o"} click={() => this._starttimemodal()} close={() => this._toggleModal()} />
-                                <Card name={'Guest'} value={'10'} iconnname={"users"} click={() => this._startguestmodal()} close={() => this._toggleModal()} />
+                                <Card name={'Check In'} value={this.state.CheckIn} iconnname={"calendar-o"} click={() => this._startdatemodal()} close={() => this._toggleModal()} />
+                                <Card name={'Check Out'} value={this.state.CheckOut} iconnname={"clock-o"} click={() => this._starttimemodal()} close={() => this._toggleModal()} />
+                                <Card name={'Guest'} value={this.state.numGuests} iconnname={"users"} click={() => this._startguestmodal()} close={() => this._toggleModal()} />
                             </View>
 
 
 
                             <Text style={styles.title}>Meeting Agenda  </Text>
                             <TextInput
+                                onChange={text => this.setState({ MeetingAgenda: text })}
                                 placeholder={"Enter the meeting Agenda"} />
 
                             <TouchableOpacity
@@ -258,14 +267,16 @@ class MakeBook extends Component {
                                 onCompleted={(data => this.renderResponeModel(data.book.success))}
                                 onError={(error) => this.setState({
                                     mode: "error",
+                                    errormessage: error.message,
                                     modalOpen: true
                                 })}
                                 variables={{
                                     input: {
-                                        RoomId: "test1",
-                                        CheckIn: "testdate",
-                                        CheckOut: "testdate2",
-                                        numGuests: 8,
+                                        RoomId: this.state.RoomId,
+                                        MeetingAgenda: this.state.MeetingAgenda,
+                                        CheckIn: this.state.CheckIn,
+                                        CheckOut: this.state.CheckOut,
+                                        numGuests: this.state.numGuests,
                                         food: ["String"],
                                         FoodTime: "String"
                                     }
@@ -274,6 +285,7 @@ class MakeBook extends Component {
 
                                     return (
                                         <TouchableOpacity
+                                            disabled={loading}
                                             onPress={createBooking}>
 
                                             <View style={styles.btn}>
