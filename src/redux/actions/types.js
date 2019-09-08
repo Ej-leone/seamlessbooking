@@ -1,6 +1,16 @@
 // Navigation
 export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';
 export const SET_LOGGED_IN_STATE = 'SET_LOGGED_IN_STATE';
+export const SET_INITIAL_STATE = 'SET_INITIAL_STATE';
+
+export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS';
+export const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
+
+export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST';
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 
 export const C_EVENTSTART = "CREATE_EVENTSTART"
 export const C_EVENTSUCCESS = "CREATE_EVENTSUCCESS"

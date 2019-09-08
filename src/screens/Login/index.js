@@ -59,16 +59,16 @@ class Login extends Component {
         this.setState({ loadingVisible: true });
         const { logIn, navigation } = this.props;
         const { navigate } = navigation;
-
-        setTimeout(() => {
-            const { emailAddress, password } = this.state;
-            if (logIn(emailAddress, password)) {
-                this.setState({ formValid: true, loadingVisible: false });
-                navigate('Tab');
-            } else {
-                this.setState({ formValid: false, loadingVisible: false });
-            }
-        }, 2000);
+        //debugger;
+        //setTimeout(() => {
+        const { emailAddress, password } = this.state;
+        // if (logIn(emailAddress, password)) {
+        this.setState({ formValid: true, loadingVisible: false });
+        navigate('Tab');
+        // } else {
+        this.setState({ formValid: false, loadingVisible: false });
+        //  }
+        // }, 2000);
     }
 
     handleCloseNotification() {
@@ -115,8 +115,9 @@ class Login extends Component {
 
     render() {
         const {
-            formValid, loadingVisible, validEmail, validPassword,
+            formValid, validEmail, validPassword,
         } = this.state;
+        const { loadingVisible, SignError } = this.props
         const showNotification = !formValid;
         const background = formValid ? colors.maincolor : colors.blue;
         const notificationMarginTop = showNotification ? 10 : 0;
@@ -168,7 +169,7 @@ class Login extends Component {
                         showNotification={showNotification}
                         handleCloseNotification={this.handleCloseNotification}
                         type="Error"
-                        firstLine="Those credentials don't look right."
+                        firstLine={SignError}
                         secondLine="Please try again."
                     />
                 </View>
@@ -177,10 +178,15 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    loggedInStatus: state.loggedInStatus,
-    loginError: state.loginError,
-})
+const mapStateToProps = (state) => (
+    {
+        //state: state,
+        loadingVisible: state.loading,
+        SignError: state.error,
+
+        loggedInStatus: state.loggedInStatus,
+        loginError: state.loginError,
+    })
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

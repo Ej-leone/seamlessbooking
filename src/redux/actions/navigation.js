@@ -12,25 +12,58 @@ const setLoggedInState = loggedInState => (
 
 const logIn = (email, password) => {
   const action = (dispatch) => {
+    dispatch({ type: types.SIGN_IN_REQUEST });
+
     login({ email, password }).then(
       user => {
-        // debugger
+
+        console.log(user)
+        dispatch({ type: types.SIGN_IN_SUCCESS, payload: user });
       }
     ).catch(error => {
-      // debugger
-      dispatch(setLoggedInState(false))
-      //etruereturn true
+
+      console.log(error)
+      dispatch({ type: types.SIGN_IN_FAILURE, payload: authFailMessage(error.code) });
+
     })
-    /*if (email === "Ej@sa.com" && password === "123456") {
-      dispatch(setLoggedInState(true));
-      return true;
-    }
-    dispatch(setLoggedInState(false));
-    return false;*/
-    return true
+
   };
   return action;
 };
+
+
+export const signOutUser = () => (dispatch) => {
+  dispatch({ type: types.SET_INITIAL_STATE });
+
+  firebase.auth().signOut();
+};
+
+
+
+const authFailMessage = (errorCode) => {
+  switch (errorCode) {
+    case 'auth/invalid-email':
+      return 'Email is invalid.';
+    case 'auth/user-disabled':
+      return 'User is disabled. Contact the administrator of your organisation';
+    case 'auth/user-not-found':
+      return 'User not found. Contact the administrator of your organisation';
+    case 'auth/wrong-password':
+      return 'Password is invalid.';
+    case 'auth/email-already-in-use':
+      return 'Email address is already in use.';
+    case 'auth/weak-password':
+      return 'Password is not strong enough.';
+    default:
+      return 'Authentication failed.';
+  }
+};
+
+
+
+
+
+
 
 export {
   logIn,
