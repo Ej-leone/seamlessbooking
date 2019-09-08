@@ -7,6 +7,7 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { Root, configureStore } from './src/navigator/AppNavigator';
 import { NETWORK_INTERFACE } from './src/config';
+import { handleFCMNotification } from './src/services/firebasenotification'
 
 
 StatusBar.setBarStyle('light-content', true);
@@ -33,6 +34,7 @@ const App = () => {
   );
 };
 AppRegistry.registerComponent('App', () => App);
+AppRegistry.registerHeadlessTask('RNFirebaseBackgroundMessage', handleFCMNotification)
 
 export default App;
 //export default App;

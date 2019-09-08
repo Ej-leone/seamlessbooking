@@ -1,4 +1,4 @@
-import firebase, { RemoteMessage } from 'react-native-firebase';
+import { firebase } from '@react-native-firebase/messaging';
 
 // Move to a proper place
 export const handleFCMNotification = async (message) => {
