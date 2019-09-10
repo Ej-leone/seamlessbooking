@@ -1,28 +1,31 @@
-import { StatusBar } from 'react-native';
-import createReducer from '../helpers/createReducer';
-import * as types from '../actions/types';
-import AppRouteConfigs from '../../navigator/AppRouteConfigs';
+import { StatusBar } from "react-native";
+import createReducer from "../helpers/createReducer";
+import * as types from "../actions/types";
+import AppRouteConfigs from "../../navigator/AppRouteConfigs";
 
-const firstAction = AppRouteConfigs.router.getActionForPathAndParams('Screen1');
+const firstAction = AppRouteConfigs.router.getActionForPathAndParams("Screen1");
 const initialNavState = AppRouteConfigs.router.getStateForAction(firstAction);
 
-const loggedInStatus = createReducer({}, {
+const loggedInStatus = createReducer(
+  {},
+  {
     [types.SET_LOGGED_IN_STATE](state, action) {
-        return action;
-    },
-});
+      return action;
+    }
+  }
+);
 
 const nav = (state = initialNavState, action) => {
-    const nextState = AppRouteConfigs.router.getStateForAction(action, state);
+  const nextState = AppRouteConfigs.router.getStateForAction(action, state);
 
-    if (action.routeName === 'TurnOnNotifications' || action.routeName === 'LoggedIn') {
-        StatusBar.setBarStyle('dark-content', true);
-    }
+  if (
+    action.routeName === "TurnOnNotifications" ||
+    action.routeName === "LoggedIn"
+  ) {
+    StatusBar.setBarStyle("dark-content", true);
+  }
 
-    return nextState || state;
+  return nextState || state;
 };
 
-export {
-    loggedInStatus,
-    nav,
-};
+export { loggedInStatus, nav };

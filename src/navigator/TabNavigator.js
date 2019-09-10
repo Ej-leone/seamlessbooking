@@ -1,71 +1,66 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import {
-    createBottomTabNavigator,
-    createStackNavigator,
-} from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
-import MakeBook from '../screens/MakeBook'
-import Bookings from '../screens/Bookings'
-import Report from '../screens/Report'
-import Settings from '../screens/Setting'
-import Room from '../screens/Room'
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
+import Icon from "react-native-vector-icons/Ionicons";
+import MakeBook from "../screens/MakeBook";
+import Bookings from "../screens/Bookings";
+import Report from "../screens/Report";
+import Settings from "../screens/Setting";
+import Room from "../screens/Room";
 
-
-
-import colors from '../styles/colors';
+import colors from "../styles/colors";
 
 const CustomTabBarIcon = (name, size) => {
-    const icon = ({ tintColor }) => (
-        <Icon
-            name={name}
-            size={size}
-            color={tintColor}
-        />
-    );
+  const icon = ({ tintColor }) => (
+    <Icon name={name} size={size} color={tintColor} />
+  );
 
-    icon.propTypes = {
-        tintColor: PropTypes.string.isRequired,
-    };
+  icon.propTypes = {
+    tintColor: PropTypes.string.isRequired
+  };
 
-    return icon;
+  return icon;
 };
 
-
-
-const TabNavigator = createBottomTabNavigator({
+const TabNavigator = createBottomTabNavigator(
+  {
     Home: {
-        screen: Room,
-        navigationOptions: {
-            tabBarLabel: 'Home',
-            tabBarIcon: CustomTabBarIcon('ios-home', 22),
-        }
+      screen: Room,
+      navigationOptions: {
+        tabBarLabel: "Home",
+        tabBarIcon: CustomTabBarIcon("ios-home", 22)
+      }
     },
     Bookings: {
-        screen: Bookings,
-        navigationOptions: {
-            tabBarLabel: 'Bookings',
-            tabBarIcon: CustomTabBarIcon('ios-bookmark', 22),
-        }
+      screen: Bookings,
+      navigationOptions: {
+        tabBarLabel: "Bookings",
+        tabBarIcon: CustomTabBarIcon("ios-bookmark", 22)
+      }
     },
     Settings: {
-        screen: Settings,
-        navigationOptions: {
-            tabBarLabel: 'Settings',
-            tabBarIcon: CustomTabBarIcon('ios-settings', 22),
-        }
+      screen: Settings,
+      navigationOptions: {
+        tabBarLabel: "Settings",
+        tabBarIcon: CustomTabBarIcon("ios-settings", 22)
+      }
+    }
+  },
+  {
+    headerMode: "none",
+    tabBarOptions: {
+      labelStyle: {
+        fontWeight: "600",
+        marginBottom: 5
+      },
+      activeTintColor: colors.pink
     },
-}, {
-        headerMode: 'none',
-        tabBarOptions: {
-            labelStyle: {
-                fontWeight: '600',
-                marginBottom: 5,
-            },
-            activeTintColor: colors.pink,
-        },
-        tabBarPosition: 'bottom',
-    });
+    tabBarPosition: "bottom"
+  }
+);
 
 export default TabNavigator;
 /*

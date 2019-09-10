@@ -1,42 +1,38 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
-  Text,
-} from 'react-native';
-import colors from '../../styles/colors';
-import Icon from 'react-native-vector-icons/Ionicons';
-import iPhoneSize from '../../helpers/utils';
-
+  Text
+} from "react-native";
+import colors from "../../styles/colors";
+import Icon from "react-native-vector-icons/Ionicons";
+import iPhoneSize from "../../helpers/utils";
 
 const size = iPhoneSize();
 let cardSize = 100;
 let cardMargin = 8;
 
-if (size === 'small') {
+if (size === "small") {
   cardSize = 90;
   cardMargin = 4;
-} else if (size === 'large') {
+} else if (size === "large") {
   cardSize = 115;
 }
 
-
 const showModal = (name, f, s) => {
-
-  if (name == 'Date') {
-    f()
+  if (name == "Date") {
+    f();
   }
-  if (name == 'Time') {
-    s()
+  if (name == "Time") {
+    s();
   }
-  if (name == 'Buildings') { }
-}
+  if (name == "Buildings") {
+  }
+};
 
-
-const get_Categories = (props) => {
+const get_Categories = props => {
   const { categories, firstclick, secondclick } = props;
   return categories.map((category, index) => (
     <TouchableOpacity
@@ -44,20 +40,15 @@ const get_Categories = (props) => {
       key={`category-item-${index}`}
     >
       <View style={styles.card}>
-        <Icon
-          name={category.photo}
-          size={32}
-          color={colors.maincolor}
-        />
+        <Icon name={category.photo} size={32} color={colors.maincolor} />
         <Text style={styles.text}>{category.name}</Text>
       </View>
     </TouchableOpacity>
   ));
-}
+};
 
 //export default class Categories extends Component {
-const Categories = (props) => {
-
+const Categories = props => {
   //render() {
   return (
     <ScrollView
@@ -69,26 +60,26 @@ const Categories = (props) => {
     </ScrollView>
   );
   // }
-}
+};
 
-export default Categories
+export default Categories;
 
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
   },
   card: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     backgroundColor: colors.white,
     alignItems: "center",
     borderRadius: 10,
     shadowOffset: { width: 2, height: 2 },
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOpacity: 3,
     elevation: 3,
     zIndex: 999,
@@ -97,7 +88,7 @@ const styles = StyleSheet.create({
     marginTop: cardMargin,
     marginBottom: cardMargin,
     marginRight: cardMargin,
-    marginLeft: cardMargin,
+    marginLeft: cardMargin
   },
   text: {
     color: colors.maincolor
@@ -105,6 +96,6 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     width: undefined,
-    height: undefined,
-  },
+    height: undefined
+  }
 });

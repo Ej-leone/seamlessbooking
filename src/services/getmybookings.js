@@ -1,19 +1,17 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const getmybookingsQuery = gql`
-query {
+  query {
     getrooms {
-       Name
-   }
-
-}
+      Name
+    }
+  }
 `;
 
 export const getmyFavouriteQuery = gql`
-query {
+  query {
     getrooms {
-       Name
-   }
-
-}
+      Name
+    }
+  }
 `;

@@ -1,26 +1,22 @@
-import * as types from './types';
-const initialState = {
-
-}
+import * as types from "./types";
+const initialState = {};
 
 export default (state = initialState, action) => {
-    switch (action.type) {
+  switch (action.type) {
+    case typeName:
+      return { ...state };
 
-        case typeName:
-            return { ...state }
-
-        default:
-            return state
-    }
-}
+    default:
+      return state;
+  }
+};
 
 export const updatereducer = (state = initialState, action) => {
-    switch (action.type) {
+  switch (action.type) {
+    case typeName:
+      return { ...state };
 
-        case typeName:
-            return { ...state }
-
-        default:
-            return state
-    }
-}
+    default:
+      return state;
+  }
+};

@@ -1,46 +1,38 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const roomQuery = gql`
-query {
+  query {
     getrooms {
-       Name
-   }
-
-}
+      Name
+    }
+  }
 `;
 
 export const roomDescriptionQuery = gql`
-query ($RoomId: String!){
-    getRoomDetail (RoomId: $RoomId){
-       Name
-       Capacity
-       Description
-       Building
-   }
-
-  
-   
-}
+  query($RoomId: String!) {
+    getRoomDetail(RoomId: $RoomId) {
+      Name
+      Capacity
+      Description
+      Building
+    }
+  }
 `;
 
 export const getOpenRooms = gql`
-query {
+  query {
     getrooms {
-        id
-       Name
-   }
-
-}
+      id
+      Name
+    }
+  }
 `;
 
-
-
 export const getClosedRooms = gql`
-query {
+  query {
     getrooms {
-        id
-       Name
-   }
-
-}
+      id
+      Name
+    }
+  }
 `;

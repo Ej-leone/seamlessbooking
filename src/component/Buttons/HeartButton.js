@@ -1,13 +1,7 @@
-
-
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import React, { Component } from "react";
+import { PropTypes } from "prop-types";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 
 export default class HeartButton extends Component {
   constructor(props) {
@@ -22,11 +16,14 @@ export default class HeartButton extends Component {
   }
 
   addToFavorite() {
-    this.setState({
-      addedToFavorite: !this.state.addedToFavorite,
-    }, () => {
-      this.props.onPress();
-    });
+    this.setState(
+      {
+        addedToFavorite: !this.state.addedToFavorite
+      },
+      () => {
+        this.props.onPress();
+      }
+    );
   }
 
   render() {
@@ -34,12 +31,10 @@ export default class HeartButton extends Component {
     const { color, selectedColor, onPress } = this.props;
 
     return (
-      <TouchableOpacity
-        onPress={this.addToFavorite}
-      >
+      <TouchableOpacity onPress={this.addToFavorite}>
         <View>
           <Icon
-            name={addedToFavorite ? 'heart' : 'heart-o'}
+            name={addedToFavorite ? "heart" : "heart-o"}
             color={addedToFavorite ? selectedColor : color}
             size={18}
           />
@@ -49,8 +44,8 @@ export default class HeartButton extends Component {
             size={18}
             color={color}
             style={[
-              { display: addedToFavorite ? 'flex' : 'none' },
-              styles.selectedColor,
+              { display: addedToFavorite ? "flex" : "none" },
+              styles.selectedColor
             ]}
           />
         </View>
@@ -62,13 +57,13 @@ export default class HeartButton extends Component {
 HeartButton.propTypes = {
   color: PropTypes.string.isRequired,
   selectedColor: PropTypes.string.isRequired,
-  onPress: PropTypes.func,
+  onPress: PropTypes.func
 };
 
 const styles = StyleSheet.create({
   selectedColor: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
-    top: 0,
-  },
+    top: 0
+  }
 });

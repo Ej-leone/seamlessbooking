@@ -1,33 +1,28 @@
-import React, { Component } from 'react'
-import { Query } from 'react-apollo';
-import { Text, View, FlatList } from 'react-native'
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import { Text, View, FlatList } from "react-native";
 
 export default class ARooms extends Component {
-    constructor() {
-        super()
+  constructor() {
+    super();
 
-        this.state = {
-            alldata: [],
-            filtered: []
-        }
-    }
+    this.state = {
+      alldata: [],
+      filtered: []
+    };
+  }
 
-    _renderRooms({ meeting }) {
-        return (
-            <Text>
-                some meeting
-            </Text>
-        )
-    }
+  _renderRooms({ meeting }) {
+    return <Text>some meeting</Text>;
+  }
 
-    render() {
-        return (
-            <View>
-                <Text> All meetings </Text>
-
-            </View>
-        )
-    }
+  render() {
+    return (
+      <View>
+        <Text> All meetings </Text>
+      </View>
+    );
+  }
 }
 
 /*
