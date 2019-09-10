@@ -22,10 +22,21 @@ import Search from '../screens/Search'
 
 const RefinedBooking = createStackNavigator({
     BookQ: MakeBook,
-    ARooms: Search
+    ARooms: {
+        screen: Search, navigationOptions: {
+
+            gestureResponseDistance: { vertical: 1000 }, \
+        },
+    }
 }, {
-    headerMode: "none",
-    mode: "modal"
+
+    mode: "modal",
+
+    cardStyle: {
+        backgroundColor: "transparent",
+        opacity: 0.99
+    }
+
 }
 )
 
@@ -40,6 +51,8 @@ const Internal = createStackNavigator({
     Support: Support,
     RoomDetail: RoomDetail,
     MeetingDetail: MeetingDetail
+}, {
+    headerMode: "none"
 })
 
 const AppRoute = createStackNavigator({

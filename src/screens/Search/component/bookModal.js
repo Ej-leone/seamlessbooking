@@ -8,17 +8,19 @@ const BookModal = (props) => {
             <Text>Confirm Booking</Text>
 
             <Text> {props.booking.item}</Text>
-            <TouchableOpacity
-                onPress={() => props.closemodal()}
-            >
-                <Text>Okay</Text>
-            </TouchableOpacity>
+            <View style={{ flexDirection: "row" }}>
+                <TouchableOpacity
+                    onPress={() => props.closemodal()}
+                >
+                    <Text style={{ color: "#ffff" }}>Okay</Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-                onPress={() => props.closemodal()}
-            >
-                <Text>Cancel</Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => props.closemodal()}
+                >
+                    <Text style={{ color: "#ffff" }}>Cancel</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     </View>)
 

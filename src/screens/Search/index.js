@@ -1,10 +1,25 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, Modal } from 'react-native'
+import { Text, View, FlatList, Modal, SafeAreaView } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Aroom from './component/room'
 import styles from './component/search.style'
 import BookModal from './component/bookModal'
+import NavBarButton from '../../component/buttons/NavBarButton';
+import colors from '../../styles/colors';
+import transparentHeaderStyle from '../../styles/navigation';
 
 export default class Search extends Component {
+    static navigationOptions = ({ navigation }) => ({
+        headerLeft: <NavBarButton
+            handleButtonPress={() => navigation.goBack()}
+            location="left"
+            icon={<Icon name="ios-close" color={colors.maincolor} size={30} />}
+        />,
+        headerStyle: transparentHeaderStyle,
+        headerTransparent: true,
+        headerTintColor: colors.white,
+    });
+
     constructor(props) {
         super()
 
@@ -16,7 +31,7 @@ export default class Search extends Component {
     }
 
     renderItem(item) {
-        return <Aroom initbooking={(book) => this.toggleBookingModal(book)} details={item} closemodal={() => this.cancelbooking} />
+        return <Aroom initbooking={(book) => this.toggleBookingModal(book)} details={item} />
     }
 
     toggleBookingModal(booking) {
@@ -28,30 +43,30 @@ export default class Search extends Component {
         })
     }
 
-    cancelbooking() {
-        this.setState({ visibility: false })
-        this.setState({
-            booking: {}
-        })
+    async cancelbooking() {
+        await this.setState({ visibility: false, booking: {} })
+
     }
 
     render() {
         return (
-            <View>
-                <Text style={styles.heading}> Available rooms  </Text>
-                <Modal
-                    transparent={true}
-                    animationType="fade"
-                    visible={this.state.visibility}
-                >
-                    <BookModal booking={this.state.booking} />
-                </Modal>
-                <FlatList
-                    ListEmptyComponent={() => <Text>Sorry no Available rooms</Text>}
-                    data={this.state.rooms}
-                    renderItem={(item) => this.renderItem(item)}
-                />
-            </View>
+            <SafeAreaView>
+                <View >
+                    <Text style={styles.heading}> Available rooms  </Text>
+                    <Modal
+                        transparent={true}
+                        animationType="fade"
+                        visible={this.state.visibility}
+                    >
+                        <BookModal booking={this.state.booking} closemodal={() => this.cancelbooking()} />
+                    </Modal>
+                    <FlatList
+                        ListEmptyComponent={() => <Text>Sorry no Available rooms</Text>}
+                        data={this.state.rooms}
+                        renderItem={(item) => this.renderItem(item)}
+                    />
+                </View>
+            </SafeAreaView>
         )
     }
 }
