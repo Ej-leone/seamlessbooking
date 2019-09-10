@@ -14,6 +14,7 @@ import { Query } from 'react-apollo';
 import HeartButton from '../buttons/HeartButton';
 import Stars from '../Stars';
 import colors from '../../styles/colors';
+const dummyimage = require('../../img/listing11.png')
 
 import { getOpenRooms, getClosedRooms, } from '../../services/getrooms'
 
@@ -58,7 +59,7 @@ const renderListings = (props) => {
                         <Image
                             style={styles.image}
                             resizeMode="contain"
-                            source={listing.photo}
+                            source={dummyimage}
                         />
                     </TouchableOpacity
                     >
@@ -78,12 +79,12 @@ const renderListings = (props) => {
                         {listing.priceType}
                     </Text>
                     <Text style={styles.greenText}> Open Till  6:00 am</Text>
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                         onPress={() => _movetoBook({ ...props, RoomId: listing.id })}>
                         <View style={styles.redbtn}>
                             <Text style={styles.redbtntxt}>Book room</Text>
                         </View>
-                    </TouchableOpacity>
+                   </TouchableOpacity>*/}
                 </View>
             </TouchableHighlight>
         )

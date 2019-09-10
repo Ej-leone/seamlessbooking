@@ -3,23 +3,23 @@ import {
     View,
     Text,
     ScrollView,
-    SafeAreaView
+    SafeAreaView,
+    TouchableOpacity
 } from 'react-native';
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import SearchBar from '../../component/SearchBar';
-import Categories from '../../component/explore/Categories';
+
 import OpenRooms from '../../component/explore/openrooms'
 import ClosedRooms from '../../component/explore/closedrooms'
 import Listings from '../../component/explore/Listings';
-import DateTimePicker from "react-native-modal-datetime-picker";
 import categoriesList from '../../config/categories';
+import Icon from 'react-native-vector-icons/Ionicons';
 import listings from '../../config/listings';
 
 
 import styles from './Room.style'
+
 
 
 class RoomScreen extends Component {
@@ -124,32 +124,41 @@ class RoomScreen extends Component {
 
     };
 
+    tobooking() {
+        this.props.navigation.navigate('')
+    }
+
 
     render() {
         const { showDatetime, mode } = this.state;
         return (
             <SafeAreaView style={styles.wrapper}>
                 <SearchBar />
-                <DateTimePicker
-                    isVisible={showDatetime}
-                    mode={mode}
-                    onConfirm={this.handleDatePicked}
-                    onCancel={this.hideDateTimePicker}
-                />
+
                 <ScrollView
                     style={styles.scrollview}
                     contentContainerStyle={styles.scrollViewContent}
                 >
-                    <Text style={styles.heading}>
-                        Book a Room
-              </Text>
-                    <View style={styles.categories}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 10, marginHorizontal: 10 }}>
+                        <Text style={styles.heading}>
+                            Book a Room
+                        </Text>
+                        <TouchableOpacity
+                            onPress={() => this.tobooking('Book')}>
+                            <Icon
+                                name={'ios-add'}
+                                size={22}
+                                color={'#DE4A5B'}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    {/*<View style={styles.categories}>
                         <Categories categories={categoriesList}
                             firstclick={() => this.ShowDateModal()}
                             secondclick={() => this.ShowTimeModal()}
 
                         />
-                    </View>
+        </View>*/}
                     <OpenRooms
                         key={0}
                         navigation={this.props.navigation}
@@ -161,7 +170,7 @@ class RoomScreen extends Component {
                     <ClosedRooms
                         key={1}
                         navigation={this.props.navigation}
-                        title={'Closed Rooms'}
+                        title={'Booked Rooms'}
                         handleAddToFav={this.handleAddToFav}
                         boldTitle={true} />
                 </ScrollView>

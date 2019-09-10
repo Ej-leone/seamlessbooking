@@ -22,11 +22,11 @@ class LoggedOut extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-                <Text style={styles.title}> Seamless </Text>
-                <Text style={styles.title}>Booking</Text>
+                <Text style={styles.title}> Seamless Booking</Text>
+                <Text style={styles.stitle}></Text>
 
                 <Image
-                    style={{ alignSelf: "center" }}
+                    style={{ alignSelf: "center", justifyContent: "center" }}
                     source={require("../../img/as.png")}
                 />
                 <View style={styles.btncontainer}>

@@ -6,6 +6,8 @@ export default StyleSheet.create({
     container: {
         backgroundColor: color.maincolor,
         flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     },
     btncontainer: {
         position: "absolute",
@@ -19,10 +21,20 @@ export default StyleSheet.create({
         color: color.white
     },
     title: {
-        textAlign: "center",
+        position: "absolute",
+        top: 0,
+        marginTop: '10%',
         color: color.white,
         fontSize: 25
-    },
 
+    },
+    stitle: {
+        position: "absolute",
+        top: 0,
+        marginTop: '25%',
+        color: color.white,
+        fontSize: 25
+
+    },
 
 })
