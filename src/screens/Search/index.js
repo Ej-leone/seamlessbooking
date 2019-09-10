@@ -10,17 +10,29 @@ export default class Search extends Component {
 
         this.state = {
             rooms: [1, 2, 3, 4, 5],
-            visibility: false
+            visibility: false,
+            booking: {},
         }
     }
 
     renderItem(item) {
-        return <Aroom initbooking={() => this.toggleBookingModal()} />
+        return <Aroom initbooking={(book) => this.toggleBookingModal(book)} details={item} closemodal={() => this.cancelbooking} />
     }
 
-    toggleBookingModal() {
+    toggleBookingModal(booking) {
+
         const sta = this.state.visibility
-        this.setState({ visibility: !sta })
+        this.setState({ visibility: true })
+        this.setState({
+            booking: booking
+        })
+    }
+
+    cancelbooking() {
+        this.setState({ visibility: false })
+        this.setState({
+            booking: {}
+        })
     }
 
     render() {
@@ -30,9 +42,9 @@ export default class Search extends Component {
                 <Modal
                     transparent={true}
                     animationType="fade"
-                    visibility={this.state.visibility}
+                    visible={this.state.visibility}
                 >
-                    <BookModal />
+                    <BookModal booking={this.state.booking} />
                 </Modal>
                 <FlatList
                     ListEmptyComponent={() => <Text>Sorry no Available rooms</Text>}

@@ -4,6 +4,7 @@ const dummyimage = require('../../../img/listing11.png')
 import styles from './search.style'
 
 const Aroom = (props) => {
+
     return (<View style={styles.itemview}>
         <Image
             style={{ alignSelf: "center", borderRadius: 10, }}
@@ -19,13 +20,13 @@ const Aroom = (props) => {
         <View style={{ flexDirection: "row", justifyContent: "space-between", margin: 10 }}>
             <Text style={{ color: "green" }}>Open till 6.00am</Text>
             <TouchableOpacity
-                onPress={() => props.initbooking()}>
+                onPress={() => props.initbooking(props.details)}>
                 <View style={{ backgroundColor: "red", }}>
                     <Text style={{ color: "white" }}>Book</Text>
                 </View>
             </TouchableOpacity>
         </View>
-    </View>)
+    </View >)
 }
 
 

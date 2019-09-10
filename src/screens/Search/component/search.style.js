@@ -18,5 +18,15 @@ export default StyleSheet.create({
         elevation: 3,
         zIndex: 999,
         marginVertical: 10
+    },
+    modalcontainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: 'rgba(0,0,0,0.7)'
+    },
+    bookview: {
+        backgroundColor: colors.white
     }
+
 })
