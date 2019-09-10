@@ -18,9 +18,21 @@ import EditMeeting from '../screens/EditMeeting'
 import EditUsers from '../screens/EditUsers'
 import Support from "../screens/Support";
 
+import Search from '../screens/Search'
+
+const RefinedBooking = createStackNavigator({
+    BookQ: MakeBook,
+    ARooms: Search
+}, {
+    headerMode: "none",
+    mode: "modal"
+}
+)
+
+
 const Internal = createStackNavigator({
     Tab: { screen: TabNavigator },
-    Book: MakeBook,
+    Book: RefinedBooking,
     Report: Report,
     EditRooms: ARooms,
     EditMeeting: EditMeeting,

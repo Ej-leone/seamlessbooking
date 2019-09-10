@@ -125,7 +125,7 @@ class RoomScreen extends Component {
     };
 
     tobooking() {
-        this.props.navigation.navigate('')
+        this.props.navigation.navigate('Book')
     }
 
 

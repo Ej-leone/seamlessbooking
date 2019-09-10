@@ -19,7 +19,6 @@ export default StyleSheet.create({
     heading: {
         fontSize: 22,
         fontWeight: '600',
-        paddingLeft: 20,
         paddingBottom: 20,
         color: colors.maincolor,
     },

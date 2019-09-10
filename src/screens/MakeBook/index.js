@@ -78,10 +78,10 @@ class MakeBook extends Component {
 
 
     componentDidMount() {
-        const RoomId = this.props.navigation.getParam('RoomId', 'NO-ID');
-        this.setState({
-            RoomId
-        })
+        // const RoomId = this.props.navigation.getParam('RoomId', 'NO-ID');
+        //  this.setState({
+        //     RoomId
+        //  })
     }
 
     _setGuest(num, mail) {
@@ -234,10 +234,12 @@ class MakeBook extends Component {
 
                             <Text style={styles.title}>Meeting Agenda  </Text>
                             <TextInput
+                                style={{ borderBottomColor: "#f3f3f3", borderBottomWidth: 1 }}
                                 onChange={text => this.setState({ MeetingAgenda: text })}
-                                placeholder={"Enter the meeting Agenda"} />
+                                placeholder={"Eg. Training"} />
 
                             <TouchableOpacity
+                                style={{ marginTop: "3%" }}
                                 onPress={() => this._startfoodemodal()}>
                                 <Text>Dietary Requirements</Text>
                             </TouchableOpacity>
@@ -263,7 +265,14 @@ class MakeBook extends Component {
                                 <Pickerr name={"Video Conferencing"} />
                             </View>
 
-                            <Mutation mutation={createBooking}
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('ARooms')}>
+                                <View style={styles.btn}>
+                                    <Text style={styles.btntxt}> </Text>
+                                </View>
+                            </TouchableOpacity>
+
+                            { /*<Mutation mutation={createBooking}
                                 onCompleted={(data => this.renderResponeModel(data.book.success))}
                                 onError={(error) => this.setState({
                                     mode: "error",
@@ -296,7 +305,7 @@ class MakeBook extends Component {
                                         </TouchableOpacity>)
                                 }
                                 }
-                            </Mutation>
+                            </Mutation>*/}
                         </View>
                     </ScrollView>
                 </View>
