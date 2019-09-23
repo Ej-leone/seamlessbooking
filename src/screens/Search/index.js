@@ -7,20 +7,21 @@ import BookModal from "./component/bookModal";
 import NavBarButton from "../../component/buttons/NavBarButton";
 import colors from "../../styles/colors";
 import transparentHeaderStyle from "../../styles/navigation";
+import { Query } from "react-apollo";
 
 export default class Search extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerLeft: (
-      <NavBarButton
-        handleButtonPress={() => navigation.goBack()}
-        location="left"
-        icon={<Icon name="ios-close" color={colors.maincolor} size={30} />}
-      />
-    ),
-    headerStyle: transparentHeaderStyle,
-    headerTransparent: true,
-    headerTintColor: colors.white
-  });
+  /* static navigationOptions = ({ navigation }) => ({
+     headerLeft: (
+       <NavBarButton
+         handleButtonPress={() => navigation.goBack()}
+         location="left"
+         icon={<Icon name="ios-close" color={colors.maincolor} size={30} />}
+       />
+     ),
+     headerStyle: transparentHeaderStyle,
+     headerTransparent: true,
+     headerTintColor: colors.white
+   });*/
 
   constructor(props) {
     super();
@@ -68,6 +69,9 @@ export default class Search extends Component {
               closemodal={() => this.cancelbooking()}
             />
           </Modal>
+          <Query>
+
+          </Query>
           <FlatList
             ListEmptyComponent={() => <Text>Sorry no Available rooms</Text>}
             data={this.state.rooms}
