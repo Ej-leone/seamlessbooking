@@ -24,12 +24,13 @@ const BookModal = props => {
             onCompleted={(data) => console.warn(`success`)}
             onError={(error) => console.warn(`error${error}`)}
             variables={{
-              Input: {
+              Inp: {
                 RoomId: "this.state.RoomId",
-                MeetingAgenda: "this.state.MeetingAgenda",
-                CheckIn: "this.state.CheckIn",
-                CheckOut: "this.state.CheckOut",
-                numGuests: "this.state.numGuests",
+                OrganiserId: props.bookingdetails.OrganiserId,
+                MeetingAgenda: props.bookingdetails.MeetingAgenda,
+                CheckIn: props.bookingdetails.CheckIn,
+                CheckOut: props.bookingdetails.CheckOut,
+                numGuests: props.bookingdetails.numGuests,
                 food: ["String"],
                 FoodTime: "String"
               }
