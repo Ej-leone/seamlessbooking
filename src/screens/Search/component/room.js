@@ -4,13 +4,14 @@ const dummyimage = require("../../../img/listing11.png");
 import styles from "./search.style";
 
 const Aroom = props => {
+
   return (
     <View style={styles.itemview}>
       <Image
         style={{ alignSelf: "center", borderRadius: 10 }}
         source={dummyimage}
       />
-      <Text style={{ margin: 10 }}> Room name</Text>
+      <Text style={{ margin: 10 }}> {props.details.item.Name}</Text>
       <View style={{ flexDirection: "row", margin: 10 }}>
         <Text> ∙ Wifi </Text>
         <Text> ∙ Video Confrencing </Text>

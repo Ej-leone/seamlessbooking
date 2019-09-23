@@ -8,6 +8,7 @@ import NavBarButton from "../../component/buttons/NavBarButton";
 import colors from "../../styles/colors";
 import transparentHeaderStyle from "../../styles/navigation";
 import { Query } from "react-apollo";
+import { searchRooms } from '../../services/getrooms'
 
 export default class Search extends Component {
   /* static navigationOptions = ({ navigation }) => ({
@@ -69,14 +70,24 @@ export default class Search extends Component {
               closemodal={() => this.cancelbooking()}
             />
           </Modal>
-          <Query>
-
+          <Query query={searchRooms}>
+            {({ loading, data, error }) => {
+              if (loading) {
+                return <Text>loading</Text>;
+              }
+              if (error) {
+                return <Text> `Sorry we have an issue ${error.message} `</Text>;
+              }
+              if (data) {
+                return <FlatList
+                  ListEmptyComponent={() => <Text>Sorry no Available rooms</Text>}
+                  data={data.findrooms}
+                  renderItem={item => this.renderItem(item)}
+                />
+              }
+            }}
           </Query>
-          <FlatList
-            ListEmptyComponent={() => <Text>Sorry no Available rooms</Text>}
-            data={this.state.rooms}
-            renderItem={item => this.renderItem(item)}
-          />
+
         </View>
       </SafeAreaView>
     );

@@ -39,9 +39,9 @@ export const getClosedRooms = gql`
 
 
 export const searchRooms = gql`
-  query($bookinginfo : info) {
+  query($bookinginfo : Bquery) {
     findrooms (info : $bookinginfo){
-
+        Name
     }
   }
 `
