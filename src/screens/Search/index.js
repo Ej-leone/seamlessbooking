@@ -43,6 +43,15 @@ export default class Search extends Component {
     };
   }
 
+  componentDidMount() {
+    const BookingDetails = this.props.navigation.getParam("booking", {});
+
+  }
+
+
+
+
+
   renderItem(item) {
     return (
       <Aroom
