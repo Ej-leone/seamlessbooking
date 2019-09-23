@@ -24,27 +24,7 @@ import RadioInput from "../../component/form/RadioInput";
 import Guest from "../../container/Guests";
 import Diet from "../../container/Diet";
 import Error from "../../container/Error";
-
-const Pickerr = props => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignSelf: "stretch",
-        flexDirection: "row",
-        justifyContent: "space-between"
-      }}
-    >
-      <Text>{props.name}</Text>
-
-      <Switch
-        value
-        style={{ alignSelf: "stretch" }}
-        trackColor={colors.maincolor}
-        ios_backgroundColor={colors.maincolor} />
-    </View>
-  );
-};
+import Pickerr from './component/picker'
 
 const Card = props => {
   return (
@@ -205,6 +185,11 @@ class MakeBook extends Component {
     }
   }
 
+  toggleSwitch(e) {
+    console.log(e)
+    debugger
+  }
+
   render() {
     const { mode, modalOpen } = this.state;
     return (
@@ -271,30 +256,30 @@ class MakeBook extends Component {
 
               <Text style={styles.subtitle}> Requirements</Text>
               <View style={styles.mincontainer}>
-                <Pickerr name={"Air conndition"} />
-                <Pickerr name={"Wifi"} />
+                <Pickerr name={"Air condition"} change={(e) => this.toggleSwitch(e)} />
+                <Pickerr name={"Wifi"} change={(e) => this.toggleSwitch(e)} />
               </View>
 
               <View style={styles.mincontainer}>
-                <Pickerr name={"Projector"} />
-                <Pickerr name={"Whiteboard"} />
+                <Pickerr name={"Projector"} change={(e) => this.toggleSwitch(e)} />
+                <Pickerr name={"Whiteboard"} change={(e) => this.toggleSwitch(e)} />
               </View>
 
               <View style={styles.mincontainer}>
-                <Pickerr name={"Catering"} />
-                <Pickerr name={"Parking"} />
+                <Pickerr name={"Catering"} change={(e) => this.toggleSwitch(e)} />
+                <Pickerr name={"Parking"} change={(e) => this.toggleSwitch(e)} />
               </View>
 
               <View style={styles.mincontainer}>
-                <Pickerr name={"Charging Ports"} />
-                <Pickerr name={"Video Conferencing"} />
+                <Pickerr name={"Charging Ports"} change={(e) => this.toggleSwitch(e)} />
+                <Pickerr name={"Conferencing"} change={(e) => this.toggleSwitch(e)} />
               </View>
 
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("ARooms")}
               >
                 <View style={styles.btn}>
-                  <Text style={styles.btntxt}> </Text>
+                  <Text style={styles.btntxt}>Search Rooms</Text>
                 </View>
               </TouchableOpacity>
 

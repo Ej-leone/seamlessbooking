@@ -37,11 +37,10 @@ export const getClosedRooms = gql`
   }
 `;
 
-
 export const searchRooms = gql`
-  query($bookinginfo : Bquery) {
-    findrooms (info : $bookinginfo){
-        Name
+  query($bookinginfo: Bquery) {
+    findrooms(info: $bookinginfo) {
+      Name
     }
   }
-`
+`;

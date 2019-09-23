@@ -1,29 +1,57 @@
 import React, { Component } from "react";
-import { Text, View, Image, TouchableOpacity } from "react-native";
-import Mutation from 'react-apollo'
-import createBooking from '../../../services/createbookings'
+import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
+import { Mutation } from "react-apollo";
+import { createBooking } from "../../../services/createbookings";
 import styles from "./search.style";
+
 const BookModal = props => {
 
   return (
     <View style={styles.modalcontainer}>
-      <View styles={styles.bookview}>
-        <Text>Confirm Booking</Text>
+      <View style={styles.bookview}>
+        <Text style={styles.title}>Confirm Booking</Text>
+        <ScrollView>
+          <Text> {`Room Booked: ${props.booking.item.Name}`}</Text>
+          <Text> {`Meeting Agenda: ${props.bookingdetails.MeetingAgenda}`}</Text>
+          <Text> {`Date: ${new Date(props.bookingdetails.CheckIn).getDate}`}</Text>
+          <Text> {`Time: ${new Date(props.bookingdetails.CheckIn).getTime}`}</Text>
+          <Text> Attendees</Text>
+          {props.bookingdetails.Attendees.map(name => <Text>{name}</Text>)}
+        </ScrollView>
+        <View style={{ flexDirection: "row", alignSelf: "flex-end" }}>
+          <Mutation
+            mutation={createBooking}
+            onCompleted={(data) => console.warn(`success`)}
+            onError={(error) => console.warn(`error${error}`)}
+            variables={{
+              Input: {
+                RoomId: "this.state.RoomId",
+                MeetingAgenda: "this.state.MeetingAgenda",
+                CheckIn: "this.state.CheckIn",
+                CheckOut: "this.state.CheckOut",
+                numGuests: "this.state.numGuests",
+                food: ["String"],
+                FoodTime: "String"
+              }
+            }}
+          >
+            {(createBooking, { loading, error, data }) => (
+              <TouchableOpacity
+                disabled={loading}
+                onPress={createBooking}
 
-        <Text> {props.booking.item.Name}</Text>
-
-        <View style={{ flexDirection: "row" }}>
-          <Mutation mutation={createBooking} onCompleted={} onError={}>
-            {(createBooking, { data }) => (
-              <TouchableOpacity onPress={() => createBooking()}>
-                <Text style={{ color: "#ffff" }}>Okay</Text>
+              >
+                <View style={styles.bookbtn}>
+                  <Text style={styles.booktxt}>{loading ? `Loading` : `Make Book`}</Text>
+                </View>
               </TouchableOpacity>
             )}
           </Mutation>
 
-
           <TouchableOpacity onPress={() => props.closemodal()}>
-            <Text style={{ color: "#ffff" }}>Cancel</Text>
+            <View style={styles.cancelbtn}>
+              <Text style={{ color: "#ffff" }}>Cancel</Text>
+            </View>
           </TouchableOpacity>
         </View>
       </View>

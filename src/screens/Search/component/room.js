@@ -4,7 +4,6 @@ const dummyimage = require("../../../img/listing11.png");
 import styles from "./search.style";
 
 const Aroom = props => {
-
   return (
     <View style={styles.itemview}>
       <Image

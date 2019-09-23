@@ -8,7 +8,7 @@ import NavBarButton from "../../component/buttons/NavBarButton";
 import colors from "../../styles/colors";
 import transparentHeaderStyle from "../../styles/navigation";
 import { Query } from "react-apollo";
-import { searchRooms } from '../../services/getrooms'
+import { searchRooms } from "../../services/getrooms";
 
 export default class Search extends Component {
   /* static navigationOptions = ({ navigation }) => ({
@@ -30,6 +30,15 @@ export default class Search extends Component {
     this.state = {
       rooms: [1, 2, 3, 4, 5],
       visibility: false,
+      bookingdetails: {
+        numGuests: 2,
+        OrganiserId: "1234321",
+        RoomId: "LJqUQPuIQ4cYXw8me8Zo",
+        MeetingAgenda: "Mike test 1 2",
+        CheckIn: "2019-08-30T09:30:00.000Z",
+        CheckOut: "2019-08-30T11:30:00.000Z",
+        Attendees: ["ejgithinji@gmail.com", "elijah@finesoftafrika.com"]
+      },
       booking: {}
     };
   }
@@ -39,6 +48,7 @@ export default class Search extends Component {
       <Aroom
         initbooking={book => this.toggleBookingModal(book)}
         details={item}
+
       />
     );
   }
@@ -67,6 +77,7 @@ export default class Search extends Component {
           >
             <BookModal
               booking={this.state.booking}
+              bookingdetails={this.state.bookingdetails}
               closemodal={() => this.cancelbooking()}
             />
           </Modal>
@@ -79,15 +90,18 @@ export default class Search extends Component {
                 return <Text> `Sorry we have an issue ${error.message} `</Text>;
               }
               if (data) {
-                return <FlatList
-                  ListEmptyComponent={() => <Text>Sorry no Available rooms</Text>}
-                  data={data.findrooms}
-                  renderItem={item => this.renderItem(item)}
-                />
+                return (
+                  <FlatList
+                    ListEmptyComponent={() => (
+                      <Text>Sorry no Available rooms</Text>
+                    )}
+                    data={data.findrooms}
+                    renderItem={item => this.renderItem(item)}
+                  />
+                );
               }
             }}
           </Query>
-
         </View>
       </SafeAreaView>
     );
