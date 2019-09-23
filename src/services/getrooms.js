@@ -36,3 +36,12 @@ export const getClosedRooms = gql`
     }
   }
 `;
+
+
+export const searchRooms = gql`
+  query($bookinginfo : info) {
+    findrooms (info : $bookinginfo){
+
+    }
+  }
+`

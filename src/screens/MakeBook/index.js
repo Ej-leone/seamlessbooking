@@ -37,7 +37,11 @@ const Pickerr = props => {
     >
       <Text>{props.name}</Text>
 
-      <Switch style={{ alignSelf: "stretch" }} />
+      <Switch
+        value
+        style={{ alignSelf: "stretch" }}
+        trackColor={colors.maincolor}
+        ios_backgroundColor={colors.maincolor} />
     </View>
   );
 };
@@ -83,6 +87,7 @@ class MakeBook extends Component {
       modalOpen: false,
       showDatetime: false,
       mode: " ",
+      Amenities: [],
       errormessage: ""
     };
   }
