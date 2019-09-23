@@ -7,14 +7,33 @@ import {
     Switch,
 
 } from "react-native";
-
+import colors from "../../../styles/colors";
 
 class Pickerr extends Component {
     constructor(props) {
-        name: ""
-        value: false
+        super();
+        this.state = {
+            name: "",
+            value: false
+        }
     }
 
+    toggle(er) {
+        if (er) {
+            this.props.Amenities.push(this.props.name)
+            this.setState({ value: er })
+            console.log(this.props.Amenities)
+        }
+        else {
+            console.log(this.props.Amenities)
+            this.setState({ value: er })
+            let index = this.props.Amenities.indexOf(this.props.name)
+
+            if (index > -1) {
+                this.props.Amenities.splice(index, 1);
+            }
+        }
+    }
 
 
     render() {
@@ -27,12 +46,12 @@ class Pickerr extends Component {
                     justifyContent: "space-between"
                 }}
             >
-                <Text>{props.name}</Text>
+                <Text>{this.props.name}</Text>
 
                 <Switch
-                    value
+                    value={this.state.value}
                     style={{ alignSelf: "stretch" }}
-                    onChange={(e) => props.change(e)}
+                    onValueChange={er => this.toggle(er)}
                     trackColor={colors.maincolor}
                     ios_backgroundColor={colors.maincolor}
                 />

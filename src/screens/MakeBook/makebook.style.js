@@ -6,10 +6,10 @@ let cardSize = 100;
 let cardMargin = 8;
 
 if (size === "small") {
-  cardSize = 70;
+  cardSize = 90;
   cardMargin = 4;
 } else if (size === "large") {
-  cardSize = 95;
+  cardSize = 105;
 }
 
 export default StyleSheet.create({

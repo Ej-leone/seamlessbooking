@@ -25,6 +25,7 @@ import Guest from "../../container/Guests";
 import Diet from "../../container/Diet";
 import Error from "../../container/Error";
 import Pickerr from './component/picker'
+import moment from 'moment'
 
 const Card = props => {
   return (
@@ -185,10 +186,7 @@ class MakeBook extends Component {
     }
   }
 
-  toggleSwitch(e) {
-    console.log(e)
-    debugger
-  }
+
 
   render() {
     const { mode, modalOpen } = this.state;
@@ -219,14 +217,16 @@ class MakeBook extends Component {
               >
                 <Card
                   name={"Check In"}
-                  value={this.state.CheckIn}
+                  value={moment(this.state.CheckIn).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+
                   iconnname={"calendar-o"}
                   click={() => this._startdatemodal()}
                   close={() => this._toggleModal()}
                 />
                 <Card
                   name={"Check Out"}
-                  value={this.state.CheckOut}
+
+                  value={moment(this.state.CheckOut).format("dddd, MMMM Do YYYY, h:mm:ss a")}
                   iconnname={"clock-o"}
                   click={() => this._starttimemodal()}
                   close={() => this._toggleModal()}
@@ -256,27 +256,27 @@ class MakeBook extends Component {
 
               <Text style={styles.subtitle}> Requirements</Text>
               <View style={styles.mincontainer}>
-                <Pickerr name={"Air condition"} change={(e) => this.toggleSwitch(e)} />
-                <Pickerr name={"Wifi"} change={(e) => this.toggleSwitch(e)} />
+                <Pickerr name={"Air condition"} Amenities={this.state.Amenities} />
+                <Pickerr name={"Wifi"} Amenities={this.state.Amenities} />
               </View>
 
               <View style={styles.mincontainer}>
-                <Pickerr name={"Projector"} change={(e) => this.toggleSwitch(e)} />
-                <Pickerr name={"Whiteboard"} change={(e) => this.toggleSwitch(e)} />
+                <Pickerr name={"Projector"} Amenities={this.state.Amenities} />
+                <Pickerr name={"Whiteboard"} Amenities={this.state.Amenities} />
               </View>
 
               <View style={styles.mincontainer}>
-                <Pickerr name={"Catering"} change={(e) => this.toggleSwitch(e)} />
-                <Pickerr name={"Parking"} change={(e) => this.toggleSwitch(e)} />
+                <Pickerr name={"Catering"} Amenities={this.state.Amenities} />
+                <Pickerr name={"Parking"} Amenities={this.state.Amenities} />
               </View>
 
               <View style={styles.mincontainer}>
-                <Pickerr name={"Charging Ports"} change={(e) => this.toggleSwitch(e)} />
-                <Pickerr name={"Conferencing"} change={(e) => this.toggleSwitch(e)} />
+                <Pickerr name={"Charging Ports"} Amenities={this.state.Amenities} />
+                <Pickerr name={"Conferencing"} Amenities={this.state.Amenities} />
               </View>
 
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("ARooms")}
+                onPress={() => this.props.navigation.navigate("ARooms", { booking: this.state })}
               >
                 <View style={styles.btn}>
                   <Text style={styles.btntxt}>Search Rooms</Text>
