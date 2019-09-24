@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
 import { Mutation } from "react-apollo";
-import { createBooking } from "../../../services/createbookings";
+import { createBooking, makeBook } from "../../../services/createbookings";
 import styles from "./search.style";
 
 const BookModal = props => {
@@ -20,33 +20,40 @@ const BookModal = props => {
         </ScrollView>
         <View style={{ flexDirection: "row", alignSelf: "flex-end" }}>
           <Mutation
-            mutation={createBooking}
+            mutation={makeBook}
             onCompleted={(data) => console.warn(`success`)}
-            onError={(error) => console.warn(`error${error}`)}
-            variables={{
-              Inp: {
-                RoomId: "this.state.RoomId",
-                OrganiserId: props.bookingdetails.OrganiserId,
-                MeetingAgenda: props.bookingdetails.MeetingAgenda,
-                CheckIn: props.bookingdetails.CheckIn,
-                CheckOut: props.bookingdetails.CheckOut,
-                numGuests: props.bookingdetails.numGuests,
-                food: ["String"],
-                FoodTime: "String"
-              }
-            }}
-          >
-            {(createBooking, { loading, error, data }) => (
-              <TouchableOpacity
-                disabled={loading}
-                onPress={createBooking}
+            onError={(error) => {
 
-              >
-                <View style={styles.bookbtn}>
-                  <Text style={styles.booktxt}>{loading ? `Loading` : `Make Book`}</Text>
-                </View>
-              </TouchableOpacity>
-            )}
+              return (console.warn(`${error.message}`))
+            }}
+
+          >
+            {(book, { loading, error, data }) => {
+
+              return (
+                <TouchableOpacity
+                  disabled={loading}
+                  onPress={() => book({
+                    "variables": {
+                      "input": {
+                        "numGuests": 2,
+                        "OrganiserId": "1234321",
+                        "RoomId": "LJqUQPuIQ4cYXw8me8Zo",
+                        "MeetingAgenda": "Mike test 1 2",
+                        "CheckIn": "2019-08-30T09:30:00.000Z",
+                        "CheckOut": "2019-08-30T11:30:00.000Z",
+                        "Attendees": ["ejgithinji@gmail.com", "elijah@finesoftafrika.com"]
+                      }
+                    }
+                  })}
+
+                >
+                  <View style={styles.bookbtn}>
+                    <Text style={styles.booktxt}>{loading ? `Loading` : `Make Book`}</Text>
+                  </View>
+                </TouchableOpacity>
+              )
+            }}
           </Mutation>
 
           <TouchableOpacity onPress={() => props.closemodal()}>

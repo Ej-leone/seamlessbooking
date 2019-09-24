@@ -1,4 +1,4 @@
-import firestore from "@react-native-firebase/firestore";
+
 import gql from "graphql-tag";
 /*
 export const makeBooking = async (meeting) => {
@@ -11,9 +11,26 @@ export const cancelBooking = async (id, data) => {
         .set(data)
 }*/
 export const createBooking = gql`
-  mutation($Inp: BookingInput) {
-    book(Input: $Inp) {
+  mutation ( $input: BookingInput) {
+    book(Input:  {
+      numGuests: 2, 
+      OrganiserId:"1234321",
+      RoomId:"LJqUQPuIQ4cYXw8me8Zo",
+      MeetingAgenda:"Mike test 1 2",
+      CheckIn:"2019-08-30T09:30:00.000Z",
+      CheckOut:"2019-08-30T11:30:00.000Z",
+      Attendees:["ejgithinji@gmail.com","elijah@finesoftafrika.com"]}) 
+      {
       success
     }
   }
 `;
+
+export const makeBook = gql`
+mutation  ($input: BookingInput){
+  book (Input: $input) {
+    success
+  }
+}
+
+`

@@ -90,7 +90,13 @@ export default class Search extends Component {
               closemodal={() => this.cancelbooking()}
             />
           </Modal>
-          <Query query={searchRooms}>
+          <Query query={searchRooms} variables={{
+            bookinginfo: {
+              CheckIn: "2019-08-30T09:30:00.000Z",
+              CheckOut: "2019-08-30T09:30:00.000Z",
+              numGuests: 2
+            }
+          }}>
             {({ loading, data, error }) => {
               if (loading) {
                 return <Text>loading</Text>;
