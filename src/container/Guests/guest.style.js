@@ -41,5 +41,8 @@ export default StyleSheet.create({
     borderColor: color.maincolor,
     borderWidth: 1,
     backgroundColor: color.white
+  },
+  subt: {
+    color: color.gray04
   }
 });

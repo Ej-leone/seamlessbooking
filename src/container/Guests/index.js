@@ -63,7 +63,14 @@ export default class Guest extends Component {
         }}
       >
         <View style={styles.cont}>
-          <View>
+          <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.save(this.state.guestnumber, this.state.guestmail)
+              }
+            >
+              <Text>Okay</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.close(false)}>
               <Text style={styles.subtitle}>clear</Text>
             </TouchableOpacity>
@@ -76,19 +83,18 @@ export default class Guest extends Component {
             inc={() => this.increment()}
             dec={() => this.decrement()}
           />
-          <Text style={styles.text}>Main guest email</Text>
-          <TextInput
-            onChange={guestmail => this.setState({ guestmail })}
-            placeholder="Enter email address of main Guest"
-          />
+          <View style={{ marginTop: 10, marginBottom: 10 }}>
+            <Text style={styles.text}>Main guest email</Text>
+            <TextInput
+              onChange={guestmail => this.setState({ guestmail })}
+              placeholder="Enter email address of main Guest"
+            />
+          </View>
 
-          <TouchableOpacity
-            onPress={() =>
-              this.props.save(this.state.guestnumber, this.state.guestmail)
-            }
-          >
-            <Text>Okay</Text>
+          <TouchableOpacity>
+            <Text style={styles.subt}>Add more +</Text>
           </TouchableOpacity>
+
         </View>
       </View>
     );

@@ -41,6 +41,7 @@ export const searchRooms = gql`
   query($bookinginfo: Bquery) {
     findrooms(info: $bookinginfo) {
       Name
+      id
     }
   }
 `;

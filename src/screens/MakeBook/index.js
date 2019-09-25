@@ -248,10 +248,12 @@ class MakeBook extends Component {
               />
 
               <TouchableOpacity
-                style={{ marginTop: "3%" }}
+
                 onPress={() => this._startfoodemodal()}
               >
-                <Text>Dietary Requirements</Text>
+                <View>
+                  <Text>Dietary Requirements</Text>
+                </View>
               </TouchableOpacity>
 
               <Text style={styles.subtitle}> Requirements</Text>

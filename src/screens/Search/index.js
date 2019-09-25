@@ -33,7 +33,7 @@ export default class Search extends Component {
       bookingdetails: {
         numGuests: 2,
         OrganiserId: "1234321",
-        RoomId: "LJqUQPuIQ4cYXw8me8Zo",
+
         MeetingAgenda: "Mike test 1 2",
         CheckIn: "2019-08-30T09:30:00.000Z",
         CheckOut: "2019-08-30T11:30:00.000Z",
@@ -45,6 +45,10 @@ export default class Search extends Component {
 
   componentDidMount() {
     const BookingDetails = this.props.navigation.getParam("booking", {});
+
+    this.setState({
+      bookingdetails: BookingDetails
+    })
 
   }
 

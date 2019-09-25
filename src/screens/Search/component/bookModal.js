@@ -16,7 +16,7 @@ const BookModal = props => {
           <Text> {`Date: ${new Date(props.bookingdetails.CheckIn).getDate}`}</Text>
           <Text> {`Time: ${new Date(props.bookingdetails.CheckIn).getTime}`}</Text>
           <Text> Attendees</Text>
-          {props.bookingdetails.Attendees.map(name => <Text>{name}</Text>)}
+          {props.bookingdetails.Attendees ? props.bookingdetails.Attendees.map(name => <Text>{name}</Text>) : null}
         </ScrollView>
         <View style={{ flexDirection: "row", alignSelf: "flex-end" }}>
           <Mutation
