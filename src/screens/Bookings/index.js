@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { View, Text, SafeAreaView, ImageBackground } from "react-native";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import ActionCreators from "../../redux/actions";
 import { Query } from "react-apollo";
 import NoResults from "../../component/saved/NoResults";
 import styles from "./Bookings.style";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { roomQuery } from "@services/getrooms";
+import { getmybookingsQuery } from "@services/getmybookings";
 import * as AddCalendarEvent from "react-native-add-calendar-event";
 
 const imageR = require("../../img/listing11.png");
@@ -16,8 +19,8 @@ const ImageView = () => {
     </ImageBackground>
   );
 };
-export default class Bookings extends Component {
-  _cancelmeeting() {}
+class Bookings extends Component {
+  _cancelmeeting() { }
 
   _renderItem({ item }) {
     return (
@@ -76,7 +79,10 @@ export default class Bookings extends Component {
   render() {
     return (
       <SafeAreaView style={styles.wrapper}>
-        <Query query={roomQuery}>
+        <Query query={getmybookingsQuery} variables={{
+          "email": this.props.user.user.email,
+          "id": this.props.user.user.uid
+        }}>
           {({ loading, error, data }) => {
             if (error) {
               return (
@@ -99,7 +105,7 @@ export default class Bookings extends Component {
             if (data) {
               return (
                 <FlatList
-                  data={data.getrooms}
+                  data={data.getmymeetings}
                   renderItem={item => this._renderItem(item)}
                   ListEmptyComponent={() => <NoResults />}
                 />
@@ -111,3 +117,14 @@ export default class Bookings extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.default.user,
+})
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(ActionCreators, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Bookings)
