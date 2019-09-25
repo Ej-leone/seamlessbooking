@@ -7,6 +7,11 @@ export default StyleSheet.create({
     fontSize: 22,
     fontWeight: "600",
     paddingBottom: 20,
+
+  },
+  tit: {
+    fontSize: 20,
+    fontWeight: "500",
     color: colors.maincolor
   },
   itemview: {
@@ -16,13 +21,22 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     shadowOffset: { width: 2, height: 2 },
     shadowColor: "black",
-    shadowOpacity: 3,
-    elevation: 3,
-    zIndex: 999,
-    marginVertical: 10
+    shadowOpacity: 2,
+    // elevation: 3,
+    // zIndex: 999,
+
+  },
+  imgview: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    backgroundColor: colors.maincolor,
+    width: width / 1.055,
+    height: height / 4,
+
   },
   modalcontainer: {
     flex: 1,
+
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "rgba(0,0,0,0.7)"
@@ -30,7 +44,7 @@ export default StyleSheet.create({
   bookview: {
     backgroundColor: colors.white,
     borderRadius: 10,
-    width: width / 1.5,
+    width: width / 1.2,
     height: height / 3
   },
   title: {
@@ -46,7 +60,11 @@ export default StyleSheet.create({
   },
   cancelbtn: {
     backgroundColor: colors.maincolor
+  },
+  searchbkbtn: {
+    backgroundColor: colors.maincolor,
+    width: width / 2,
+    justifyContent: "center"
   }
-
 
 });

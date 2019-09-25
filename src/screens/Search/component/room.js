@@ -6,11 +6,14 @@ import styles from "./search.style";
 const Aroom = props => {
   return (
     <View style={styles.itemview}>
+
       <Image
-        style={{ alignSelf: "center", borderRadius: 10 }}
-        source={dummyimage}
+        resizeMode={"stretch"}
+        style={styles.imgview}
+        source={{ uri: "https://images.pexels.com/photos/1661004/pexels-photo-1661004.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" }}
       />
-      <Text style={{ margin: 10 }}> {props.details.item.Name}</Text>
+
+      <Text style={styles.tit}> {props.details.item.Name}</Text>
       <View style={{ flexDirection: "row", margin: 10 }}>
         <Text> ∙ Wifi </Text>
         <Text> ∙ Video Confrencing </Text>
@@ -25,8 +28,8 @@ const Aroom = props => {
       >
         <Text style={{ color: "green" }}>Open till 6.00am</Text>
         <TouchableOpacity onPress={() => props.initbooking(props.details)}>
-          <View style={{ backgroundColor: "red" }}>
-            <Text style={{ color: "white" }}>Book</Text>
+          <View style={styles.searchbkbtn}>
+            <Text style={{ color: "white", textAlign: "center" }}>Book</Text>
           </View>
         </TouchableOpacity>
       </View>
