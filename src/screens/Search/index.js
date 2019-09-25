@@ -4,13 +4,13 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import Aroom from "./component/room";
 import styles from "./component/search.style";
 import BookModal from "./component/bookModal";
-import NavBarButton from "../../component/buttons/NavBarButton";
-import colors from "../../styles/colors";
-import transparentHeaderStyle from "../../styles/navigation";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import ActionCreators from "../../redux/actions";
 import { Query } from "react-apollo";
 import { searchRooms } from "../../services/getrooms";
 
-export default class Search extends Component {
+class Search extends Component {
   /* static navigationOptions = ({ navigation }) => ({
      headerLeft: (
        <NavBarButton
@@ -45,16 +45,14 @@ export default class Search extends Component {
 
   componentDidMount() {
     const BookingDetails = this.props.navigation.getParam("booking", {});
+    const user = this.props.user
+
 
     this.setState({
       bookingdetails: BookingDetails
     })
 
   }
-
-
-
-
 
   renderItem(item) {
     return (
@@ -89,6 +87,7 @@ export default class Search extends Component {
             visible={this.state.visibility}
           >
             <BookModal
+              user={this.props.user}
               booking={this.state.booking}
               bookingdetails={this.state.bookingdetails}
               closemodal={() => this.cancelbooking()}
@@ -126,3 +125,15 @@ export default class Search extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  user: state.default.user,
+})
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(ActionCreators, dispatch);
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search)

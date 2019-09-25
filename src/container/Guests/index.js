@@ -86,7 +86,7 @@ export default class Guest extends Component {
           <View style={{ marginTop: 10, marginBottom: 10 }}>
             <Text style={styles.text}>Main guest email</Text>
             <TextInput
-              onChange={guestmail => this.setState({ guestmail })}
+              onChangeText={guestmail => this.setState({ guestmail })}
               placeholder="Enter email address of main Guest"
             />
           </View>

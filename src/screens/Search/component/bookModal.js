@@ -3,6 +3,7 @@ import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
 import { Mutation } from "react-apollo";
 import { createBooking, makeBook } from "../../../services/createbookings";
 import styles from "./search.style";
+import moment from "moment";
 
 const BookModal = props => {
 
@@ -13,10 +14,13 @@ const BookModal = props => {
         <ScrollView>
           <Text> {`Room Booked: ${props.booking.item.Name}`}</Text>
           <Text> {`Meeting Agenda: ${props.bookingdetails.MeetingAgenda}`}</Text>
-          <Text> {`Date: ${new Date(props.bookingdetails.CheckIn).getDate}`}</Text>
-          <Text> {`Time: ${new Date(props.bookingdetails.CheckIn).getTime}`}</Text>
+          <Text>Checkin</Text>
+          <Text> {moment(props.bookingdetails.CheckIn).format('MMMM Do YYYY, h:mm:ss a')}</Text>
+          <Text>CheckOut</Text>
+          <Text> {moment(props.bookingdetails.CheckOut).format('MMMM Do YYYY, h:mm:ss a')}</Text>
           <Text> Attendees</Text>
-          {props.bookingdetails.Attendees ? props.bookingdetails.Attendees.map(name => <Text>{name}</Text>) : null}
+          <Text>{props.bookingdetails.Attendees}</Text>
+          {/*props.bookingdetails.Attendees ? props.bookingdetails.Attendees.map(name => <Text>{name}</Text>) : null*/}
         </ScrollView>
         <View style={{ flexDirection: "row", alignSelf: "flex-end" }}>
           <Mutation
@@ -36,12 +40,12 @@ const BookModal = props => {
                   onPress={() => book({
                     "variables": {
                       "input": {
-                        "numGuests": 2,
-                        "OrganiserId": "1234321",
-                        "RoomId": "LJqUQPuIQ4cYXw8me8Zo",
-                        "MeetingAgenda": "Mike test 1 2",
-                        "CheckIn": "2019-08-30T09:30:00.000Z",
-                        "CheckOut": "2019-08-30T11:30:00.000Z",
+                        "numGuests": props.bookingdetails.numGuests,
+                        "OrganiserId": props.user.user.uid,
+                        "RoomId": props.booking.item.id,
+                        "MeetingAgenda": props.bookingdetails.MeetingAgenda,
+                        "CheckIn": props.bookingdetails.CheckIn,
+                        "CheckOut": props.bookingdetails.CheckOut,
                         "Attendees": ["ejgithinji@gmail.com", "elijah@finesoftafrika.com"]
                       }
                     }

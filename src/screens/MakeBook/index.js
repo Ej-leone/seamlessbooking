@@ -243,7 +243,7 @@ class MakeBook extends Component {
               <Text style={styles.title}>Meeting Agenda </Text>
               <TextInput
                 style={{ borderBottomColor: "#f3f3f3", borderBottomWidth: 1 }}
-                onChange={text => this.setState({ MeetingAgenda: text })}
+                onChangeText={text => this.setState({ MeetingAgenda: text })}
                 placeholder={"Eg. Training"}
               />
 
