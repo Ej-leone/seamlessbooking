@@ -36,16 +36,17 @@ export default StyleSheet.create({
     zIndex: 999,
     marginVertical: 10
   },
-  date: {
+  roomtext: {
     fontSize: 25,
-    color: colors.gray02
+    color: colors.maincolor
   },
   time: {
     fontSize: 15,
-    color: colors.gray03
+    color: colors.black
   },
   redbtn: {
-    backgroundColor: colors.maincolor
+    backgroundColor: colors.maincolor,
+    width: screenWidth / 2
   },
   iview: {
     flexDirection: "row",
