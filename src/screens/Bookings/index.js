@@ -14,7 +14,8 @@ const imageR = require("../../img/listing11.png");
 
 const ImageView = () => {
   return (
-    <ImageBackground style={styles.imback} source={imageR}>
+    <ImageBackground style={styles.imback} source={{ uri: "https://images.pexels.com/photos/1661004/pexels-photo-1661004.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" }}>
+      <Text style={styles.time}> Monday 22 August 11:00 Am -12:00</Text>
       <Text> 00:00</Text>
     </ImageBackground>
   );
@@ -26,32 +27,38 @@ class Bookings extends Component {
     return (
       <View style={styles.itemview}>
         <ImageView />
-        <Text style={styles.date}> Monday 22 August</Text>
-        <Text style={styles.time}>11:00 Am -12:00</Text>
+        <Text style={styles.roomtext}>Riverside Meeting Room</Text>
+
         <View style={styles.iview}>
+
           <View>
-            <Text>Organiser</Text>
-            <Text>David Mpho</Text>
+            <Text>10 guest</Text>
+            <Text>General Board meeting</Text>
           </View>
-          <TouchableOpacity
-            onPress={() =>
-              this._AddToCalendar({
-                title: "",
-                startDate: "",
-                endDate: "",
-                location: ""
-              })
-            }
-          >
-            <View>
-              <Text>Add to calendar </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this._cancelmeeting()}>
-            <View style={styles.redbtn}>
-              <Text style={styles.txt}>Cancel</Text>
-            </View>
-          </TouchableOpacity>
+
+          <View>
+            <TouchableOpacity
+              onPress={() =>
+                this._AddToCalendar({
+                  title: "",
+                  startDate: "",
+                  endDate: "",
+                  location: ""
+                })
+              }
+            >
+              <View>
+                <Text>Add to calendar </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this._cancelmeeting()}>
+              <View style={styles.redbtn}>
+                <Text style={{ color: "#fff", textAlign: "center" }}>Cancel</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+
         </View>
       </View>
     );

@@ -45,7 +45,7 @@ export default StyleSheet.create({
     color: colors.black
   },
   redbtn: {
-    backgroundColor: colors.maincolor,
+    backgroundColor: "yellow",
     width: screenWidth / 2
   },
   iview: {
