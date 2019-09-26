@@ -16,6 +16,7 @@ import Stars from "../Stars";
 import colors from "../../styles/colors";
 import { getClosedRooms } from "../../services/getrooms";
 const dummyimage = require("../../img/listing11.png");
+import LottieView from 'lottie-react-native';
 
 const _movetoBook = props => {
   props.navigation.navigate("Book", { RoomId: "LJqUQPuIQ4cYXw8me8Zo" });
@@ -93,7 +94,15 @@ const ClosedRooms = props => {
         <Query query={getClosedRooms}>
           {({ loading, data, error }) => {
             if (loading) {
-              return <Text>loading</Text>;
+              return (
+                <View>
+                  <Text>loading</Text>
+                  <LottieView style={{ flex: 1 }}
+                    source={require('../../asset/building.json')}
+                    autoPlay={true}
+                    loop={true} />
+                </View>
+              );
             }
             if (error) {
               return <Text>error</Text>;

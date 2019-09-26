@@ -15,7 +15,9 @@ export default StyleSheet.create({
     fontSize: 40
   },
   errorview: {
+    flexDirection: "row",
     justifyContent: "center",
+    alignItems: "center",
     alignContent: "center"
   },
   imback: {

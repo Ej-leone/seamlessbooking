@@ -15,6 +15,8 @@ import HeartButton from "../buttons/HeartButton";
 import Stars from "../Stars";
 import colors from "../../styles/colors";
 const dummyimage = require("../../img/listing11.png");
+const bui = require("../../asset/building.json")
+import LottieView from 'lottie-react-native';
 
 import { getOpenRooms, getClosedRooms } from "../../services/getrooms";
 
@@ -97,7 +99,16 @@ const OpenRooms = props => {
         <Query query={getOpenRooms}>
           {({ loading, data, error }) => {
             if (loading) {
-              return <Text>loading</Text>;
+              return (
+                <View>
+                  <Text>loading</Text>
+                  <LottieView
+                    style={{ flex: 1 }}
+                    source={bui}
+                    autoPlay={true}
+                    loop={true} />
+                </View>
+              );
             }
             if (error) {
               return <Text>error</Text>;

@@ -9,8 +9,10 @@ import styles from "./Bookings.style";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { getmybookingsQuery } from "@services/getmybookings";
 import * as AddCalendarEvent from "react-native-add-calendar-event";
+import LottieView from 'lottie-react-native';
 
 const imageR = require("../../img/listing11.png");
+const sload = require("../../asset/seamless.json")
 
 const ImageView = () => {
   return (
@@ -105,6 +107,12 @@ class Bookings extends Component {
               return (
                 <View style={styles.errorview}>
                   <Text style={styles.errortext}> ... Loading </Text>
+                  <LottieView
+                    style={{ flex: 1 }}
+                    source={sload}
+                    autoPlay={true}
+                    loop={true}
+                  />
                 </View>
               );
             }
