@@ -88,7 +88,7 @@ class Settings extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.Title}>Settings</Text>
-        {admin ? <AdminView navigation /> : null}
+        {admin ? <AdminView navigation={navigation} /> : null}
 
         <View style={styles.bottomView}>
           <TouchableOpacity onPress={() => this.SignOut()}>
