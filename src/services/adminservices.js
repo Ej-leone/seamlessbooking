@@ -1,9 +1,14 @@
+import gql from "graphql-tag";
+
 
 export const getusers = () => {
 
 }
 
-export const getadminmeetings = () => {
-
+export const getallmeetings = gql`
+query {
+  getrooms {
+    Name
+  }
 }
-
+`;
