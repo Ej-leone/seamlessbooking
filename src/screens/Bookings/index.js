@@ -1,18 +1,43 @@
 import React, { Component } from "react";
-import { View, Text, SafeAreaView, ImageBackground } from "react-native";
+import { View, Text, SafeAreaView, ImageBackground, Modal, FlatList, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ActionCreators from "../../redux/actions";
-import { Query } from "react-apollo";
+import { Query, Mutation } from "react-apollo";
 import NoResults from "../../component/saved/NoResults";
-import styles from "./Bookings.style";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import styles, { cancelmodal } from "./Bookings.style";
+
 import { getmybookingsQuery } from "@services/getmybookings";
 import * as AddCalendarEvent from "react-native-add-calendar-event";
 import LottieView from 'lottie-react-native';
 
 const imageR = require("../../img/listing11.png");
 const sload = require("../../asset/seamless.json")
+
+const CancelModal = (props) => {
+  return (
+    <View style={cancelmodal.modalview}>
+      <Text style={cancelmodal.title}>Cancel Booking</Text>
+      <Text style={cancelmodal.time}>22 August 2019 11:00 am = 12:00 am</Text>
+      <View style={cancelmodal.buttonview}>
+
+        <TouchableOpacity>
+          <View style={cancelmodal.button}>
+            <Text style={cancelmodal.text}>   YES, Cancel</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => props.close(false, {})}>
+          <View style={cancelmodal.button}>
+            <Text style={cancelmodal.text}> NO</Text>
+          </View>
+        </TouchableOpacity>
+
+      </View>
+    </View>
+  )
+}
+
 
 const ImageView = () => {
   return (
@@ -23,7 +48,24 @@ const ImageView = () => {
   );
 };
 class Bookings extends Component {
-  _cancelmeeting() { }
+  constructor() {
+    super()
+
+    this.state = {
+      modalvisibility: false,
+      selectedmeeting: {}
+    }
+  }
+  _togglevisibility(t, b) {
+
+    this.setState({
+      selectedmeeting: b,
+      modalvisibility: t
+    })
+
+
+
+  }
 
   _renderItem({ item }) {
     return (
@@ -53,7 +95,7 @@ class Bookings extends Component {
                 <Text>Add to calendar </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this._cancelmeeting()}>
+            <TouchableOpacity onPress={() => this._togglevisibility(true, { meeting: "meeting" })}>
               <View style={styles.redbtn}>
                 <Text style={{ color: "#fff", textAlign: "center" }}>Cancel</Text>
               </View>
@@ -88,6 +130,14 @@ class Bookings extends Component {
   render() {
     return (
       <SafeAreaView style={styles.wrapper}>
+        <Modal
+          visible={this.state.modalvisibility}
+          transparent={true}>
+          <View style={cancelmodal.modaloverview}>
+            <CancelModal close={(e, f) => this._togglevisibility(e, f)} />
+          </View>
+        </Modal>
+
         <Query query={getmybookingsQuery} variables={{
           "email": this.props.user.user.email,
           "id": this.props.user.user.uid
@@ -136,6 +186,7 @@ class Bookings extends Component {
 const mapStateToProps = state => ({
   user: state.default.user,
 })
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(ActionCreators, dispatch);
 

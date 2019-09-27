@@ -47,7 +47,7 @@ export default StyleSheet.create({
     color: colors.black
   },
   redbtn: {
-    backgroundColor: "yellow",
+    backgroundColor: colors.maincolor,
     width: screenWidth / 2
   },
   iview: {
@@ -59,3 +59,50 @@ export default StyleSheet.create({
     color: colors.maincolor
   }
 });
+
+export const cancelmodal = StyleSheet.create({
+  title: {
+    color: colors.maincolor,
+    fontSize: 25,
+    fontWeight: "700",
+    textAlign: "center"
+  },
+  time: {
+    color: colors.gray05,
+    textAlign: "center",
+    fontSize: 15
+  },
+  buttonview: {
+    marginTop: "auto",
+    flexDirection: "row",
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
+  },
+  button: {
+    backgroundColor: colors.white,
+
+  },
+  text: {
+    color: colors.black,
+    fontWeight: "400",
+    fontSize: 15,
+    textAlign: "center"
+  },
+  modalview: {
+    backgroundColor: colors.white,
+    height: screenHeight / 4,
+    width: screenWidth / 1.3,
+    borderRadius: 10,
+
+  },
+  modaloverview: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.7)"
+
+  },
+
+
+})
+
