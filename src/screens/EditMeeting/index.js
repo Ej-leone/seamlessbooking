@@ -1,11 +1,23 @@
 import React, { Component } from "react";
-import { Text, View, FlatList } from "react-native";
+import { Text, View, FlatList, TouchableOpacity, ImageBackground } from "react-native";
 import { Query } from "react-apollo";
 import { getallmeetings } from '@services/adminservices'
 import transparentHeaderStyle from "../../styles/navigation";
 import NavBarButton from "../../component/buttons/NavBarButton";
 import Icon from "react-native-vector-icons/FontAwesome";
 import colors from "../../styles/colors";
+import styles from './emeeting.styles'
+
+const ImageView = () => {
+  return (
+    <ImageBackground style={styles.imback} source={{ uri: "https://images.pexels.com/photos/1661004/pexels-photo-1661004.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" }}>
+      <Text style={styles.time}> Monday 22 August 11:00 Am -12:00</Text>
+      <Text> 00:00</Text>
+    </ImageBackground>
+  );
+};
+
+
 
 export default class Editmeeting extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -31,9 +43,47 @@ export default class Editmeeting extends Component {
   }
 
 
-  _renderitem = ({ item }) => {
+  _renderItem({ item }) {
+    return (
+      <View style={styles.itemview}>
+        <ImageView />
+        <Text style={styles.roomtext}>Riverside Meeting Room</Text>
 
+        <View style={styles.iview}>
+
+          <View>
+            <Text>10 guest</Text>
+            <Text>General Board meeting</Text>
+          </View>
+
+          <View>
+            <TouchableOpacity
+              onPress={() =>
+                this._AddToCalendar({
+                  title: "",
+                  startDate: "",
+                  endDate: "",
+                  location: ""
+                })
+              }
+            >
+              <View>
+                <Text>Add to calendar </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this._cancelmeeting()}>
+              <View style={styles.redbtn}>
+                <Text style={{ color: "#fff", textAlign: "center" }}>Cancel</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+
+        </View>
+      </View>
+    );
   }
+
 
   render() {
     return (

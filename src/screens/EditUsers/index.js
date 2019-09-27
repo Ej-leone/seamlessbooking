@@ -30,7 +30,11 @@ class EditUsers extends Component {
     this.state = {}
   }
 
-  _renderItem = () => { }
+  _renderItem = ({ item }) => {
+    return (
+      <Text> User</Text>
+    )
+  }
 
 
   render() {
