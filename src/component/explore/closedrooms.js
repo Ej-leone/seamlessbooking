@@ -55,9 +55,9 @@ const renderListings = props => {
             {listing.Name}
           </Text>
           <Text style={styles.listingPrice}>
-            {listing.price} {listing.priceType}
+            10 seats  ∙Wifi ∙Projector
           </Text>
-          <Text style={styles.greenText}> Open Till 6:00 am</Text>
+          <Text style={styles.greenText}> Next Booking</Text>
           {/* <TouchableOpacity
                         onPress={() => _movetoBook(props)}>
                         <View style={styles.redbtn}>
@@ -200,6 +200,6 @@ const styles = StyleSheet.create({
     fontWeight: "300"
   },
   greenText: {
-    color: "green"
+    color: colors.maincolor
   }
 });

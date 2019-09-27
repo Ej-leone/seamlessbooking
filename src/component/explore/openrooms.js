@@ -60,8 +60,8 @@ const renderListings = props => {
             {listing.Name}
           </Text>
           <Text style={styles.listingPrice}>
-            {listing.price} {listing.priceType}
-          </Text>
+            10 seats  ∙Wifi ∙Projector
+           </Text>
           <Text style={styles.greenText}> Open Till 6:00 am</Text>
           {/* <TouchableOpacity
                         onPress={() => _movetoBook({ ...props, RoomId: listing.id })}>
