@@ -16,25 +16,30 @@ import {
   ScrollView
 } from "react-native";
 import { roomDescriptionQuery } from "@services/getrooms";
+import { FlatList } from "react-native-gesture-handler";
 
 const dummyimage = require("../../img/listing11.png");
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
+IMAGES_PER_ROW = 2.5;
+
+
+
 export default class RoomDetail extends Component {
   static navigationOptions = ({ navigation }) => ({
-    headerRight: (
-      <NavBarButton
-        handleButtonPress={() =>
-          navigation.navigate("Book", {
-            RoomId: navigation.getParam("RoomId", "NO-ID")
-          })
-        }
-        location="right"
-        color={colors.maincolor}
-        text="Book Room"
-      />
-    ),
+    /* headerRight: (
+       <NavBarButton
+         handleButtonPress={() =>
+           navigation.navigate("Book", {
+             RoomId: navigation.getParam("RoomId", "NO-ID")
+           })
+         }
+         location="right"
+         color={colors.maincolor}
+         text="Book Room"
+       />
+     ),*/
     headerLeft: (
       <NavBarButton
         handleButtonPress={() => navigation.goBack()}
@@ -60,6 +65,20 @@ export default class RoomDetail extends Component {
       RoomId
     });
   }
+  calculatedSize() {
+    var size = width / IMAGES_PER_ROW
+    return { width: size, height: size }
+  }
+
+  renderRow(image) {
+    // return images.map((uri, i) => {style={[styles.item, this.calculatedSize()]}
+    return (
+      <Image source={image} />
+    );
+    //})
+  }
+
+
 
   render() {
     return (
@@ -87,14 +106,10 @@ export default class RoomDetail extends Component {
                         {" "}
                         {data.getRoomDetail.Name}
                       </Text>
-                      <View style={styles.imgview}>
-                        <Image style={styles.img} source={dummyimage} />
-                        <Image style={styles.img} source={dummyimage} />
-                      </View>
-                      <View style={styles.imgview}>
-                        <Image style={styles.img} source={dummyimage} />
-                        <Image style={styles.img} source={dummyimage} />
-                      </View>
+                      <FlatList
+                        data={[dummyimage, dummyimage, dummyimage, dummyimage]}
+                        renderItem={item => this.renderRow(item)}
+                        numColumns={2} />
                       <Text style={styles.title}> Amenities </Text>
                       <View>
                         <Text> {data.Capacity} Seats</Text>
@@ -105,6 +120,11 @@ export default class RoomDetail extends Component {
 
                       <Text style={styles.title}> Direction </Text>
                       <Text>{data.getRoomDetail.Description}</Text>
+
+                      <TouchableOpacity>
+                        <Text style={styles.title}> Calendar </Text>
+                      </TouchableOpacity>
+
                     </View>
                   );
                 }
