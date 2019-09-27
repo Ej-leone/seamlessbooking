@@ -65,6 +65,12 @@ export default StyleSheet.create({
     backgroundColor: colors.maincolor,
     width: width / 2,
     justifyContent: "center"
+  },
+  roomname: {
+    color: colors.maincolor,
+    fontSize: 15,
+  },
+  time: {
+    color: colors.gray05
   }
-
 });

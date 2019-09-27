@@ -10,16 +10,16 @@ const BookModal = props => {
   return (
     <View style={styles.modalcontainer}>
       <View style={styles.bookview}>
-        <Text style={styles.title}>Confirm Booking</Text>
+        {/*<Text style={styles.title}>Confirm Booking</Text>*/}
         <ScrollView>
-          <Text> {`Room Booked: ${props.booking.item.Name}`}</Text>
-          <Text> {`Meeting Agenda: ${props.bookingdetails.MeetingAgenda}`}</Text>
+          <Text style={styles.roomname}> {` ${props.booking.item.Name}`}</Text>
+          {/*<Text> {`Meeting Agenda: ${props.bookingdetails.MeetingAgenda}`}</Text>*/}
           <Text>Checkin</Text>
-          <Text> {moment(props.bookingdetails.CheckIn).format('MMMM Do YYYY, h:mm:ss a')}</Text>
+          <Text style={styles.time}> {moment(props.bookingdetails.CheckIn).format('MMMM Do YYYY, h:mm:ss a')}</Text>
           <Text>CheckOut</Text>
-          <Text> {moment(props.bookingdetails.CheckOut).format('MMMM Do YYYY, h:mm:ss a')}</Text>
-          <Text> Attendees</Text>
-          <Text>{props.bookingdetails.Attendees}</Text>
+          <Text style={styles.time}> {moment(props.bookingdetails.CheckOut).format('MMMM Do YYYY, h:mm:ss a')}</Text>
+          {/*<Text>  Attendees</Text>*/}
+          {/*<Text>{props.bookingdetails.Attendees}</Text>*/}
           {/*props.bookingdetails.Attendees ? props.bookingdetails.Attendees.map(name => <Text>{name}</Text>) : null*/}
         </ScrollView>
         <View style={{ flexDirection: "row", alignSelf: "flex-end" }}>
