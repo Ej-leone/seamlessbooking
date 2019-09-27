@@ -18,7 +18,7 @@ const AdminView = props => {
           name={"Edit Rooms"}
           iconname={"ios-list"}
           navigate={props.navigation}
-          to={"EditRooms"}
+          to={"EditRoomss"}
         />
         <Card
           name={"Edit Users"}
@@ -38,7 +38,7 @@ const AdminView = props => {
           name={"Edit Locations"}
           iconname={"ios-pin"}
           navigate={props.navigation}
-          to={"EditLocation"}
+          to={"EditLocations"}
         />
         <Card
           name={"Reports"}
@@ -50,7 +50,7 @@ const AdminView = props => {
           name={"Support"}
           iconname={"ios-podium"}
           navigate={props.navigation}
-          to={"Support"}
+          to={"Supports"}
         />
       </View>
     </View>

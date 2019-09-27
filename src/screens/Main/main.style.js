@@ -20,11 +20,13 @@ export default StyleSheet.create({
     color: color.white
   },
   title: {
-    position: "absolute",
-    top: 0,
-    marginTop: "10%",
+    // position: "absolute",
+    // top: 0,
+    // marginTop: "10%",
+    textAlign: "center",
     color: color.white,
-    fontSize: 25
+    fontWeight: "700",
+    fontSize: 35
   },
   stitle: {
     position: "absolute",
