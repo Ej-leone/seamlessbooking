@@ -15,7 +15,8 @@ class SnackBar extends Component {
         };
     }
 
-    ShowSnackBarFunction(SnackBarInsideMsgHolder = "Default SnackBar Message...", duration = 3000) {
+    ShowSnackBarFunction(duration = 3000) {
+        let SnackBarInsideMsgHolder = this.props.errormessage ? this.props.errormessage : "Default SnackBar Message..."
         if (this.ShowSnackBar === false) {
             this.setState({ SnackBarInsideMsgHolder: SnackBarInsideMsgHolder });
 
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     SnackBarMessage:
     {
         color: '#fff',
-        fontSize: 18
+        fontSize: 10
     },
 
     SnackBarUndoText: {

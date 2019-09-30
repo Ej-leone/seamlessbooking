@@ -86,7 +86,33 @@ class MakeBook extends Component {
   };
 
   ValidateState() {
-    return false
+    //Check Checkin date
+    console.log()
+    if (!moment(this.state.CheckIn).isValid || moment(this.state.CheckIn).isBefore(moment())) {
+      this.setState({ errormessage: "Start date is invalid " })
+      return false
+    }
+
+    //Check CheckOut date
+    if (!moment(this.state.CheckIn).isValid || moment(this.state.CheckIn).isBefore(moment()) || moment(this.state.CheckOut).isSameOrBefore(this.state.CheckIn)) {
+      this.setState({ errormessage: "End date is invalid " })
+      return false
+    }
+
+    //Check Guest
+    if (this.state.numGuests == 0) {
+      this.setState({ errormessage: "Number of guest not set " })
+      return false
+    }
+
+    //Check out Training
+    if (!this.state.MeetingAgenda) {
+      this.setState({ errormessage: "Meeting Agenda not set" })
+      return false
+    }
+
+    this.setState({ errormessage: "" })
+    return true
   }
 
   movetoSearch() {
@@ -223,6 +249,7 @@ class MakeBook extends Component {
           <ScrollView style={styles.scrollView}>
             <View style={styles.container}>
               <DateTimePicker
+                minimumDate={new Date()}
                 isVisible={this.state.showDatetime}
                 mode={mode}
                 onConfirm={this.handleDatePicked}
@@ -341,7 +368,7 @@ class MakeBook extends Component {
             </View>
           </ScrollView>
         </View>
-        <SnackBar ref="ReactNativeSnackBar" />
+        <SnackBar ref="ReactNativeSnackBar" errormessage={this.state.errormessage} />
 
       </KeyboardAvoidingView>
     );
