@@ -2,14 +2,20 @@ import React, { Component } from "react";
 import { View, Text, SafeAreaView, ImageBackground, Modal, FlatList, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import ActionCreators from "../../redux/actions";
+
 import { Query, Mutation } from "react-apollo";
-import NoResults from "../../component/saved/NoResults";
+
 import styles, { cancelmodal } from "./Bookings.style";
 
 import { getmybookingsQuery } from "@services/getmybookings";
 import * as AddCalendarEvent from "react-native-add-calendar-event";
 import LottieView from 'lottie-react-native';
+
+import transparentHeaderStyle from "../../styles/navigation";
+import NoResults from "../../component/saved/NoResults";
+import ActionCreators from "../../redux/actions";
+import colors from "../../styles/colors";
+
 
 const imageR = require("../../img/listing11.png");
 const sload = require("../../asset/seamless.json")
@@ -48,6 +54,13 @@ const ImageView = () => {
   );
 };
 class Bookings extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    headerRight: (<Text>My Bookings</Text>),
+    headerStyle: transparentHeaderStyle,
+    headerTransparent: true,
+    headerTintColor: colors.white
+  });
+
   constructor() {
     super()
 
@@ -68,6 +81,7 @@ class Bookings extends Component {
   }
 
   _renderItem({ item }) {
+
     return (
       <View style={styles.itemview}>
         <ImageView />
@@ -76,8 +90,8 @@ class Bookings extends Component {
         <View style={styles.iview}>
 
           <View>
-            <Text>10 guest</Text>
-            <Text>General Board meeting</Text>
+            <Text> {`${item.numGuests} guests`}</Text>
+            <Text> {`${item.MeetingAgenda}`}</Text>
           </View>
 
           <View>
@@ -156,9 +170,9 @@ class Bookings extends Component {
             if (loading) {
               return (
                 <View style={styles.errorview}>
-                  <Text style={styles.errortext}> ... Loading </Text>
+                  <Text style={styles.errortext}> loading your meetings</Text>
                   <LottieView
-                    style={{ flex: 1 }}
+                    style={styles.ld}
                     source={sload}
                     autoPlay={true}
                     loop={true}

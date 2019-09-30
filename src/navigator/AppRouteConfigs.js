@@ -45,7 +45,15 @@ const RefinedBooking = createStackNavigator(
 );
 
 const Internal = createStackNavigator({
-  Tab: { screen: TabNavigator },
+  Tab: {
+    screen: TabNavigator,
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: transparentHeaderStyle,
+      headerTransparent: true,
+      headerTintColor: colors.white
+    })
+
+  },
   Book: {
     screen: RefinedBooking,
     navigationOptions: ({ navigation }) => ({

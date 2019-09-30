@@ -12,13 +12,18 @@ export default StyleSheet.create({
   },
   errortext: {
     color: colors.maincolor,
-    fontSize: 40
+    fontSize: 20
   },
+
   errorview: {
-    flexDirection: "row",
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     alignContent: "center"
+  },
+  ld: {
+    width: screenWidth / 1.5,
+    height: screenHeight / 2
   },
   imback: {
     justifyContent: "center",
