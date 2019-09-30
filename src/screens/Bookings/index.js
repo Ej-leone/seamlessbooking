@@ -170,7 +170,7 @@ class Bookings extends Component {
             if (loading) {
               return (
                 <View style={styles.errorview}>
-                  <Text style={styles.errortext}> loading your meetings</Text>
+                  <Text style={styles.errortext}> Seamless is loading your meetings</Text>
                   <LottieView
                     style={styles.ld}
                     source={sload}
