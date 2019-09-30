@@ -1,31 +1,32 @@
 import React, { Component } from "react";
 import {
   View,
-  SafeAreaView,
   Text,
   TextInput,
-  Switch,
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
   Modal
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
-import { Mutation } from "react-apollo";
+
 import NavBarButton from "../../component/buttons/NavBarButton";
 import Icon from "react-native-vector-icons/FontAwesome";
 import colors from "../../styles/colors";
 import transparentHeaderStyle from "../../styles/navigation";
-import { createBooking } from "../../services/createbookings";
+
+
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "./makebook.style";
-import RadioInput from "../../component/form/RadioInput";
+
 import Guest from "../../container/Guests";
 import Diet from "../../container/Diet";
 import Error from "../../container/Error";
 import Pickerr from './component/picker'
+import SnackBar from '../../component/snackbar'
 import moment from 'moment'
+import { validate } from "@babel/types";
 
 const Card = props => {
   return (
@@ -79,6 +80,24 @@ class MakeBook extends Component {
     //     RoomId
     //  })
   }
+
+  DisplaySnackBar = () => {
+    this.refs.ReactNativeSnackBar.ShowSnackBarFunction("Snackbar example");
+  };
+
+  ValidateState() {
+    return false
+  }
+
+  movetoSearch() {
+    if (this.ValidateState()) {
+      this.props.navigation.navigate("ARooms", { booking: this.state })
+    }
+    else {
+      this.DisplaySnackBar()
+    }
+  }
+
 
   _setGuest(num, mail) {
     this.setState({ numGuests: num, Guestemails: mail, modalOpen: false });
@@ -278,7 +297,7 @@ class MakeBook extends Component {
               </View>
 
               <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("ARooms", { booking: this.state })}
+                onPress={() => this.movetoSearch()}
               >
                 <View style={styles.btn}>
                   <Text style={styles.btntxt}>Search Rooms</Text>
@@ -322,6 +341,8 @@ class MakeBook extends Component {
             </View>
           </ScrollView>
         </View>
+        <SnackBar ref="ReactNativeSnackBar" />
+
       </KeyboardAvoidingView>
     );
   }
