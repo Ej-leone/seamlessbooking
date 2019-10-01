@@ -9,6 +9,7 @@ import styles, { cancelmodal } from "./Bookings.style";
 
 import { getmybookingsQuery } from "@services/getmybookings";
 import { roomDescriptionQuery } from "@services/getrooms"
+import { CancelBooking } from "@services/createbookings"
 import * as AddCalendarEvent from "react-native-add-calendar-event";
 import LottieView from 'lottie-react-native';
 
@@ -28,11 +29,14 @@ const CancelModal = (props) => {
       <Text style={cancelmodal.time}>22 August 2019 11:00 am = 12:00 am</Text>
       <View style={cancelmodal.buttonview}>
 
-        <TouchableOpacity>
-          <View style={cancelmodal.button}>
-            <Text style={cancelmodal.text}>   YES, Cancel</Text>
-          </View>
-        </TouchableOpacity>
+        <Mutation mutation={CancelBooking} variables={{ MeetingId: String, UserId: String, userEmail: String }} onCompleted={() => props.close(false, {})}>
+
+          <TouchableOpacity >
+            <View style={cancelmodal.button}>
+              <Text style={cancelmodal.text}>   YES, Cancel</Text>
+            </View>
+          </TouchableOpacity>
+        </Mutation>
 
         <TouchableOpacity onPress={() => props.close(false, {})}>
           <View style={cancelmodal.button}>

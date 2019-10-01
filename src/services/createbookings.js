@@ -32,5 +32,10 @@ mutation  ($input: BookingInput){
     success
   }
 }
-
 `
+export const CancelBooking = gql`
+mutation  ($MeetingId: String , $UserId: String , $userEmail:String){
+  cancelmeeting (meetingId:$MeetingId, userId:$UserId , userEmail:$userEmail){
+    success
+  }
+}`
