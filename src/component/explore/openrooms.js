@@ -9,6 +9,7 @@ import {
   ScrollView,
   Image,
   StyleSheet
+
 } from "react-native";
 import { Query } from "react-apollo";
 import HeartButton from "../buttons/HeartButton";
@@ -100,10 +101,10 @@ const OpenRooms = props => {
           {({ loading, data, error }) => {
             if (loading) {
               return (
-                <View>
+                <View style={{ flexDirection: "row", flex: 1 }}>
                   <Text>loading</Text>
                   <LottieView
-                    style={{ flex: 1 }}
+                    style={{ width: 50, height: 50 }}
                     source={bui}
                     autoPlay={true}
                     loop={true} />

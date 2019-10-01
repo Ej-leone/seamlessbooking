@@ -23,19 +23,32 @@ const imageR = require("../../img/listing11.png");
 const sload = require("../../asset/seamless.json")
 
 const CancelModal = (props) => {
+  debugger
   return (
     <View style={cancelmodal.modalview}>
       <Text style={cancelmodal.title}>Cancel Booking</Text>
       <Text style={cancelmodal.time}>22 August 2019 11:00 am = 12:00 am</Text>
       <View style={cancelmodal.buttonview}>
 
-        <Mutation mutation={CancelBooking} variables={{ MeetingId: String, UserId: String, userEmail: String }} onCompleted={() => props.close(false, {})}>
+        <Mutation mutation={CancelBooking} onCompleted={() => props.close(false, {})}>
 
-          <TouchableOpacity >
-            <View style={cancelmodal.button}>
-              <Text style={cancelmodal.text}>   YES, Cancel</Text>
-            </View>
-          </TouchableOpacity>
+          {
+            (CancelBooking, { loading, error, data }) => {
+              return (
+                <TouchableOpacity onPress={
+                  () => CancelBooking({
+                    "variables": { MeetingId: String, UserId: String, userEmail: String }
+                  })
+                } >
+                  <View style={cancelmodal.button}>
+
+                    <Text style={cancelmodal.text}>   YES, Cancel</Text>
+                  </View>
+                </TouchableOpacity>
+              )
+            }
+          }
+
         </Mutation>
 
         <TouchableOpacity onPress={() => props.close(false, {})}>
@@ -45,7 +58,7 @@ const CancelModal = (props) => {
         </TouchableOpacity>
 
       </View>
-    </View>
+    </View >
   )
 }
 
@@ -83,6 +96,10 @@ class Bookings extends Component {
 
 
 
+  }
+
+  selectmeeting(item) {
+    this.setState({ selectedmeeting: item })
   }
 
   _renderItem({ item }) {
@@ -128,7 +145,7 @@ class Bookings extends Component {
                 <Text>Add to calendar </Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this._togglevisibility(true, { meeting: "meeting" })}>
+            <TouchableOpacity onPress={() => this._togglevisibility(true, { meeting: item })}>
               <View style={styles.redbtn}>
                 <Text style={{ color: "#fff", textAlign: "center" }}>Cancel</Text>
               </View>
@@ -167,7 +184,7 @@ class Bookings extends Component {
           visible={this.state.modalvisibility}
           transparent={true}>
           <View style={cancelmodal.modaloverview}>
-            <CancelModal close={(e, f) => this._togglevisibility(e, f)} />
+            <CancelModal close={(e, f) => this._togglevisibility(e, f)} meeting={this.state.selectedmeeting} />
           </View>
         </Modal>
 
