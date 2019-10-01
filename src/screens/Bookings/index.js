@@ -23,7 +23,7 @@ const imageR = require("../../img/listing11.png");
 const sload = require("../../asset/seamless.json")
 
 const CancelModal = (props) => {
-  debugger
+
   return (
     <View style={cancelmodal.modalview}>
       <Text style={cancelmodal.title}>Cancel Booking</Text>
