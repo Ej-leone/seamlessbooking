@@ -5,6 +5,8 @@ import { createBooking, makeBook } from "../../../services/createbookings";
 import styles from "./search.style";
 import moment from "moment";
 
+
+
 const BookModal = props => {
 
   return (
@@ -25,7 +27,7 @@ const BookModal = props => {
         <View style={{ flexDirection: "row", alignSelf: "flex-end" }}>
           <Mutation
             mutation={makeBook}
-            onCompleted={(data) => console.warn(`success`)}
+            onCompleted={(data) => props.success()}
             onError={(error) => {
 
               return (console.warn(`${error.message}`))

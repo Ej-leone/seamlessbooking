@@ -86,33 +86,43 @@ class MakeBook extends Component {
   };
 
   ValidateState() {
-    //Check Checkin date
-    console.log()
-    if (!moment(this.state.CheckIn).isValid || moment(this.state.CheckIn).isBefore(moment())) {
+
+
+
+
+    if (moment.isDate(this.state.CheckIn)) {
+
       this.setState({ errormessage: "Start date is invalid " })
       return false
     }
 
     //Check CheckOut date
-    if (!moment(this.state.CheckIn).isValid || moment(this.state.CheckIn).isBefore(moment()) || moment(this.state.CheckOut).isSameOrBefore(this.state.CheckIn)) {
+    else if (moment.isDate(this.state.CheckOut) || moment(this.state.CheckOut).isSameOrBefore(this.state.CheckIn)) {
+      console.log('validating check out')
       this.setState({ errormessage: "End date is invalid " })
       return false
     }
 
     //Check Guest
-    if (this.state.numGuests == 0) {
+    else if (this.state.numGuests == 0) {
+      console.log('validating num guest')
       this.setState({ errormessage: "Number of guest not set " })
       return false
     }
 
     //Check out Training
-    if (!this.state.MeetingAgenda) {
+    else if (!this.state.MeetingAgenda) {
+      console.log('validating meeting agenda')
       this.setState({ errormessage: "Meeting Agenda not set" })
       return false
     }
 
-    this.setState({ errormessage: "" })
-    return true
+    else {
+      this.setState({ errormessage: "" })
+      return true
+
+    }
+
   }
 
   movetoSearch() {

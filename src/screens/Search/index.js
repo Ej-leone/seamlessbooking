@@ -88,6 +88,7 @@ class Search extends Component {
           >
             <BookModal
               user={this.props.user}
+              success={() => this.props.navigation.navigate('Tab')}
               booking={this.state.booking}
               bookingdetails={this.state.bookingdetails}
               closemodal={() => this.cancelbooking()}
