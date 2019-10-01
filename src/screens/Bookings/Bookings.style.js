@@ -44,7 +44,7 @@ export default StyleSheet.create({
     marginVertical: 10
   },
   roomtext: {
-    fontSize: 25,
+    fontSize: 18,
     color: colors.maincolor
   },
   time: {

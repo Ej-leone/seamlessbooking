@@ -8,6 +8,7 @@ import { Query, Mutation } from "react-apollo";
 import styles, { cancelmodal } from "./Bookings.style";
 
 import { getmybookingsQuery } from "@services/getmybookings";
+import { roomDescriptionQuery } from "@services/getrooms"
 import * as AddCalendarEvent from "react-native-add-calendar-event";
 import LottieView from 'lottie-react-native';
 
@@ -85,8 +86,22 @@ class Bookings extends Component {
     return (
       <View style={styles.itemview}>
         <ImageView />
-        <Text style={styles.roomtext}>Riverside Meeting Room</Text>
 
+        <Query query={roomDescriptionQuery} variables={{ "RoomId": item.RoomId }}>
+          {({ loading, error, data }) => {
+            if (loading) {
+              return <Text style={styles.roomtext}>...</Text>
+            }
+            if (error) {
+              return <Text style={styles.roomtext}>Error</Text>
+            }
+            if (data) {
+
+              return <Text style={styles.roomtext}> {data.getRoomDetail.Name} </Text>
+            }
+          }}
+
+        </Query>
         <View style={styles.iview}>
 
           <View>
@@ -98,10 +113,10 @@ class Bookings extends Component {
             <TouchableOpacity
               onPress={() =>
                 this._AddToCalendar({
-                  title: "",
+                  title: item.MeetingAgenda,
                   startDate: "",
                   endDate: "",
-                  location: ""
+
                 })
               }
             >
@@ -118,7 +133,7 @@ class Bookings extends Component {
 
 
         </View>
-      </View>
+      </View >
     );
   }
 
