@@ -34,7 +34,14 @@ const Card = props => {
       <View style={styles.card}>
         <Icon name={props.iconnname} size={22} color={colors.maincolor} />
         <Text>{props.name}</Text>
-        <Text>{props.value}</Text>
+        {props.value ? (
+          <View>
+            <Text>{moment(props.value).format("dddd")}</Text>
+            <Text>{moment(props.value).format("MMMM Do")}</Text>
+            <Text>{moment(props.value).format("h:mm")}</Text>
+          </View>
+        ) : null}
+        {props.secvalue ? <Text>{props.secvalue}</Text> : null}
       </View>
     </TouchableOpacity>
   );
@@ -273,7 +280,7 @@ class MakeBook extends Component {
               >
                 <Card
                   name={"Check In"}
-                  value={moment(this.state.CheckIn).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+                  value={this.state.CheckIn}
 
                   iconnname={"calendar-o"}
                   click={() => this._startdatemodal()}
@@ -282,14 +289,14 @@ class MakeBook extends Component {
                 <Card
                   name={"Check Out"}
 
-                  value={moment(this.state.CheckOut).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+                  value={this.state.CheckOut}
                   iconnname={"clock-o"}
                   click={() => this._starttimemodal()}
                   close={() => this._toggleModal()}
                 />
                 <Card
                   name={"Guest"}
-                  value={this.state.numGuests}
+                  secvalue={this.state.numGuests}
                   iconnname={"users"}
                   click={() => this._startguestmodal()}
                   close={() => this._toggleModal()}
